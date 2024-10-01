@@ -1,7 +1,6 @@
 import React from 'react'
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { Button, ConfigProvider } from 'antd';
 import Layout from '@/app/component/Layout'
+import '@radix-ui/themes/styles.css';
 import './global.scss';
 
 export default function RootLayout({
@@ -12,18 +11,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-
-        <ConfigProvider
-          theme={{
-            token: {
-              fontSize: 12,
-              borderRadius: 2,
-            }
-          }}>
-          <Layout>
-            {children}
-          </Layout>
-        </ConfigProvider>
+        <Layout>
+          {children}
+        </Layout>
       </body>
     </html >
   )

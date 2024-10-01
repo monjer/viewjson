@@ -1,31 +1,34 @@
-.app-plain-json-editor-container{
+.app-plain-json-editor-container {
   height: 100%;
-  width:100%;
-  padding:10px;
-  
-}
-.app-plain-json-editor{
-  outline: none;
-  border-color: #ccc;
-  padding:10px;
-  font-size: 12px;
-  height: 100%  ;
   width: 100%;
+  padding: 10px;
+
 }
 
-.app-highlight-json-block{
-  overflow: auto;
-  border: 1px solid #ccc;
+.app-plain-json-editor {
+  outline: none;
+  border: none;
   font-size: 12px;
-  height: 100%  ;
+  height: 100%;
   width: 100%;
-  pre[class*="language-"]{
+  resize: none;
+}
+
+.app-highlight-json-block {
+  overflow: auto;
+  font-size: 12px;
+  height: 100%;
+  width: 100%;
+
+  pre[class*="language-"] {
     margin: 0;
   }
-  pre[class*="language-"].line-numbers{
+
+  pre[class*="language-"].line-numbers {
     padding-left: 4em;
   }
-  .line-numbers .line-numbers-rows{
+
+  .line-numbers .line-numbers-rows {
     left: -4em;
     width: 3.8em;
   }
