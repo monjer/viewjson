@@ -1,0 +1,32 @@
+.app-plain-json-editor-container{
+  height: 100%;
+  width:100%;
+  padding:10px;
+  
+}
+.app-plain-json-editor{
+  outline: none;
+  border-color: #ccc;
+  padding:10px;
+  font-size: 12px;
+  height: 100%  ;
+  width: 100%;
+}
+
+.app-highlight-json-block{
+  overflow: auto;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  height: 100%  ;
+  width: 100%;
+  pre[class*="language-"]{
+    margin: 0;
+  }
+  pre[class*="language-"].line-numbers{
+    padding-left: 4em;
+  }
+  .line-numbers .line-numbers-rows{
+    left: -4em;
+    width: 3.8em;
+  }
+}
