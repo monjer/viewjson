@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import "./index.scss";
-import { Button, Card, Flex, AlertDialog } from '@radix-ui/themes';
+import { Button, Card, Flex, AlertDialog, TextArea } from '@radix-ui/themes';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css';
 import 'prismjs/components/prism-json';
@@ -63,16 +63,16 @@ function PlainJSONEditor() {
           <Button size="1" variant="surface" onClick={onFormtBtnClick}>Format</Button>
           <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Highlight</Button>
         </Flex>
-        <Card style={{ flex: 1, overflow: 'hidden' }}>
+        <div style={{ flex: 1, overflow: 'hidden' }}>
           {isHighlightMode ? <div className="app-highlight-json-block"  >
             <pre className="line-numbers" style={{ whiteSpace: 'pre-wrap', height: '100%' }}>
               <code className="language-json" ref={preRef}>{value}</code>
             </pre>
-          </div> : <textarea
+          </div> : <TextArea
             className="app-plain-json-editor"
             placeholder="please input the json string"
-            value={value} onChange={onValueChange}></textarea>}
-        </Card>
+            value={value} onChange={onValueChange}></TextArea>}
+        </div>
       </Flex>
       <AlertDialog.Root open={open}>
         <AlertDialog.Content maxWidth="450px">

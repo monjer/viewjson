@@ -1,7 +1,7 @@
 
 import React from 'react'
 import PlainJSONEditor from '@/app/component/PlainJsonEditor';
-import { Flex } from 'antd';
+import { Flex } from '@radix-ui/themes';
 
 export default function Page() {
   return (
