@@ -59,9 +59,9 @@ function PlainJSONEditor() {
     <>
       <Flex className="app-plain-json-editor-container" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex style={{ marginBottom: '4px' }} gap="2">
-          <Button size="1" variant="surface" onClick={onRawBtnClick}>Raw</Button>
-          <Button size="1" variant="surface" onClick={onFormtBtnClick}>Format</Button>
-          <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Highlight</Button>
+          <Button size="1" variant="surface" onClick={onRawBtnClick}>Compress</Button>
+          <Button size="1" variant="surface" onClick={onFormtBtnClick}>Pretty</Button>
+          <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Syntax Highlight</Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden' }}>
           {isHighlightMode ? <div className="app-highlight-json-block"  >
