@@ -1,6 +1,5 @@
 import React from 'react'
-import Layout from '@/app/component/Layout'
-import '@radix-ui/themes/styles.css';
+import Layout from '@/component/Layout'
 import './global.scss';
 
 export default function RootLayout({
@@ -10,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-white text-black dark:bg-gray-900 dark:text-gray-300'>
         <Layout>
           {children}
         </Layout>

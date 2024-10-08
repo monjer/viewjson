@@ -1,12 +1,12 @@
 
 import React from 'react'
-import PlainJSONEditor from '@/app/component/PlainJsonEditor';
-import { Flex } from '@radix-ui/themes';
+import Main from '@/component/Main';
+import Flex from '@/component/Flex'
 
 export default function Page() {
   return (
     <Flex style={{ height: '100%' }}>
-      <PlainJSONEditor />
+      <Main />
     </Flex>
   );
 }
