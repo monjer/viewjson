@@ -16,8 +16,8 @@ const Dialog = (props: {
 
   return (
     <div className="transition-all ease-in-out fixed inset-0 flex items-center justify-center z-50">
-      <div className="transition-all duration-300	ease-in-out fixed inset-0 bg-black opacity-70 dark:bg-opacity-70" onClick={onClose}></div>
-      <div className="bg-white border rounded-lg shadow-lg z-10 p-6 w-1/3 dark:bg-black dark:text-white dark:border-gray-600">
+      <div className="transition-all duration-300	ease-in-out fixed inset-0 backdrop-blur-sm  bg-black/20 dark:bg-opacity-70" onClick={onClose}></div>
+      <div className="bg-white border rounded-lg shadow-lg z-10 p-6 w-1/3 dark:bg-gray-900 dark:text-white dark:border-gray-600">
         <div className="flex justify-between mb-8">
           <h1 className="text-lg font-bold ">{title}</h1>
           <span onClick={onClose} className='cursor-pointer	'>
