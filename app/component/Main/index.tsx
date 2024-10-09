@@ -6,6 +6,7 @@ import Flex from "../Flex";
 import Card from '@/component/Card'
 import CmEditor from "../CmEditor";
 import TextArea from "../TextArea";
+import Toast from "../Toast";
 function Main() {
 
   const [value, setValue] = React.useState(`
@@ -27,7 +28,8 @@ function Main() {
     ]
 `);
   const [isHighlightMode, setIsHighlightMode] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [toastVisible, setToastVisible] = React.useState(false);
+
 
   const formatJson = (obj: any, space: number = 0) => {
     try {
@@ -35,7 +37,7 @@ function Main() {
       const formattedStr = JSON.stringify(obj, null, space);
       return formattedStr;
     } catch (error) {
-      setOpen(true);
+      setToastVisible(true);
       return obj;
     }
 
@@ -94,6 +96,9 @@ function Main() {
             </Card>}
         </div>
       </Flex>
+      <Toast message={"tis is a message"} visible={toastVisible} onClose={() => {
+        setToastVisible(false)
+      }} />
       {/* <AlertDialog.Root open={open}>
         <AlertDialog.Content maxWidth="450px">
           <AlertDialog.Title>Error</AlertDialog.Title>
@@ -103,7 +108,7 @@ function Main() {
 
           <Flex gap="3" mt="4" justify="end">
             <AlertDialog.Cancel>
-              <Button variant="soft" color="gray" onClick={() => setOpen(false)}>
+              <Button variant="soft" color="gray" onClick={() => setToastVisible(false)}>
                 Cancel
               </Button>
             </AlertDialog.Cancel>
