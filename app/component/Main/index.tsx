@@ -62,13 +62,23 @@ function Main() {
     setValue(e.target.value);
   };
 
+  const onCleanBtnClick = () => {
+    setValue('');
+  }
+
+  const onLoadBtnClick = () => {
+
+  }
+
   return (
     <>
       <Flex className="app-plain-json-editor-container mx-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-2" gap="2">
           <Button size="1" variant="surface" onClick={onRawBtnClick}>Compress</Button>
-          <Button size="1" variant="surface" onClick={onFormtBtnClick}>Pretty</Button>
-          <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Syntax Highlight</Button>
+          <Button size="1" variant="surface" onClick={onFormtBtnClick}>Format</Button>
+          <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Highlight</Button>
+          <Button size="1" variant="surface" onClick={onCleanBtnClick}>Clean</Button>
+          <Button size="1" variant="surface" onClick={onLoadBtnClick}>Load JSON from URL</Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
           {isHighlightMode ?
