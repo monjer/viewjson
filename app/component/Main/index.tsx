@@ -7,6 +7,7 @@ import Card from '@/component/Card'
 import CmEditor from "../CmEditor";
 import TextArea from "../TextArea";
 import Toast from "../Toast";
+// import useDarkMode from "../../hooks/useDarkMode";
 function Main() {
 
   const [value, setValue] = React.useState(`
@@ -29,7 +30,7 @@ function Main() {
 `);
   const [isHighlightMode, setIsHighlightMode] = React.useState(false);
   const [toastVisible, setToastVisible] = React.useState(false);
-
+  // console.log('----   ', useDarkMode())
 
   const formatJson = (obj: any, space: number = 0) => {
     try {
@@ -85,9 +86,7 @@ function Main() {
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
           {isHighlightMode ?
             <Card className="app-highlight-json-block h-full w-full overflow-auto" >
-              {/* <Inset clip="border-box" side="all"> */}
               <CmEditor code={value} />
-              {/* </Inset> */}
             </Card>
             : <Card className="h-full w-full overflow-hidden">
               <TextArea
@@ -96,26 +95,7 @@ function Main() {
             </Card>}
         </div>
       </Flex>
-      <Toast message={"tis is a message"} visible={toastVisible} onClose={() => {
-        setToastVisible(false)
-      }} />
-      {/* <AlertDialog.Root open={open}>
-        <AlertDialog.Content maxWidth="450px">
-          <AlertDialog.Title>Error</AlertDialog.Title>
-          <AlertDialog.Description size="2">
-            json format error
-          </AlertDialog.Description>
-
-          <Flex gap="3" mt="4" justify="end">
-            <AlertDialog.Cancel>
-              <Button variant="soft" color="gray" onClick={() => setToastVisible(false)}>
-                Cancel
-              </Button>
-            </AlertDialog.Cancel>
-          </Flex>
-        </AlertDialog.Content>
-      </AlertDialog.Root> */}
-
+      <Toast message={"tis is a message"} visible={toastVisible} onClose={() => { setToastVisible(false) }} />
     </>
   );
 }

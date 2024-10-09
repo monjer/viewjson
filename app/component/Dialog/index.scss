@@ -1,18 +1,19 @@
 .fade-in {
-  animation: fadeIn 0.3s forwards;
+  animation: fadeIn 0.1s forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
 .fade-out {
-  animation: fadeOut 0.3s forwards;
+  animation: fadeOut 0.1s forwards;
 }
 
 
@@ -20,6 +21,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -27,32 +29,44 @@
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-20%); /* 起始位置在左侧外 */
-    opacity: 0; /* 开始时透明 */
+    transform: translateY(-20%);
+    /* 起始位置在左侧外 */
+    opacity: 0;
+    /* 开始时透明 */
   }
+
   100% {
-    transform: translate(0); /* 最终位置在正常位置 */
-    opacity: 1; /* 最终不透明 */
+    transform: translate(0);
+    /* 最终位置在正常位置 */
+    opacity: 1;
+    /* 最终不透明 */
   }
 }
 
 /* 定义滑出的动画 */
 @keyframes slideOut {
   0% {
-    transform: translateY(0); /* 起始位置在正常位置 */
-    opacity: 1; /* 开始时不透明 */
+    transform: translateY(0);
+    /* 起始位置在正常位置 */
+    opacity: 1;
+    /* 开始时不透明 */
   }
+
   100% {
-    transform: translateY(-20%); /* 最终位置在右侧外 */
-    opacity: 0; /* 最终透明 */
+    transform: translateY(-20%);
+    /* 最终位置在右侧外 */
+    opacity: 0;
+    /* 最终透明 */
   }
 }
 
 /* 应用样式 */
 .slide-in {
-  animation: slideIn 0.3s forwards; /* 滑入动画 */
+  animation: slideIn 0.1s forwards;
+  /* 滑入动画 */
 }
 
 .slide-out {
-  animation: slideOut 0.3s forwards; /* 滑出动画 */
+  animation: slideOut 0.1s forwards;
+  /* 滑出动画 */
 }
