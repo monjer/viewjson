@@ -94,7 +94,12 @@ function Main() {
           <Button onClick={onCleanBtnClick}>Clean</Button>
           <Popover
             visible={popOverVisible}
-            onVisibleChange={setPopOverVisible}
+            onVisibleChange={(visible) => {
+              setPopOverVisible(visible);
+              if (!visible) {
+                setJsonUrl('');
+              }
+            }}
             content={
               <section style={{ width: '400px' }} className="p-4">
                 <h1 className="text-md font-bold mb-4">Load JSON from URL</h1>
