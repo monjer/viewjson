@@ -18,15 +18,15 @@ const Toast = (props: Props) => {
   React.useEffect(() => {
     const handler = () => {
       if (!visible) {
-        setDestroy(true);
+        // setDestroy(true);
       }
     }
     toastRef?.current?.addEventListener('animationend', handler);
     if (visible) {
       setDestroy(false);
-      timerRef.current = setTimeout(() => {
-        onCloseBtnClick()
-      }, 2000);
+      // timerRef.current = setTimeout(() => {
+      //   onCloseBtnClick()
+      // }, 2000);
     } else {
       toastRef?.current?.classList.add('toast-slide-out');
     }
@@ -44,7 +44,7 @@ const Toast = (props: Props) => {
   }
 
   return (
-    <div className="fixed left-1/2 transform -translate-x-1/2 p-4 bg-white shadow-md rounded max-w-sm toast-slide-in" ref={toastRef}>
+    <div className="fixed left-1/2 transform -translate-x-1/2	p-4 bg-white shadow-md rounded max-w-sm toast-slide-in" ref={toastRef}>
       <div className="flex items-center justify-between" >
         <p className="text-gray-800">{message}</p>
         <button
@@ -57,6 +57,7 @@ const Toast = (props: Props) => {
         </button>
       </div>
     </div>
+
   );
 };
 

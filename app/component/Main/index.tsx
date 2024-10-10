@@ -7,7 +7,8 @@ import Card from '@/component/Card'
 import CmEditor from "../CmEditor";
 import TextArea from "../TextArea";
 import Toast from "../Toast";
-// import useDarkMode from "../../hooks/useDarkMode";
+import Popover from "../Popover";
+import Input from '../Input'
 function Main() {
 
   const [value, setValue] = React.useState(`
@@ -30,7 +31,11 @@ function Main() {
 `);
   const [isHighlightMode, setIsHighlightMode] = React.useState(false);
   const [toastVisible, setToastVisible] = React.useState(false);
-  // console.log('----   ', useDarkMode())
+  const [jsonUrl, setJsonUrl] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [popOverVisible, setPopOverVisible] = React.useState(false);
+  const [requestTipVisible, setRequestTipVisible] = React.useState(true);
+
 
   const formatJson = (obj: any, space: number = 0) => {
     try {
@@ -69,19 +74,37 @@ function Main() {
     setValue('');
   }
 
-  const onLoadBtnClick = () => {
-
+  const onLoadBtnClick = async () => {
+    setLoading(true);
+    const response = await fetch(jsonUrl);
+    const data = await response.json();
+    setValue(JSON.stringify(data, null, 2));
+    setLoading(false);
+    setPopOverVisible(false);
+    setRequestTipVisible(true)
   }
 
   return (
     <>
       <Flex className="app-plain-json-editor-container mx-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-2" gap="2">
-          <Button size="1" variant="surface" onClick={onRawBtnClick}>Compress</Button>
-          <Button size="1" variant="surface" onClick={onFormtBtnClick}>Format</Button>
-          <Button size="1" variant="surface" onClick={onHighlightBtnClick}>Highlight</Button>
-          <Button size="1" variant="surface" onClick={onCleanBtnClick}>Clean</Button>
-          <Button size="1" variant="surface" onClick={onLoadBtnClick}>Load JSON from URL</Button>
+          <Button onClick={onRawBtnClick}>Compress</Button>
+          <Button onClick={onFormtBtnClick}>Format</Button>
+          <Button onClick={onHighlightBtnClick}>Highlight</Button>
+          <Button onClick={onCleanBtnClick}>Clean</Button>
+          <Popover
+            visible={popOverVisible}
+            onVisibleChange={setPopOverVisible}
+            content={
+              <section style={{ width: '400px' }} className="p-4">
+                <h1 className="text-md font-bold mb-4">Load JSON from URL</h1>
+                <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
+                <Flex justify="end">
+                  <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                </Flex>
+              </section>
+            }
+          ><Button >Load JSON from URL</Button></Popover>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
           {isHighlightMode ?
@@ -96,6 +119,7 @@ function Main() {
         </div>
       </Flex>
       <Toast message={"tis is a message"} visible={toastVisible} onClose={() => { setToastVisible(false) }} />
+      <Toast message={"JSON data url request success!"} visible={requestTipVisible} onClose={() => { setRequestTipVisible(false) }} />
     </>
   );
 }
