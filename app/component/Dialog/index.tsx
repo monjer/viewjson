@@ -11,7 +11,7 @@ const Dialog = (props: {
   children?: React.ReactNode;
   cancelProps?: React.ComponentProps<typeof Button>;
   okProps?: React.ComponentProps<typeof Button>;
-  onClose?: React.ComponentProps<typeof Button>;
+  onClose?: () => void;
 }) => {
   const { open = true, onOk = null, onCancel = null, title, children, cancelProps = {}, okProps = {}, onClose } = props;
   const [destroyed, setDestroyed] = React.useState(true);

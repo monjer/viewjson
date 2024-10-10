@@ -1,10 +1,9 @@
 "use client";
 
-import React from 'react'
-import Flex from '@/component/Flex'
-import Dialog from '@/component/Dialog'
-import Button from '@/component/Button'
-
+import React from 'react';
+import Flex from '@/component/Flex';
+import Dialog from '@/component/Dialog';
+import Button from '@/component/Button';
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);

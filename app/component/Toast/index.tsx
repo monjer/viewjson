@@ -18,15 +18,15 @@ const Toast = (props: Props) => {
   React.useEffect(() => {
     const handler = () => {
       if (!visible) {
-        // setDestroy(true);
+        setDestroy(true);
       }
     }
     toastRef?.current?.addEventListener('animationend', handler);
     if (visible) {
       setDestroy(false);
-      // timerRef.current = setTimeout(() => {
-      //   onCloseBtnClick()
-      // }, 2000);
+      timerRef.current = setTimeout(() => {
+        onCloseBtnClick()
+      }, 2000);
     } else {
       toastRef?.current?.classList.add('toast-slide-out');
     }

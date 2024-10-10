@@ -27,11 +27,7 @@ const Popover: React.FC<Props> = (props: Props) => {
   };
 
   React.useEffect(() => {
-    if (visible) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(visible);
   }, [visible]);
 
   const hidePopOver = () => {
@@ -44,15 +40,15 @@ const Popover: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     let destory = null;
-    if (popoverRef.current && triggerRef.current) {
+    if (isVisible) {
       destory = outsideClick([popoverRef.current, triggerRef.current], () => {
         hidePopOver()
       });
-      return () => {
-        destory && destory();
-      }
     }
-  }, [popoverRef.current, triggerRef.current]);
+    return () => {
+      destory && destory();
+    }
+  }, [isVisible]);
 
   React.useEffect(() => {
     if (isVisible) {
@@ -83,7 +79,8 @@ const Popover: React.FC<Props> = (props: Props) => {
       })}
       <Portal>
         {isVisible && (
-          <div className="fixed z-10 border rounded-sm shadow-lg bg-white ring-1 ring-black ring-opacity-5 dark:bg-gray-900 dark:border-gray-600 dark:shadow-gray-100/10" ref={popoverRef}>
+          <div className="fixed z-10 border rounded-sm shadow-lg bg-white ring-1 ring-black ring-opacity-5 dark:bg-gray-900 dark:border-gray-600 dark:shadow-gray-100/10"
+            ref={popoverRef}>
             <div className="p-4">
               {content}
             </div>

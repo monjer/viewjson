@@ -34,7 +34,7 @@ function Main() {
   const [jsonUrl, setJsonUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [popOverVisible, setPopOverVisible] = React.useState(false);
-  const [requestTipVisible, setRequestTipVisible] = React.useState(true);
+  const [requestTipVisible, setRequestTipVisible] = React.useState(false);
 
 
   const formatJson = (obj: any, space: number = 0) => {
