@@ -5,10 +5,19 @@ import Button from '@/component/Button'
 import Flex from "../Flex";
 import Card from '@/component/Card'
 import CmEditor from "../CmEditor";
-import TextArea from "../TextArea";
+import PlainView from "./PlainView";
 import Toast from "../Toast";
 import Popover from "../Popover";
 import Input from '../Input'
+import HighlightView from "./HighlightView";
+import ToJSONStringView from "./ToJSONStringView";
+
+enum ViewType {
+  Plain = 'plain',
+  Highlight = 'highlight',
+  ToJSONString = 'toJSONString'
+}
+
 function Main() {
 
   const [value, setValue] = React.useState(`
@@ -29,13 +38,14 @@ function Main() {
       }
     ]
 `);
-  const [isHighlightMode, setIsHighlightMode] = React.useState(false);
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [popOverVisible, setPopOverVisible] = React.useState(false);
   const [requestTipVisible, setRequestTipVisible] = React.useState(false);
+  const [requestSuccess, setRequestSuccess] = React.useState(false);
 
+  const [viewType, setViewType] = React.useState(ViewType.Plain);
 
   const formatJson = (obj: any, space: number = 0) => {
     try {
@@ -46,28 +56,27 @@ function Main() {
       setToastVisible(true);
       return obj;
     }
-
   }
-  const onRawBtnClick = () => {
-    setIsHighlightMode(false)
+  const onCompressBtnClick = () => {
     const formattedStr = formatJson(value);
+    setViewType(ViewType.Plain);
     setValue(formattedStr);
   };
 
   const onFormtBtnClick = () => {
-    setIsHighlightMode(false)
     const formattedStr = formatJson(value, 2);
+    setViewType(ViewType.Plain);
     setValue(formattedStr);
   };
 
   const onHighlightBtnClick = () => {
-    setIsHighlightMode(true)
     const formattedStr = formatJson(value, 2);
+    setViewType(ViewType.Highlight);
     setValue(formattedStr);
   }
 
-  const onValueChange = (e) => {
-    setValue(e.target.value);
+  const onValueChange = (value) => {
+    setValue(value);
   };
 
   const onCleanBtnClick = () => {
@@ -76,19 +85,41 @@ function Main() {
 
   const onLoadBtnClick = async () => {
     setLoading(true);
-    const response = await fetch(jsonUrl);
-    const data = await response.json();
-    setValue(JSON.stringify(data, null, 2));
+    let success = true
+    try {
+      const response = await fetch(jsonUrl);
+      const data = await response.json();
+      setValue(JSON.stringify(data, null, 2));
+    } catch (error) {
+      success = false
+    }
     setLoading(false);
     setPopOverVisible(false);
-    setRequestTipVisible(true)
+    setRequestTipVisible(true);
+    setRequestSuccess(success);
+    setJsonUrl('');
+  }
+
+  const onToJSONString = () => {
+    const formattedStr = formatJson(value);
+    setValue(formattedStr);
+    setViewType(ViewType.ToJSONString);
+  }
+
+  const renderView = () => {
+    const ViewByType = {
+      [ViewType.Plain]: <PlainView value={value} onChange={onValueChange} />,
+      [ViewType.Highlight]: < HighlightView value={value} />,
+      [ViewType.ToJSONString]: <ToJSONStringView value={value} onChange={onValueChange} />,
+    }[viewType]
+    return ViewByType;
   }
 
   return (
     <>
       <Flex className="app-plain-json-editor-container mx-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-2" gap="2">
-          <Button onClick={onRawBtnClick}>Compress</Button>
+          <Button onClick={onCompressBtnClick}>Compress</Button>
           <Button onClick={onFormtBtnClick}>Format</Button>
           <Button onClick={onHighlightBtnClick}>Highlight</Button>
           <Button onClick={onCleanBtnClick}>Clean</Button>
@@ -109,22 +140,28 @@ function Main() {
                 </Flex>
               </section>
             }
-          ><Button >Load JSON from URL</Button></Popover>
+          >
+            <Button >Load</Button>
+          </Popover>
+          <Button onClick={onToJSONString}>To String</Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
-          {isHighlightMode ?
-            <Card className="app-highlight-json-block h-full w-full overflow-auto" >
-              <CmEditor code={value} />
-            </Card>
-            : <Card className="h-full w-full overflow-hidden">
-              <TextArea
-                placeholder="please input the json string"
-                value={value} onChange={onValueChange}></TextArea>
-            </Card>}
+          {renderView()}
         </div>
       </Flex>
-      <Toast message={"tis is a message"} visible={toastVisible} onClose={() => { setToastVisible(false) }} />
-      <Toast message={"JSON data url request success!"} visible={requestTipVisible} onClose={() => { setRequestTipVisible(false) }} />
+      <Toast
+        type="error"
+        message={"Please input json string!"}
+        visible={toastVisible}
+        onClose={() => { setToastVisible(false) }}
+      />
+      <Toast
+        message={
+          requestSuccess ? "JSON data url request success!" : 'JSON data url request fail!'
+        }
+        type={requestSuccess ? 'success' : 'error'}
+        visible={requestTipVisible}
+        onClose={() => { setRequestTipVisible(false) }} />
     </>
   );
 }
