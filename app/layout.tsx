@@ -1,7 +1,13 @@
-'use client'
+
 import React from 'react'
 import Layout from '@/component/Layout'
+import type { Metadata } from 'next'
 import './global.scss';
+
+export const metadata: Metadata = {
+  title: 'view-json',
+  description: 'view-json, a tool to view json',
+}
 
 export default function RootLayout({
   children,

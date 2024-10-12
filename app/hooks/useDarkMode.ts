@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import React from 'react';
 
-function useTheme() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+function useDarkMode() {
 
-  useEffect(() => {
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  React.useEffect(() => {
     const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const handleColorSchemeChange = (e) => {
@@ -25,8 +26,8 @@ function useTheme() {
       colorSchemeQuery.removeListener(handleColorSchemeChange);
     };
   }, []);
-
   return isDarkMode;
+
 }
 
-export default useTheme;
+export default useDarkMode;
