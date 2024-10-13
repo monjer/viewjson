@@ -15,7 +15,7 @@ function CmEditor({ code }: { code: string }) {
   React.useEffect(() => {
     viewRef.current = new EditorView({
       doc: code,
-      extensions: [basicSetup, json(), themeConfig.of(clouds)],
+      extensions: [basicSetup, json(), themeConfig.of(clouds), EditorView.lineWrapping],
       parent: elRef.current
     });
     const targetNode = document.body;
