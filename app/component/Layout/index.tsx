@@ -1,9 +1,9 @@
+'use client'
 import React from "react";
 import Flex from '@/component/Flex'
 import Header from "@/component/Header";
 import useDarkMode from "@/hooks/useDarkMode";
 import './index.scss';
-
 
 function Layout({ children }: { children: React.ReactNode }) {
 

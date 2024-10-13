@@ -3,17 +3,19 @@ import React, { useState } from 'react';
 import Portal from '../Portal';
 import { outsideClick } from '@/utils';
 import position from 'position.js';
+import Divider from '../Divider';
 
 interface Props {
   content?: React.ReactNode;
   trigger?: 'click' | 'hover';
   children?: React.ReactElement;
   visible?: boolean;
-  onVisibleChange?: (visible: boolean) => void
+  onVisibleChange?: (visible: boolean) => void;
+  title?: string
 };
 
 const Popover: React.FC<Props> = (props: Props) => {
-  const { content = '', trigger = 'click', children, onVisibleChange, visible = false } = props;
+  const { content = '', trigger = 'click', title = "", children, onVisibleChange, visible = false } = props;
   const [isVisible, setIsVisible] = useState(false);
   const triggerRef = React.useRef(null);
   const popoverRef = React.useRef(null);
@@ -81,8 +83,14 @@ const Popover: React.FC<Props> = (props: Props) => {
         {isVisible && (
           <div className="fixed z-10 border rounded-sm shadow-lg bg-white ring-1 ring-black ring-opacity-5 dark:bg-gray-900 dark:border-gray-600 dark:shadow-gray-100/10"
             ref={popoverRef}>
-            <div className="p-4">
-              {content}
+            <div>
+              <div className='m-0'>
+                <h1 className="text-md font-bold p-4 ">{title}</h1>
+                <Divider className='mt-0 mb-0' />
+              </div>
+              <div className='px-4 py-6'>
+                {content}
+              </div>
             </div>
           </div>
         )}

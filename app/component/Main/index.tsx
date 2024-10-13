@@ -3,8 +3,6 @@ import React from "react";
 import "./index.scss";
 import Button from '@/component/Button'
 import Flex from "../Flex";
-import Card from '@/component/Card'
-import CmEditor from "../CmEditor";
 import PlainView from "./PlainView";
 import Toast from "../Toast";
 import Popover from "../Popover";
@@ -114,9 +112,9 @@ function Main() {
                 setJsonUrl('');
               }
             }}
+            title="Load JSON from URL"
             content={
-              <section style={{ width: '400px' }} className="p-4">
-                <h1 className="text-md font-bold mb-4">Load JSON from URL</h1>
+              <section style={{ width: '400px' }}>
                 <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
                 <Flex justify="end">
                   <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
