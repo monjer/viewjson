@@ -4,25 +4,18 @@ import React from 'react';
 import Flex from '@/component/Flex';
 import Dialog from '@/component/Dialog';
 import Button from '@/component/Button';
+import useDarkMode from "@/hooks/useDarkMode";
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = useDarkMode();
 
   const onClick = () => {
     setOpen(true);
   }
 
   const onChangeTheme = () => {
-    setDarkMode((pre) => {
-      return !pre
-    });
-    const root = document.body as HTMLElement;
-    if (darkMode) {
-      root.classList.remove('dark');
-    } else {
-      root.classList.add('dark');
-    }
+    setDarkMode(!darkMode);
   }
 
   return (

@@ -26,7 +26,14 @@ function useDarkMode() {
       colorSchemeQuery.removeListener(handleColorSchemeChange);
     };
   }, []);
-  return isDarkMode;
+
+  React.useEffect(() => {
+    document.body.classList.remove('light');
+    document.body.classList.remove('dark');
+    document.body.classList.add(isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+
+  return [isDarkMode, setIsDarkMode];
 
 }
 

@@ -7,13 +7,7 @@ import './index.scss';
 
 function Layout({ children }: { children: React.ReactNode }) {
 
-  const darkMode = useDarkMode();
-
-  React.useEffect(() => {
-    document.body.classList.remove('light');
-    document.body.classList.remove('dark');
-    document.body.classList.add(darkMode ? 'dark' : 'light')
-  }, [darkMode]);
+  const [darkMode] = useDarkMode();
 
   return (
     <Flex
