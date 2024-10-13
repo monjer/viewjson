@@ -19,7 +19,7 @@ enum ViewType {
 
 function Main() {
 
-  const [value, setValue] = React.useState('asdasd');
+  const [value, setValue] = React.useState('');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
