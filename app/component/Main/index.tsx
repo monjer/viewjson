@@ -20,24 +20,7 @@ enum ViewType {
 
 function Main() {
 
-  const [value, setValue] = React.useState(`
-    [{
-        "id": 1,
-        "name": "John Doe",
-        "age": 30,
-        "car": null
-      },
-      {
-        "id": 2,
-        "name": "Jane Doe",
-        "age": 25,
-        "car": {
-          "brand": "Ford",
-          "model": "Mustang"
-        }
-      }
-    ]
-`);
+  const [value, setValue] = React.useState('');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
