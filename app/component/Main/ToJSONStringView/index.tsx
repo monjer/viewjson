@@ -16,7 +16,6 @@ function ToJSONStringView({ value, onChange }: { value: string, onChange: (value
 
   const handleChange = (e: any) => {
     setJson(e.target.value);
-    debugger
     onChange(JSON.stringify(JSON.parse(JSON.parse(e.target.value))));
   }
 

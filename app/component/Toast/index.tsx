@@ -1,16 +1,22 @@
 
 import React, { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import './index.scss';
+
+
+type ToastType = 'success' | 'error' | 'warning' | 'info';
+const mountNodeId = 'app-toast'
 
 type Props = {
   message: string;
   duration?: number;
   onClose?: () => void;
+  closable?: boolean;
   visible?: boolean;
-  type?: 'success' | 'error' | 'warning' | 'info'
+  type?: ToastType
 }
 const Toast = (props: Props) => {
-  const { message, onClose, type = "info", visible = false } = props
+  const { message, onClose, type = "info", visible = false, closable = true } = props
   const [destroy, setDestroy] = useState(true);
   const toastRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const timerRef = React.useRef<any>();
@@ -58,18 +64,39 @@ const Toast = (props: Props) => {
           </span>
           <p className="text-gray-800">{message}</p>
         </div>
-        <button
-          className="text-gray-500 hover:text-gray-700 ml-4"
-          onClick={() => onCloseBtnClick()}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
-        </button>
+        {closable &&
+          <button
+            className="text-gray-500 hover:text-gray-700 ml-4"
+            onClick={() => onCloseBtnClick()}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        }
       </div>
     </div>
-
   );
 };
+
+const ToastProxy = ({ message, type }: { message: string, type: ToastType }) => {
+  const [visible, setVisible] = React.useState(true);
+  return <Toast message={message} type={type} visible={visible} onClose={() => setVisible(false)} />
+}
+const createToast = (type: ToastType) => {
+  return (message: string) => {
+    let rootNode = document.getElementById(mountNodeId);
+    if (!rootNode) {
+      rootNode = document.createElement('div');
+      rootNode.id = mountNodeId;
+      document.body.appendChild(rootNode);
+    }
+    createRoot(rootNode).render(<ToastProxy message={message} type={type} />);
+  }
+}
+Toast.success = createToast('success');
+Toast.error = createToast('error');
+Toast.info = createToast('info');
+Toast.warning = createToast('warning');
 
 export default Toast;

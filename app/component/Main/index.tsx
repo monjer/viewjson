@@ -9,6 +9,7 @@ import Popover from "../Popover";
 import Input from '../Input'
 import HighlightView from "./HighlightView";
 import ToJSONStringView from "./ToJSONStringView";
+import Divider from "../Divider";
 
 enum ViewType {
   Plain = 'plain',
@@ -18,7 +19,7 @@ enum ViewType {
 
 function Main() {
 
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState('asdasd');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
@@ -57,6 +58,7 @@ function Main() {
   }
 
   const onValueChange = (value) => {
+    debugger
     setValue(value);
   };
 
@@ -87,6 +89,16 @@ function Main() {
     setViewType(ViewType.ToJSONString);
   }
 
+  const onCopyBtnClick = () => {
+    const copyValue = {
+      [ViewType.Plain]: value,
+      [ViewType.Highlight]: value,
+      [ViewType.ToJSONString]: JSON.stringify(JSON.stringify(JSON.parse(value))),
+    }[viewType]
+    navigator.clipboard.writeText(copyValue);
+    Toast.success('copy success');
+  }
+
   const renderView = () => {
     const ViewByType = {
       [ViewType.Plain]: <PlainView value={value} onChange={onValueChange} />,
@@ -96,14 +108,26 @@ function Main() {
     return ViewByType;
   }
 
+  const onPasetBtnClick = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setValue(text);
+    } catch (err) {
+      Toast.error('copy error');
+    }
+  }
+
   return (
     <>
       <Flex className="app-plain-json-editor-container mx-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-2" gap="2">
+        <Flex className="mb-2" gap="2" align="center">
           <Button onClick={onCompressBtnClick}>Compress</Button>
           <Button onClick={onFormtBtnClick}>Format</Button>
+          <Button onClick={onToJSONString}>To String</Button>
           <Button onClick={onHighlightBtnClick}>Highlight</Button>
-          <Button onClick={onCleanBtnClick}>Clean</Button>
+          <Divider vertical />
+          <Button onClick={onCopyBtnClick}>Copy</Button>
+          <Button onClick={onPasetBtnClick}>Paste</Button>
           <Popover
             visible={popOverVisible}
             onVisibleChange={(visible) => {
@@ -124,7 +148,7 @@ function Main() {
           >
             <Button >Load</Button>
           </Popover>
-          <Button onClick={onToJSONString}>To String</Button>
+          <Button onClick={onCleanBtnClick}>Clean</Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
           {renderView()}
