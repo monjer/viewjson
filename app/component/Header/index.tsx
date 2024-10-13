@@ -18,7 +18,7 @@ export default function Header() {
     <div className='app-header-container'>
       <div className='app-header px-4 py-3 border-b dark:border-gray-600'>
         <Flex className="justify-between">
-          <h1 className="text-lg font-bold">view-json</h1>
+          <h1 className="text-lg font-bold">viewjson</h1>
           <Flex>
             <span onClick={toggleDarkMode} className='cursor-pointer'>
               {darkMode ?
@@ -36,7 +36,7 @@ export default function Header() {
           </Flex>
 
           <Dialog title={"About"} open={open} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
-            view-json is a tool to view json data.
+            viewjson is a tool to view json data.
           </Dialog>
         </Flex>
       </div>
