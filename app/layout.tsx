@@ -3,6 +3,7 @@ import React from 'react'
 import Layout from '@/component/Layout'
 import type { Metadata } from 'next'
 import './global.scss';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: 'view-json',
@@ -21,6 +22,7 @@ export default function RootLayout({
           {children}
         </Layout>
       </body>
+      <GoogleAnalytics gaId="G-V3525DMF56" />
     </html >
   )
 }
