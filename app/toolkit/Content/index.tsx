@@ -2,14 +2,14 @@
 import React from "react";
 import "./index.scss";
 import Button from '@/component/Button'
-import Flex from "../Flex";
+import Flex from "../../component/Flex";
 import PlainView from "./PlainView";
-import Toast from "../Toast";
-import Popover from "../Popover";
-import Input from '../Input'
+import Toast from "../../component/Toast";
+import Popover from "../../component/Popover";
+import Input from '../../component/Input'
 import HighlightView from "./HighlightView";
 import ToJSONStringView from "./ToJSONStringView";
-import Divider from "../Divider";
+import Divider from "../../component/Divider";
 
 enum ViewType {
   Plain = 'plain',
@@ -90,6 +90,10 @@ function Main() {
   }
 
   const onCopyBtnClick = () => {
+    if (!value) {
+      Toast.info('Please input json string');
+      return;
+    }
     const copyValue = {
       [ViewType.Plain]: value,
       [ViewType.Highlight]: value,
@@ -97,6 +101,7 @@ function Main() {
     }[viewType]
     navigator.clipboard.writeText(copyValue);
     Toast.success('copy success');
+
   }
 
   const renderView = () => {
@@ -120,9 +125,9 @@ function Main() {
   return (
     <>
       <Flex className="app-plain-json-editor-container mx-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-2" gap="2" align="center">
-          <Button onClick={onCompressBtnClick}>Compress</Button>
-          <Button onClick={onFormtBtnClick}>Format</Button>
+        <Flex className="mb-4" gap="2" align="center">
+          <Button onClick={onCompressBtnClick}>Minify</Button>
+          <Button onClick={onFormtBtnClick}>Pretty</Button>
           <Button onClick={onToJSONString}>To String</Button>
           <Button onClick={onHighlightBtnClick}>Highlight</Button>
           <Divider vertical />

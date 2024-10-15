@@ -15,10 +15,18 @@ export default function Header() {
   }
 
   return (
-    <div className='app-header-container'>
-      <div className='app-header px-4 py-3 border-b dark:border-gray-600'>
-        <Flex className="justify-between">
-          <h1 className="text-lg font-bold">viewjson</h1>
+    <div className='app-header-container mb-4 bg-neutral-100 dark:bg-gray-900'>
+      <header className='app-header px-4 py-4 border-b shadow position-relative dark:border-gray-600  dark:shadow-gray-900	'>
+        <Flex className="justify-between" align='center'>
+          <Flex align='center'>
+            <a href='/'>
+              <h1 className="text-xl font-bold">ViewJson</h1>
+            </a>
+            <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center hover:text-gray-900 dark:hover:text-white">
+              <a className="mr-5  " href='/toolkit'>ToolKit</a>
+              <a className="mr-5" href='#'>Learn JSON</a>
+            </nav>
+          </Flex>
           <Flex>
             <span onClick={toggleDarkMode} className='cursor-pointer'>
               {darkMode ?
@@ -34,12 +42,11 @@ export default function Header() {
             </span>
             <Button type="text" onClick={onClick}>About</Button>
           </Flex>
-
           <Dialog title={"About"} open={open} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
             viewjson is a tool to view json data.
           </Dialog>
         </Flex>
-      </div>
+      </header>
     </div >
   );
 }
