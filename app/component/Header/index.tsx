@@ -15,8 +15,8 @@ export default function Header() {
   }
 
   return (
-    <div className='app-header-container mb-4 bg-neutral-100 dark:bg-gray-900'>
-      <header className='app-header px-4 py-4 border-b shadow position-relative dark:border-gray-600  dark:shadow-gray-900	'>
+    <div className='app-header-container bg-neutral-100 dark:bg-gray-900'>
+      <header className='app-header px-4 py-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-gray-700  dark:shadow-stone-600'>
         <Flex className="justify-between" align='center'>
           <Flex align='center'>
             <a href='/'>

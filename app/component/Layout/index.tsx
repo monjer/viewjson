@@ -11,7 +11,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <Flex
-      className="gap-y-2"
+      className="gap-y-0"
       style={{
         flexDirection: 'column',
         height: '100vh',

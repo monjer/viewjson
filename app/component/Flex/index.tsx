@@ -27,9 +27,9 @@ const Flex: React.FC<FlexProps> = (props: FlexProps) => {
   const justifyContent = `justify-${justify}`; // center, start, end, space-x
   const alignItems = `items-${align}`; // center, start, end, stretch
   const flexWrap = wrap === 'wrap' ? 'flex-wrap' : 'flex-nowrap'; // wrap, nowrap
-  const gap = `gap-x-${props.gap}`;
+  const gap = typeof props.gap !== 'undefined' ? `gap-x-${props.gap}` : '';
   return (
-    <div className={`flex gap-x-1 ${flexDirection} ${justifyContent} ${alignItems} ${flexWrap} ${gap} ${className}`} style={style} {...rest}>
+    <div className={`flex  gap-x-1 ${flexDirection} ${justifyContent} ${alignItems} ${flexWrap} ${gap} ${className}`} style={style} {...rest}>
       {children}
     </div>
   );
