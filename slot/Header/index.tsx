@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import Flex from '@/component/Flex';
-import Dialog from '@/component/Dialog';
-import Button from '@/component/Button';
+import Flex from '@/components/Flex';
+import Dialog from '@/components/Dialog';
+import Button from '@/components/Button';
 import useDarkMode from "@/hooks/useDarkMode";
 
 export default function Header() {
@@ -23,8 +23,9 @@ export default function Header() {
               <h1 className="text-xl font-bold">ViewJson</h1>
             </a>
             <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center hover:text-gray-900 dark:hover:text-white">
-              <a className="mr-5  " href='/toolkit'>ToolKit</a>
-              <a className="mr-5" href='#'>Learn JSON</a>
+              <a className="mr-5  " href='/format'>JSON Format</a>
+              <a className="mr-5  " href='/covert'>JSON Convert</a>
+              <a className="mr-5" href='/docs'>Learn JSON</a>
             </nav>
           </Flex>
           <Flex>

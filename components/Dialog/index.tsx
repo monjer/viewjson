@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '@/component/Button'
+import Button from '@/components/Button'
 import './index.scss'
 const Dialog = (props: {
   open?: boolean;

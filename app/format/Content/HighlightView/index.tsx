@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
-import Card from '@/component/Card'
-import CmEditor from "@/component/CmEditor";
+import Card from '@/components/Card'
+import CmEditor from "@/components/CmEditor";
 
 function HighlightView({ value }: { value: string }) {
 

@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
-import Flex from '@/component/Flex'
-import Header from "@/component/Header";
+import Flex from '@/components/Flex'
+import Header from "../Header";
 import useDarkMode from "@/hooks/useDarkMode";
 import './index.scss';
 

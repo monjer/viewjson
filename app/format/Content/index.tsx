@@ -1,15 +1,15 @@
 "use client"
 import React from "react";
 import "./index.scss";
-import Button from '@/component/Button'
-import Flex from "../../component/Flex";
+import Button from '@/components/Button'
+import Flex from "@/components/Flex";
 import PlainView from "./PlainView";
-import Toast from "../../component/Toast";
-import Popover from "../../component/Popover";
-import Input from '../../component/Input'
+import Toast from "@/components/Toast";
+import Popover from "@/components/Popover";
+import Input from '@/components/Input'
 import HighlightView from "./HighlightView";
 import ToJSONStringView from "./ToJSONStringView";
-import Divider from "../../component/Divider";
+import Divider from "@/components/Divider";
 
 enum ViewType {
   Plain = 'plain',

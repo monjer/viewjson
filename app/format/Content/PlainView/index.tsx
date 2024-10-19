@@ -1,6 +1,6 @@
 import React from "react";
-import Card from '@/component/Card'
-import TextArea from "@/component/TextArea";
+import Card from '@/components/Card'
+import TextArea from "@/components/TextArea";
 
 function PlainView({ value, onChange }: { value: string, onChange: (value: string) => void }) {
   return (

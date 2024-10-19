@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Layout from '@/component/Layout'
+import Layout from '@/slot/Layout'
 import type { Metadata } from 'next'
 import './global.scss';
 import { GoogleAnalytics } from '@next/third-parties/google'
