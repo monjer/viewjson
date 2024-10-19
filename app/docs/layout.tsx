@@ -1,4 +1,10 @@
+// import DocSidebar from "@/slots/DocSidebar"
+
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
-  // Create any shared layout or styles here
-  return <div style={{ color: 'blue' }}>{children}</div>
+  return (
+    <div >
+      {/* <DocSidebar /> */}
+      {children}
+    </div>
+  )
 }

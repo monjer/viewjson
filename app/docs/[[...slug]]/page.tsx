@@ -1,8 +1,11 @@
 import React from "react";
+import { getDocsForSlug } from "@/utils/markdown";
 
-export default function DocPage({ params }: { params: { slug: string } }) {
-  const { slug = [] } = params;
-
+export default async function DocPage({ params }: { params: { slug: string[] } }) {
+  // const { slug = [] } = params;
+  // const docPath = slug.join("/");
+  // const docInfo = await getDocsForSlug(docPath);
+  // console.log(docInfo)
   return <div>Page</div>;
 }
 

@@ -25,7 +25,7 @@ export default function Header() {
             <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center hover:text-gray-900 dark:hover:text-white">
               <a className="mr-5  " href='/format'>JSON Format</a>
               <a className="mr-5  " href='/covert'>JSON Convert</a>
-              <a className="mr-5" href='/docs'>Learn JSON</a>
+              <a className="mr-5" href='/docs/start'>Learn JSON</a>
             </nav>
           </Flex>
           <Flex>

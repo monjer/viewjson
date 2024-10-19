@@ -1,10 +1,14 @@
-const withMDX = require('@next/mdx')()
-
+const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include MDX files
+  // sassOptions: {
+  //   includePaths: [
+  //     path.join(__dirname, 'styles'),
+  //     path.join(__dirname, 'slots'),
+  //     path.join(__dirname, 'components')
+  //   ],
+  // },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
 }
 
-module.exports = withMDX(nextConfig)
+module.exports = nextConfig

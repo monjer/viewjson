@@ -16,34 +16,48 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px; /* 滚动条的宽度 */
-  height: 6px; /* 滚动条的高度 */
+  width: 6px;
+  /* 滚动条的宽度 */
+  height: 6px;
+  /* 滚动条的高度 */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* 滚动条轨道的颜色 */
-  border-radius: 4px; /* 轨道的圆角 */
+  background: #f1f1f1;
+  /* 滚动条轨道的颜色 */
+  border-radius: 4px;
+  /* 轨道的圆角 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* 滚动条的颜色 */
-  border-radius: 4px; /* 滚动条的圆角 */
+  background: #888;
+  /* 滚动条的颜色 */
+  border-radius: 4px;
+  /* 滚动条的圆角 */
   cursor: auto;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* 鼠标悬停时的滚动条颜色 */
+  background: #555;
+  /* 鼠标悬停时的滚动条颜色 */
 }
 
-.dark{
+.dark {
   ::-webkit-scrollbar-track {
-    background: #565656; /* 滚动条轨道的颜色 */
+    background: #565656;
+    /* 滚动条轨道的颜色 */
   }
+
   ::-webkit-scrollbar-thumb {
     background: rgb(108, 108, 108);
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #8c8c8c; /* 鼠标悬停时的滚动条颜色 */
+    background: #8c8c8c;
+    /* 鼠标悬停时的滚动条颜色 */
   }
 }
+
+// :root {
+//   --app-site-header-h: 60px;
+// }
