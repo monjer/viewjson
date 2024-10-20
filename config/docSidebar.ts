@@ -7,20 +7,16 @@ export type DocRoute = {
 
 const docRoutes: DocRoute[] = [
   {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Learn JSON",
+    title: "Quick Start",
     href: "/docs",
     items: [
       {
-        title: "Getting Started",
-        href: "/docs/getting-started",
+        title: "What Is JSON",
+        href: "/docs/get-started/what-is-json",
       },
       {
-        title: "Components",
-        href: "/docs/components",
+        title: "Basic Syntax",
+        href: "/docs/get-started/basic-syntax",
       },
     ]
   },

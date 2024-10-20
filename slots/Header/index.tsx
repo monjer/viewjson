@@ -5,6 +5,7 @@ import Flex from '@/components/Flex';
 import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';
 import useDarkMode from "@/hooks/useDarkMode";
+import './index.scss';;
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
 
   return (
     <div className='app-header-container bg-neutral-100 dark:bg-gray-900'>
-      <header className='app-header px-4 py-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-gray-700  dark:shadow-stone-600'>
+      <header className='app-header flex items-center px-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-gray-700  dark:shadow-stone-600'>
         <Flex className="justify-between" align='center'>
           <Flex align='center'>
             <a href='/'>
@@ -25,7 +26,7 @@ export default function Header() {
             <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center hover:text-gray-900 dark:hover:text-white">
               <a className="mr-5  " href='/format'>JSON Format</a>
               <a className="mr-5  " href='/covert'>JSON Convert</a>
-              <a className="mr-5" href='/docs/start'>Learn JSON</a>
+              <a className="mr-5" href='/docs/get-started/what-is-json'>Learn JSON</a>
             </nav>
           </Flex>
           <Flex>

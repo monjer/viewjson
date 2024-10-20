@@ -20,6 +20,7 @@
     "@codemirror/view": "^6.34.1",
     "@next/mdx": "^14.2.15",
     "@next/third-parties": "^14.2.15",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/mdx": "^2.0.13",
     "@varld/outside-click": "^0.1.1",
     "classnames": "^2.5.1",
