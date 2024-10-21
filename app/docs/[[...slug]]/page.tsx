@@ -1,13 +1,18 @@
 import React from "react";
-import { getDocsForSlug } from "@/utils/markdown";
+import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
+import DocToc from "@/slots/DocToc";
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {
   const { slug = [] } = params;
   const docPath = slug.join("/");
   const docInfo = await getDocsForSlug(docPath);
+  const tocs = await getDocTocs(docPath);
   console.log(docInfo)
   return (
-    <div>{docInfo.content}</div>
+    <>
+      <div>{docInfo.content}</div>
+      <DocToc dataSource={tocs} />
+    </>
   );
 }
 

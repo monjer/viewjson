@@ -16,9 +16,9 @@ export default function Header() {
   }
 
   return (
-    <div className='app-header-container bg-neutral-100 dark:bg-gray-900'>
-      <header className='app-header flex items-center px-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-gray-700  dark:shadow-stone-600'>
-        <Flex className="justify-between" align='center'>
+    <div className='app-header-container bg-neutral-100 dark:bg-gray-950'>
+      <header className='app-header w-full flex-grow flex items-center px-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-slate-900 '>
+        <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
             <a href='/'>
               <h1 className="text-xl font-bold">ViewJson</h1>

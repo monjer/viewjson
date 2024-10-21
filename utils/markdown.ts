@@ -46,16 +46,43 @@ async function getDocsContentPath(slug: string) {
   }
 }
 
+function sluggify(text: string) {
+  const slug = text.toLowerCase().replace(/\s+/g, "-");
+  return slug.replace(/[^a-z0-9-]/g, "");
+}
+
+export async function getDocTocs(slug: string) {
+  const markdownContent = await getDocContent(slug);
+  const headingsRegex = /^(#{2,4})\s(.+)$/gm;
+  let match;
+  const extractedHeadings = [];
+  while ((match = headingsRegex.exec(markdownContent)) !== null) {
+    const headingLevel = match[1].length;
+    const headingText = match[2].trim();
+    const slug = sluggify(headingText);
+    extractedHeadings.push({
+      level: headingLevel,
+      title: headingText,
+      href: `#${slug}`,
+    });
+  }
+  return extractedHeadings;
+}
+
 export type BaseMdxFrontmatter = {
   title: string;
   description: string;
 };
 
+async function getDocContent(slug: string) {
+  const contentPath = await getDocsContentPath(slug);
+  const markdownContent = await fsp.readFile(contentPath, "utf-8");
+  return markdownContent
+}
 export async function getDocsForSlug(slug: string) {
   try {
-    const contentPath = await getDocsContentPath(slug);
-    const rawMdx = await fsp.readFile(contentPath, "utf-8");
-    return await parseMdx<BaseMdxFrontmatter>(rawMdx);
+    const markdownContent = await getDocContent(slug);
+    return await parseMdx<BaseMdxFrontmatter>(markdownContent);
   } catch (err) {
     console.log(err);
   }

@@ -28,7 +28,7 @@ function SubNav({ item }: { item: NavItemProps }) {
   return (
     <>
       <h1 className="text-xl font-bold">{title}</h1>
-      <ul className="border-l flex flex-col gap-y-2 py-1">
+      <ul className="border-l flex flex-col gap-y-4 py-1">
         {items.map((item) => <NavItem item={item} key={item.href} />)}
       </ul>
     </>
@@ -45,7 +45,7 @@ function Nav({ items = [] }: { items: NavItemProps[] }) {
 
 function DocSidebar() {
   return (
-    <aside className="app-doc-aside border-r px-8 py-10 shrink w-3/12	 max-w-[250px] transition-transform -translate-x-full sm:translate-x-0">
+    <aside className="app-doc-aside border-r px-8 py-10 shrink-0 w-[250px]  transition-transform -translate-x-full sm:translate-x-0">
       <Nav items={docRoutes as NavItemProps[]} />
     </aside>
   )
