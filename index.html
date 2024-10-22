@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intersection Observer Example</title>
+  <style>
+    .target {
+      height: 200px;
+      background-color: lightblue;
+      margin-top: 1000px;
+      /* 使目标元素不在初始视口中 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="target">Target Element</div>
+
+  <script>
+    const callback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log('Target element is intersecting');
+          entry.target.style.backgroundColor = 'lightgreen';
+        } else {
+          console.log('Target element is not intersecting');
+          entry.target.style.backgroundColor = 'lightblue';
+        }
+      });
+    };
+
+    const options = {
+      rootMargin: "100px 0px 0px 0px"
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    const target = document.querySelector('.target');
+    observer.observe(target);
+  </script>
+</body>
+
+</html>

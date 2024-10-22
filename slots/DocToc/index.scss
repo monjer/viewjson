@@ -1,0 +1,21 @@
+.app-doc-toc a {
+  text-decoration: none !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  display: block;
+}
+
+
+.doc-toc-item[data-toc-level="2"] {
+  padding-inline-start: 1rem;
+}
+
+.doc-toc-item[data-toc-level="3"] {
+  padding-inline-start: 2rem;
+}
+
+.doc-toc-item[data-toc-level="4"] {
+  padding-inline-start: 3rem;
+}

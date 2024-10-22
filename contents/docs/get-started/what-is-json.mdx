@@ -15,6 +15,21 @@ JSON的语法规则非常简洁，主要包括以下几个方面：
 
  示例JSON对象
 
+```jsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html>
+      <body className="container">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
 ```json
 {
   "name": "John Doe",

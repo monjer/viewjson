@@ -10,7 +10,7 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
   console.log(docInfo)
   return (
     <>
-      <div>{docInfo.content}</div>
+      <div className="prose max-w-none  dark:prose-invert">{docInfo.content}</div>
       <DocToc dataSource={tocs} />
     </>
   );

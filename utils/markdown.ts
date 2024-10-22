@@ -47,8 +47,9 @@ async function getDocsContentPath(slug: string) {
 }
 
 function sluggify(text: string) {
-  const slug = text.toLowerCase().replace(/\s+/g, "-");
-  return slug.replace(/[^a-z0-9-]/g, "");
+  const slug = text.toLowerCase().replace(/\s+/g, "-").replace(/\./g, '');
+  return slug;
+  // return slug.replace(/[^a-z0-9-]/g, "");
 }
 
 export async function getDocTocs(slug: string) {
@@ -63,7 +64,7 @@ export async function getDocTocs(slug: string) {
     extractedHeadings.push({
       level: headingLevel,
       title: headingText,
-      href: `#${slug}`,
+      href: `#${slug.toLowerCase()}`,
     });
   }
   return extractedHeadings;

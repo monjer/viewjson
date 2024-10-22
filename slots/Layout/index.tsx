@@ -14,7 +14,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       className="gap-y-0"
       style={{
         flexDirection: 'column',
-        height: '100vh',
       }}>
       <Header />
       <main className="app-main">

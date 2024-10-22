@@ -1,20 +1,56 @@
+'use client'
 import React from "react";
 import Link from 'next/link';
+import "./index.scss"
 
 function DocToc(props) {
   const { dataSource = [] } = props;
-  return (
-    <aside className="fixed top-[80px] right-0 w-[240px] max-h-[calc(80vh)] hidden overflow-y-auto xl:block">
-      <h3 className="font-medium text-sm">On this page</h3>
-      {
-        dataSource.map((item, index) => {
-          return (
-            <div key={index} className="doc-toc-item">
-              <Link href={item.href}>{item.title}</Link>
-            </div>
-          )
-        })
+  const [activeTocItemElId, setActiveTocItemElId] = React.useState('');
+  React.useEffect(() => {
+
+    const hanldIntersect = (entries) => {
+      const visibleEntry = entries.find((entry) => entry.isIntersecting);
+      console.log(visibleEntry?.target?.id)
+      if (visibleEntry) {
+        setActiveTocItemElId(visibleEntry.target.id);
       }
+    }
+
+    const observer = new IntersectionObserver(hanldIntersect, {
+      root: null,
+      rootMargin: "-60px 0px 0px 0px",
+      threshold: 0.01,
+    });
+
+    const tocItemEls = dataSource.map((item) => {
+      return document.getElementById(item.href.slice(1))
+    })
+
+    tocItemEls.forEach((el) => {
+      observer.observe(el);
+    });
+    return () => {
+      tocItemEls.forEach((el) => {
+        observer.unobserve(el);
+      })
+    }
+  }, [dataSource])
+  console.log(dataSource)
+  return (
+    <aside className="app-doc-toc fixed top-[80px] right-0 w-[18rem] max-h-[calc(80vh)] overflow-y-auto hidden px-4 xl:block">
+      <h2 className="font-medium text-lg px-2 mb-2">On this page</h2>
+      <div className="py-4 overflow-hidden">
+        {
+          dataSource.map((item, index) => {
+            const active = activeTocItemElId === item.href.slice(1);
+            return (
+              <div key={index} className={`doc-toc-item border-l pl-3 py-1 ${active ? 'font-semibold active' : ''}`} data-toc-level={item.level}>
+                <Link href={item.href} title={item.title}>{item.title}</Link>
+              </div>
+            )
+          })
+        }
+      </div>
     </aside>
   );
 }

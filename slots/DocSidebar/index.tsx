@@ -45,9 +45,9 @@ function Nav({ items = [] }: { items: NavItemProps[] }) {
 
 function DocSidebar() {
   return (
-    <aside className="app-doc-aside border-r px-8 py-10 shrink-0 w-[250px]  transition-transform -translate-x-full sm:translate-x-0">
+    <div>
       <Nav items={docRoutes as NavItemProps[]} />
-    </aside>
+    </div>
   )
 }
 
