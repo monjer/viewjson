@@ -7,7 +7,6 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
   const docPath = slug.join("/");
   const docInfo = await getDocsForSlug(docPath);
   const tocs = await getDocTocs(docPath);
-  console.log(docInfo)
   return (
     <>
       <div className="prose max-w-none  dark:prose-invert">{docInfo.content}</div>

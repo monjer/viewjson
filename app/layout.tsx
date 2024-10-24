@@ -4,6 +4,8 @@ import Layout from '@/slots/Layout'
 import type { Metadata } from 'next'
 import './global.scss';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { ThemeProvider } from 'next-themes'
+
 
 export const metadata: Metadata = {
   title: 'view-json',
@@ -16,13 +18,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className='bg-white text-gray-700 text-base dark:bg-gray-950 dark:text-gray-100'>
-        <Layout>
-          {children}
-        </Layout>
+    <html lang="en" suppressHydrationWarning>
+      <body className='bg-white text-gray-700 dark:bg-gray-950 dark:text-gray-400'>
+        <ThemeProvider attribute="class">
+          <Layout>
+            {children}
+          </Layout>
+        </ThemeProvider>
+        {
+          process.env.ENABLE_ANALYSIS === 'true' && <GoogleAnalytics gaId="G-V3525DMF56" />
+        }
       </body>
-      {/* <GoogleAnalytics gaId="G-V3525DMF56" /> */}
     </html >
   )
 }

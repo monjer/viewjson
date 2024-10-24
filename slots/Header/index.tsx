@@ -4,33 +4,65 @@ import React from 'react';
 import Flex from '@/components/Flex';
 import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';
-import useDarkMode from "@/hooks/useDarkMode";
+import { useTheme } from 'next-themes'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link';
 import './index.scss';;
 
+const HeaderNav = [{
+  name: "JSON Format",
+  href: "/format"
+},
+{
+  name: "JSON Convert",
+  href: "/covert"
+},
+{
+  name: "Learn JSON",
+  href: "/docs",
+}]
 export default function Header() {
   const [open, setOpen] = React.useState(false);
-  const [darkMode, toggleDarkMode] = useDarkMode();
+  const { theme, setTheme } = useTheme();
+  const pathname = usePathname()
+
+  const darkMode = theme === 'dark';
+
+  const onChangeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   const onClick = () => {
     setOpen(true);
   }
 
   return (
-    <div className='app-header-container  sticky top-0 z-10 bg-neutral-100 dark:bg-gray-950 '>
-      <header className='app-header w-full flex-grow flex items-center px-4 border-b shadow-sm shadow-gray-300 position-relative dark:border-slate-900 '>
+    <div className='app-header-container  sticky top-0 z-10 bg-white dark:bg-gray-900'>
+      <header className='app-header w-full flex-grow flex items-center px-4 border-b position-relative dark:border-b-gray-700 '>
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
             <a href='/'>
               <h1 className="text-xl font-bold">ViewJson</h1>
             </a>
-            <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center hover:text-gray-900 dark:hover:text-white">
-              <a className="mr-5  " href='/format'>JSON Format</a>
-              <a className="mr-5  " href='/covert'>JSON Convert</a>
-              <a className="mr-5" href='/docs/get-started/what-is-json'>Learn JSON</a>
+            <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+              {
+                HeaderNav.map((item, index) => {
+                  const active = pathname.indexOf(item.href) === 0;
+                  let className = "hover:text-gray-900 dark:hover:text-white";
+                  if (active) {
+                    className += " text-gray-900 dark:text-white"
+                  }
+                  return (
+                    <Link className={`mr-5 ${className}`} href={item.href} key={item.href} >
+                      {item.name}
+                    </Link>
+                  )
+                })
+              }
             </nav>
           </Flex>
           <Flex>
-            <span onClick={toggleDarkMode} className='cursor-pointer'>
+            <span onClick={onChangeTheme} className='cursor-pointer'>
               {darkMode ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />

@@ -10,7 +10,6 @@ function DocToc(props) {
 
     const hanldIntersect = (entries) => {
       const visibleEntry = entries.find((entry) => entry.isIntersecting);
-      console.log(visibleEntry?.target?.id)
       if (visibleEntry) {
         setActiveTocItemElId(visibleEntry.target.id);
       }
@@ -18,8 +17,8 @@ function DocToc(props) {
 
     const observer = new IntersectionObserver(hanldIntersect, {
       root: null,
-      rootMargin: "-60px 0px 0px 0px",
-      threshold: 0.01,
+      rootMargin: "-10% 0px -10% 0px",
+      threshold: 0,
     });
 
     const tocItemEls = dataSource.map((item) => {
@@ -43,8 +42,10 @@ function DocToc(props) {
         {
           dataSource.map((item, index) => {
             const active = activeTocItemElId === item.href.slice(1);
+            const activeClass = active ? 'font-semibold active text-black border-l-gray-900 dark:text-gray-100 dark:border-l-gray-400' : 'dark:border-l-gray-700 '
             return (
-              <div key={index} className={`doc-toc-item border-l pl-3 py-1 ${active ? 'font-semibold active' : ''}`} data-toc-level={item.level}>
+              <div key={index}
+                className={`doc-toc-item pl-3 py-2 border-l ${activeClass}`} data-toc-level={item.level}>
                 <Link href={item.href} title={item.title}>{item.title}</Link>
               </div>
             )
