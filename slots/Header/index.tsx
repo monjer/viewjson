@@ -6,6 +6,7 @@ import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
+import ResponseContainer from '../ResponseContainer';
 import Link from 'next/link';
 import './index.scss';;
 
@@ -37,8 +38,8 @@ export default function Header() {
   }
 
   return (
-    <div className='app-header-container  sticky top-0 z-10 bg-white dark:bg-gray-900'>
-      <header className='app-header w-full flex-grow flex items-center px-4 border-b position-relative dark:border-b-gray-700 '>
+    <div className='app-header-container sticky top-0 z-10 border-b border-b-stone-300 dark:border-b-gray-700 bg-white dark:bg-gray-900'>
+      <ResponseContainer className='app-header flex-grow flex items-center px-4 position-relative  '>
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
             <a href='/'>
@@ -80,7 +81,7 @@ export default function Header() {
             viewjson is a tool to view json data.
           </Dialog>
         </Flex>
-      </header>
+      </ResponseContainer>
     </div >
   );
 }

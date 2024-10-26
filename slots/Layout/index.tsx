@@ -10,16 +10,12 @@ function Layout({ children }: { children: React.ReactNode }) {
   const [darkMode] = useDarkMode();
 
   return (
-    <Flex
-      className="gap-y-0"
-      style={{
-        flexDirection: 'column',
-      }}>
+    <>
       <Header />
-      <main className="app-main">
+      <main>
         {children}
       </main>
-    </Flex>
+    </>
   );
 }
 export default Layout;

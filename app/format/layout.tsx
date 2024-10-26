@@ -1,13 +1,14 @@
 import React from "react";
+import ResponseContainer from "@/slots/ResponseContainer";
 
 type FormatLayoutProps = {
   children?: React.ReactNode
 }
 const FormatLayout: React.FC = (props: FormatLayoutProps) => {
   return (
-    <div className="app-format-content h-[calc(100vh-80px)] overflow-hidden">
+    <ResponseContainer className="app-format-content h-[calc(100vh-80px)] overflow-hidden">
       {props.children}
-    </div>
+    </ResponseContainer>
   )
 }
 

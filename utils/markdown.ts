@@ -6,6 +6,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
+import GithubSlugger from 'github-slugger'
 
 const DOC_PATH = path.join(process.cwd(), "/contents/docs");
 
@@ -47,9 +48,9 @@ async function getDocsContentPath(slug: string) {
 }
 
 function sluggify(text: string) {
-  const slug = text.toLowerCase().replace(/\s+/g, "-").replace(/\./g, '');
-  return slug;
-  // return slug.replace(/[^a-z0-9-]/g, "");
+  const slugger = new GithubSlugger()
+  return slugger.slug(text);
+  // const slug = text.toLowerCase().replace(/\s+/g, "-").replace(/\./g, '');
 }
 
 export async function getDocTocs(slug: string) {
@@ -67,6 +68,7 @@ export async function getDocTocs(slug: string) {
       href: `#${slug.toLowerCase()}`,
     });
   }
+  console.log(extractedHeadings)
   return extractedHeadings;
 }
 

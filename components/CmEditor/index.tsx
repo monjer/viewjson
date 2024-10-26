@@ -18,7 +18,7 @@ function CmEditor({ code }: { code: string }) {
       extensions: [basicSetup, json(), themeConfig.of(clouds), EditorView.lineWrapping],
       parent: elRef.current
     });
-    const targetNode = document.body;
+    const targetNode = document.documentElement;
     // 配置观察选项
     const config = { attributes: true, attributeFilter: ['class'] };
     // 创建一个MutationObserver实例，并传入回调函数
@@ -27,7 +27,6 @@ function CmEditor({ code }: { code: string }) {
         if (mutation.type === 'attributes') {
           const target = mutation.target as HTMLElement;
           if (target.classList.contains('dark')) {
-            console.log('dark')
             viewRef.current.dispatch({
               effects: themeConfig.reconfigure(coolGlow),
             })
@@ -49,7 +48,7 @@ function CmEditor({ code }: { code: string }) {
 
   React.useEffect(() => {
     if (viewRef.current) {
-      const darkMode = document.body.classList.contains('dark');
+      const darkMode = document.documentElement.classList.contains('dark');
       viewRef.current.dispatch({
         effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
         changes: {

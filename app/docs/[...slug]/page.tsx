@@ -1,6 +1,7 @@
 import React from "react";
 import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
+import Flex from "@/components/Flex";
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {
   const { slug = [] } = params;
@@ -8,10 +9,10 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
   const docInfo = await getDocsForSlug(docPath);
   const tocs = await getDocTocs(docPath);
   return (
-    <>
-      <div className="prose max-w-none  dark:prose-invert">{docInfo.content}</div>
-      <DocToc dataSource={tocs} />
-    </>
+    <Flex className="relative">
+      <div className="prose max-w-none  px-[4rem] dark:prose-invert">{docInfo.content}</div>
+      <DocToc dataSource={tocs} className="grow-0	shrink-0 hidden" />
+    </Flex>
   );
 }
 

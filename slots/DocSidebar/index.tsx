@@ -14,7 +14,7 @@ type NavItemProps = {
 function NavItem({ item }: { item: NavItemProps }) {
   const pathname = usePathname();
   const active = pathname.indexOf(item.href) > -1;
-  const className = active ? 'text-black border-l-gray-900 dark:text-gray-100 dark:border-l-gray-400' : 'dark:border-l-gray-700'
+  const className = active ? 'text-black border-l-gray-900 dark:text-gray-100 dark:border-l-gray-400' : ' border-l-stone-300 dark:border-l-gray-700'
   return (
     <li className={`pl-6 flex flex-col py-2 border-l ${className}`}>
       <Link href={item.href} title={item.title}>{item.title}</Link>
@@ -26,7 +26,7 @@ function SubNav({ item }: { item: NavItemProps }) {
   const { items = [], title } = item;
   return (
     <>
-      <h1 className="text-xl font-bold">{title}</h1>
+      <h1 className="text-xl font-bold">{item.href ? <a href={item.href}>{title}</a> : title}</h1>
       <ul className="flex flex-col">
         {items.map((item) => <NavItem item={item} key={item.href} />)}
       </ul>
@@ -36,7 +36,7 @@ function SubNav({ item }: { item: NavItemProps }) {
 
 function Nav({ items = [] }: { items: NavItemProps[] }) {
   return (
-    <div className="flex flex-col gap-y-4 ">
+    <div className="flex flex-col gap-y-2 ">
       {items.map((item) => <SubNav item={item} key={item.href} />)}
     </div>
   )
