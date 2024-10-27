@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,6 +40,59 @@
     const target = document.querySelector('.target');
     observer.observe(target);
   </script>
+</body>
+
+</html> -->
+
+<html>
+
+<head>
+  <style>
+    .other-content {}
+
+    .sticky-element {
+      position: sticky;
+      top: 0px;
+      /* 元素距离其包含块顶部的距离 */
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+      flex-grow: 0;
+      height: 100px;
+    }
+
+    /* 确保父元素有溢出处理 */
+    .sticky-element-container {
+      /* overflow: auto; */
+      /* height: 500px; */
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .other-content {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sticky-element-container">
+
+    <div class="other-content">
+      <div class="sticky-element-container">
+        <div class="sticky-element">
+          我是sticky元素，当滚动时我会固定在距离顶部10px的位置。
+        </div>
+        <div style="height: 1000px;">其他内容...</div>
+        <div class="sticky-element">
+          我是sticky元素，当滚动时我会固定在距离顶部10px的位置。
+        </div>
+      </div>
+    </div>
+    <!-- 更多内容... -->
+  </div>
 </body>
 
 </html>

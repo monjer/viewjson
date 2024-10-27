@@ -18,6 +18,16 @@ body {
   overflow: auto;
 }
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+  }
+}
+
 // ::-webkit-scrollbar {
 //   width: 6px;
 //   /* 滚动条的宽度 */

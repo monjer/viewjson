@@ -6,7 +6,9 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
-import GithubSlugger from 'github-slugger'
+import GithubSlugger from 'github-slugger';
+import Pre from '@/components/Markdown/Pre';
+import { visit } from "unist-util-visit";
 
 const DOC_PATH = path.join(process.cwd(), "/contents/docs");
 
@@ -19,6 +21,28 @@ async function isFileExists(filePath: string) {
   }
 }
 
+
+// for copying the code
+const preProcess = () => (tree: any) => {
+  visit(tree, (node) => {
+    if (node?.type === "element" && node?.tagName === "pre") {
+      const [codeEl] = node.children;
+      if (codeEl.tagName !== "code") return;
+      node.raw = codeEl.children?.[0].value;
+    }
+  });
+};
+
+const postProcess = () => (tree: any) => {
+  visit(tree, "element", (node) => {
+    if (node?.type === "element" && node?.tagName === "pre") {
+      node.properties["raw"] = node.raw;
+      // console.log(node);
+    }
+  });
+};
+
+
 // can be used for other pages like blogs, Guides etc
 async function parseMdx<Frontmatter>(rawMdx: string) {
   return await compileMDX<Frontmatter>({
@@ -27,14 +51,19 @@ async function parseMdx<Frontmatter>(rawMdx: string) {
       parseFrontmatter: true,
       mdxOptions: {
         rehypePlugins: [
+          preProcess,
           rehypeCodeTitles,
           rehypePrism,
           rehypeSlug,
           rehypeAutolinkHeadings,
+          postProcess
         ],
         remarkPlugins: [remarkGfm],
       },
     },
+    components: {
+      pre: Pre
+    }
   });
 }
 
