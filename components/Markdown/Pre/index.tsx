@@ -9,11 +9,11 @@ export default function Pre({
   console.log(children)
   return (
     <div className="my-5 relative">
-      <div className="absolute top-3 right-2.5 z-10 sm:block hidden">
-        <Copy content={raw!} />
-      </div>
       <div className="relative">
         <pre {...rest}>{children}</pre>
+      </div>
+      <div className="absolute top-3 right-2.5 z-4 sm:block hidden">
+        <Copy content={raw!} />
       </div>
     </div>
   );
