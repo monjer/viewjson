@@ -20,7 +20,7 @@ const HeaderNav = [{
 // },
 {
   name: "Learn JSON",
-  href: "/docs",
+  href: "/docs/what-is-json",
 }]
 export default function Header() {
   const [open, setOpen] = React.useState(false);
