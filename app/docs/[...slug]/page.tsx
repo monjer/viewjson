@@ -3,7 +3,7 @@ import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
 
 function CodeStyle(props) {
-  return <div className="prose-code:font-code prose-pre:border prose-pre:border-gray-500 dark:prose-pre:border-gray-700">{props.children}</div>
+  return <div className="prose-code:font-code prose-pre:border  prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>
 }
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {
@@ -13,7 +13,7 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
   const tocs = await getDocTocs(docPath);
   return (
     <>
-      <div className="prose prose-zinc max-w-none p-[4rem] dark:prose-invert"><CodeStyle>{docInfo?.content}</CodeStyle></div>
+      <article className="prose prose-zinc prose-xl max-w-[100%] px-8 py-4 dark:prose-invert"><CodeStyle>{docInfo?.content}</CodeStyle></article>
       <DocToc dataSource={tocs} className="grow-0	shrink-0 hidden" />
     </>
   );

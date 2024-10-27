@@ -6,10 +6,9 @@ export default function Pre({
   raw,
   ...rest
 }: ComponentProps<"pre"> & { raw?: string }) {
-  console.log(children)
   return (
-    <div className="my-5 relative">
-      <div className="relative">
+    <div className="my-5 relative max-w-[60vw]">
+      <div className="relative ">
         <pre {...rest}>{children}</pre>
       </div>
       <div className="absolute top-3 right-2.5 z-4 sm:block hidden">

@@ -8,27 +8,30 @@ export type DocRoute = {
 const docRoutes: DocRoute[] = [
   {
     title: "What Is JSON",
-    href: "/docs/get-started/what-is-json",
+    href: "/docs/what-is-json",
   },
   {
-    title: "Basic Syntax",
-    href: "/docs/get-started/basic-syntax",
+    title: "JSON Syntax and Structure",
+    href: "/docs/basic-syntax",
   },
   {
-    title: 'Create JSON',
-    href: '/docs/get-started/create-json'
+    title: 'Creating and Parsing JSON',
+    href: '/docs/create-json'
   }, {
     title: 'JSON In web development',
-    href: '/docs/get-started/json-in-web-development'
+    href: '/docs/json-in-web-development'
+  }, {
+    title: 'Validate JSON',
+    href: '/docs/validate-json'
   }, {
     title: 'JSON Advance',
-    href: '/docs/get-started/json-advance'
+    href: '/docs/json-advance'
   }, {
-    title: 'JSON vs xml',
-    href: '/docs/get-started/json-vs-xml'
+    title: 'JSON Vs XML',
+    href: '/docs/json-vs-xml'
   }, {
-    title: 'JSON SDK',
-    href: '/docs/get-started/json-sdk'
+    title: 'Popular JSON Libraries',
+    href: '/docs/json-sdk'
   }
 ];
 
