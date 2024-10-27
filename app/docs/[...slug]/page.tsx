@@ -1,7 +1,10 @@
 import React from "react";
 import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
-
+import docRoutes from "@/config/docSidebar";
+type PageProps = {
+  params: { slug: string[] };
+};
 function CodeStyle(props) {
   return <div className="prose-code:font-code prose-pre:border  prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>
 }
@@ -18,11 +21,19 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
     </>
   );
 }
+export async function generateMetadata({ params: { slug = [] } }: PageProps) {
+  const pathName = slug.join("/");
+  const res = await getDocsForSlug(pathName);
+  if (!res) return null;
+  const { frontmatter } = res;
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+  };
+}
 
-// export async function generateStaticParams() {
-//   const posts = await fetch('https://.../posts').then((res) => res.json())
-
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }))
-// }
+export function generateStaticParams() {
+  return docRoutes.map((item) => ({
+    slug: item.href.split("/").slice(1),
+  }));
+}

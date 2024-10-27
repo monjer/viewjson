@@ -42,5 +42,9 @@ import React from "react";
 import { redirect } from 'next/navigation'
 
 export default async function Page(id: string) {
-  redirect(`/format`) // Navigate to the new post page
+  return (
+    <div>
+      {redirect(`/format`)}
+    </div>
+  )
 }
