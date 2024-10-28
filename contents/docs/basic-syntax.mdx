@@ -14,13 +14,13 @@ A JSON object is an unordered collection of key-value pairs. Each key is unique 
 
 ```json
 {
-  "name": "Kimi",
-  "type": "AI",
-  "version": "1.0"
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "year": 1925
 }
 ```
 
-In this example, `name`, `type`, and `version` are keys, and their respective values are `"Kimi"`, `"AI"`, and `"1.0"`.
+In this example, `title`, `author`, and `year` are keys, and their respective values are `"The Great Gatsby"`, `"F. Scott Fitzgerald"`, and `1925`.
 
 ### Arrays
 
@@ -30,9 +30,21 @@ A JSON array is an ordered collection of values. Arrays are enclosed in square b
 
 ```json
 [
-  "Kimi",
-  "AI",
-  "1.0"
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960
+  }
 ]
 ```
 
@@ -47,7 +59,7 @@ In a JSON object, each key-value pair is separated by a colon `:` followed by it
 ```json
 {
   "id": 1,
-  "name": "Kimi",
+  "name": "T",
   "isActive": true,
   "tags": ["AI", "Assistant", "JSON"],
   "address": null
@@ -65,6 +77,46 @@ JSON supports the following data types:
 5. **Boolean**: `true` or `false`.
 6. **null**: Represents a null value.
 
+A full example like this below
+
+```json
+{
+  "nullValue": null,
+  "booleanValue": true,
+  "numberValue": 123,
+  "stringValue": "Hello, World!",
+  "arrayValue": [1, 2, 3, "four", true, null],
+  "objectValue": {
+    "nestedNumber": 456,
+    "nestedString": "Nested string",
+    "nestedBoolean": false
+  },
+  "arrayOfObjects": [
+    {
+      "id": 1,
+      "name": "Alice"
+    },
+    {
+      "id": 2,
+      "name": "Bob"
+    }
+  ],
+  "objectWithArrays": {
+    "tags": ["json", "demo", "example"],
+    "permissions": [
+      {
+        "user": "admin",
+        "access": "read-write"
+      },
+      {
+        "user": "guest",
+        "access": "read-only"
+      }
+    ]
+  }
+}
+```
+
 ## Nested Objects and Arrays
 
 JSON allows objects and arrays to be nested within other objects or arrays, making JSON very suitable for representing complex data structures.
@@ -73,23 +125,29 @@ JSON allows objects and arrays to be nested within other objects or arrays, maki
 
 ```json
 {
-  "company": "Moonshot AI",
-  "employees": [
-    {
-      "name": "Kimi",
-      "role": "AI Assistant",
-      "skills": ["Conversation", "Data Analysis"]
-    },
-    {
-      "name": "Assistant",
-      "role": "Technical Writer",
-      "skills": ["Documentation", "Technical Writing"]
-    }
-  ]
+  "library": {
+    "books": [
+      {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "year": 1925
+      },
+      {
+        "title": "1984",
+        "author": "George Orwell",
+        "year": 1949
+      },
+      {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "year": 1960
+      }
+    ],   
+  }
 }
 ```
 
-In this example, `employees` is an array that contains multiple objects, each representing information about an employee.
+In this example, `books` is an array that contains multiple objects, each representing information about a book.
 
 ## Formatting and Comments
 

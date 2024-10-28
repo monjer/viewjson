@@ -20,11 +20,10 @@ A JSON object looks like this:
 
 ```json
 {
-  "name": "Kimi",
-  "age": 1,
-  "isAI": true,
-  "languages": ["Chinese", "English"]
-}
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "year": 1925
+},
 ```
 
 ### JSON Array
@@ -33,8 +32,21 @@ A JSON array is an ordered collection of values and looks like this:
 
 ```json
 [
-  {"name": "Kimi", "age": 1},
-  {"name": "Assistant", "age": 2}
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960
+  }
 ]
 ```
 
@@ -44,8 +56,8 @@ In JavaScript, you can create a JSON object like this:
 
 ```javascript
 var person = {
-  "name": "Kimi",
-  "age": 1
+  "name": "Tom",
+  "age": 12
 };
 ```
 
@@ -63,14 +75,6 @@ If you have a JSON string, you can use the `JSON.parse()` method to convert it b
 var obj = JSON.parse(jsonStr);
 ```
 
-## Application of JSON in Web Development
-
-In web development, JSON is commonly used for data exchange with servers. For example, when you use AJAX requests to fetch data from a server, the server may return data in JSON format. You can easily parse this data using JavaScript and display it on your web page.
-
 ## Conclusion
 
 JSON is a very useful data format, and its conciseness and readability make it the preferred choice in modern web development. Through this guide, you should have a basic understanding of JSON, including what it is, why to use it, and how to create and parse JSON data. As you further learn about JSON, you will be able to use it more effectively in your projects.
-
----
-
-I hope this guide helps you get started with JSON and lays a solid foundation for your further learning. If you have any questions or need further guidance, feel free to ask.

@@ -10,18 +10,19 @@ import ResponseContainer from '../ResponseContainer';
 import Link from 'next/link';
 import './index.scss';;
 
-const HeaderNav = [{
-  name: "JSON Format",
-  href: "/format"
-},
-// {
-//   name: "JSON Convert",
-//   href: "/covert"
-// },
-{
-  name: "Learn JSON",
-  href: "/docs/what-is-json",
-}]
+const HeaderNav = [
+  //   {
+  //   name: "JSON Format",
+  //   href: "/format"
+  // },
+  // {
+  //   name: "JSON Convert",
+  //   href: "/covert"
+  // },
+  {
+    name: "Learn JSON",
+    href: "/docs/what-is-json",
+  }]
 export default function Header() {
   const [open, setOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
