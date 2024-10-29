@@ -10,7 +10,9 @@ import Input from '@/components/Input'
 import HighlightView from "./HighlightView";
 import ToJSONStringView from "./ToJSONStringView";
 import Divider from "@/components/Divider";
-
+import UploadButton from "@/components/UploadButton";
+import { readFileAsText } from "@/utils";
+import Dropzone from '@/components/Dropzone';
 enum ViewType {
   Plain = 'plain',
   Highlight = 'highlight',
@@ -58,12 +60,21 @@ function Main() {
   }
 
   const onValueChange = (value) => {
-    debugger
     setValue(value);
   };
 
   const onCleanBtnClick = () => {
     setValue('');
+  }
+
+  function validateJson(str, errorMsg = 'Please input json string') {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      Toast.error(errorMsg);
+      return false;
+    }
+    return true;
   }
 
   const onLoadBtnClick = async () => {
@@ -116,11 +127,27 @@ function Main() {
   const onPasetBtnClick = async () => {
     try {
       const text = await navigator.clipboard.readText();
-      setValue(text);
+      if (validateJson(text, 'Please copy a json string')) {
+        setValue(text);
+      }
+
     } catch (err) {
       Toast.error('copy error');
     }
   }
+
+  const onLoadFile = async (file) => {
+    console.log(file)
+    try {
+      const jsontext = await readFileAsText(file);
+      if (validateJson(jsontext, 'Please upload a json file')) {
+        setValue(jsontext);
+      }
+    } catch (error) {
+      Toast.error('Please upload a json file');
+    }
+  }
+
 
   return (
     <>
@@ -131,8 +158,7 @@ function Main() {
           <Button onClick={onToJSONString}>To String</Button>
           <Button onClick={onHighlightBtnClick}>Highlight</Button>
           <Divider vertical />
-          <Button onClick={onCopyBtnClick}>Copy</Button>
-          <Button onClick={onPasetBtnClick}>Paste</Button>
+          <UploadButton onChange={onLoadFile} >Upload JSON File</UploadButton>
           <Popover
             visible={popOverVisible}
             onVisibleChange={(visible) => {
@@ -151,12 +177,17 @@ function Main() {
               </section>
             }
           >
-            <Button >Load</Button>
+            <Button >Load JSON From URL</Button>
           </Popover>
+          <Button onClick={onPasetBtnClick}>Paste</Button>
+          <Divider vertical />
+          <Button onClick={onCopyBtnClick}>Copy</Button>
           <Button onClick={onCleanBtnClick}>Clean</Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
-          {renderView()}
+          <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
+            {renderView()}
+          </Dropzone>
         </div>
       </Flex>
       <Toast
