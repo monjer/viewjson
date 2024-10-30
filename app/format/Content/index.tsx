@@ -100,16 +100,21 @@ function Main() {
     setViewType(ViewType.ToJSONString);
   }
 
+  const getValueBuType = () => {
+    const val = {
+      [ViewType.Plain]: value,
+      [ViewType.Highlight]: value,
+      [ViewType.ToJSONString]: JSON.stringify(JSON.stringify(JSON.parse(value))),
+    }[viewType];
+    return val
+  }
+
   const onCopyBtnClick = () => {
     if (!value) {
       Toast.info('Please input json string');
       return;
     }
-    const copyValue = {
-      [ViewType.Plain]: value,
-      [ViewType.Highlight]: value,
-      [ViewType.ToJSONString]: JSON.stringify(JSON.stringify(JSON.parse(value))),
-    }[viewType]
+    const copyValue = getValueBuType();
     navigator.clipboard.writeText(copyValue);
     Toast.success('copy success');
 
@@ -137,7 +142,6 @@ function Main() {
   }
 
   const onLoadFile = async (file) => {
-    console.log(file)
     try {
       const jsontext = await readFileAsText(file);
       if (validateJson(jsontext, 'Please upload a json file')) {
@@ -148,6 +152,30 @@ function Main() {
     }
   }
 
+  const downloadStringAsFile = (str, filename, mimeType = 'text/plain') => {
+    const blob = new Blob([str], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  const onDownloadBtnClick = () => {
+    if (!value) {
+      Toast.info('Please input json string');
+      return;
+    }
+    if (validateJson(value, 'Please input a json string')) {
+      const val = getValueBuType();
+      const mime = ViewType.ToJSONString === viewType ? 'text/plain' : 'application/json';
+      const filename = ViewType.ToJSONString === viewType ? 'data.txt' : 'data.json';
+      downloadStringAsFile(val, filename, mime);
+      Toast.success('Download success');
+    }
+
+  }
 
   return (
     <>
@@ -182,7 +210,10 @@ function Main() {
           <Button onClick={onPasetBtnClick}>Paste</Button>
           <Divider vertical />
           <Button onClick={onCopyBtnClick}>Copy</Button>
+          <Button onClick={onDownloadBtnClick}>Save</Button>
+          <Divider vertical />
           <Button onClick={onCleanBtnClick}>Clean</Button>
+
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
