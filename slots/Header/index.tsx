@@ -15,10 +15,10 @@ const HeaderNav = [
   //   name: "JSON Format",
   //   href: "/format"
   // },
-  // {
-  //   name: "JSON Convert",
-  //   href: "/covert"
-  // },
+  {
+    name: "JSON Convert",
+    href: "/convert/json-to-xml"
+  },
   {
     name: "Learn JSON",
     href: "/docs/what-is-json",

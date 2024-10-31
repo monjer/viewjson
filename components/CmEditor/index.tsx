@@ -1,21 +1,115 @@
 import React from "react";
-import { EditorView } from "@codemirror/view";
-import { EditorState, Compartment, StateField } from '@codemirror/state';
+import { EditorView, keymap, ViewUpdate } from "@codemirror/view";
+import { EditorState, Compartment, StateField, EditorSelection } from '@codemirror/state';
 import { basicSetup } from "codemirror";
 import { json } from "@codemirror/lang-json";
 import { coolGlow, clouds } from 'thememirror';
+import { standardKeymap, indentWithTab } from '@codemirror/commands';
 
 const themeConfig = new Compartment();
 
-function CmEditor({ code }: { code: string }) {
+/**
+ * 在光标所在位置插入Tab，codemirror6默认没有加入tab的绑定
+ * @see https://codemirror.net/examples/tab/
+ * @see https://codemirror.net/docs/ref/#commands.indentWithTab
+ */
+export const insertTabAtCoursor = keymap.of([{
+  key: 'Tab',
+  run: (view) => {
+    const changes = view.state.changeByRange((range) => {
+      if (range.empty) {
+        return {
+          changes: { from: range.from, insert: '\t' },
+          range: EditorSelection.cursor(range.from + 1)
+        };
+      } else {
+        return {
+          changes: { from: range.from, insert: '\t' },
+          range: EditorSelection.cursor(range.from + 1)
+        };
+      }
+
+    });
+    view.dispatch(changes);
+    return true;
+  }
+}]);
+
+
+
+type CMEditorProps = {
+  code: string
+  onChange?: (code: string) => void
+}
+function CmEditor({ code, onChange }: CMEditorProps) {
 
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
+  const [cursorPosition, setCursorPosition] = React.useState(null);
+
+  function onEditorChange(viewUpdate: ViewUpdate) {
+    if (viewUpdate.changes) {
+      const newValue = viewUpdate.state.doc.toString();
+      onChange(newValue);
+    }
+    // editorFooterElRef.current.style.paddingLeft = `${getGutterWidth(editorGutterViewRef.current)}px`;
+  }
+
+
+  const saveCommand = () => {
+    const editorCode = viewRef.current.state.doc.toString();
+    onChange && onChange(editorCode);
+    return true;
+  };
+
+  function interceptSaveKeydown(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+      saveCommand();
+      event.preventDefault();
+    }
+  }
+
+  const updateListener = (update) => {
+    if (update.docChanged) {
+      const newSelection = update.state.selection;
+      const editor = viewRef.current;
+      if (editor) {
+        console.log(newSelection?.ranges)
+        setCursorPosition({
+          anchor: newSelection?.ranges[0].anchor,
+          head: newSelection?.ranges[0].head
+        })
+        // editor.dispatch({
+        //   selection: {
+        //     anchor: newSelection?.ranges[0].anchor,
+        //     head: newSelection?.ranges[0].head
+        //   }
+        // });
+      }
+    }
+  }
 
   React.useEffect(() => {
     viewRef.current = new EditorView({
       doc: code,
-      extensions: [basicSetup, json(), themeConfig.of(clouds), EditorView.lineWrapping],
+      extensions: [
+        basicSetup,
+        json(),
+        insertTabAtCoursor,
+        EditorState.tabSize.of(2),
+        EditorView.lineWrapping,
+        keymap.of([indentWithTab]),
+        keymap.of(standardKeymap),
+        themeConfig.of(clouds),
+        EditorView.lineWrapping,
+        EditorView.updateListener.of(onEditorChange),
+        EditorView.updateListener.of(updateListener),
+        EditorView.domEventHandlers({
+          keydown: (event) => {
+            interceptSaveKeydown(event);
+          }
+        })
+      ],
       parent: elRef.current
     });
     const targetNode = document.documentElement;
@@ -31,7 +125,6 @@ function CmEditor({ code }: { code: string }) {
               effects: themeConfig.reconfigure(coolGlow),
             })
           } else {
-            console.log('light')
             viewRef.current.dispatch({
               effects: themeConfig.reconfigure(clouds),
             })
@@ -49,17 +142,21 @@ function CmEditor({ code }: { code: string }) {
   React.useEffect(() => {
     if (viewRef.current) {
       const darkMode = document.documentElement.classList.contains('dark');
-      viewRef.current.dispatch({
+      const viewUpdate = {
         effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
         changes: {
           from: 0,
           to: viewRef.current.state.doc.length,
           insert: code
-        }
-      });
+        },
+      }
+      if (cursorPosition) {
+        Object.assign(viewUpdate, { selection: { anchor: cursorPosition.anchor, head: cursorPosition.head } })
+      }
+      viewRef.current.dispatch(viewUpdate);
     }
-  }, [code])
+  }, [code]);
 
-  return <div ref={elRef}></div>;
+  return <div ref={elRef} className="h-full"></div>;
 }
 export default CmEditor;
