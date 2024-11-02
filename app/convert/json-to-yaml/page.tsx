@@ -58,7 +58,6 @@ export default function Layout() {
       Toast.error('Please input xml string');
       return;
     }
-    // https://github.com/nashwaan/xml-js/issues/53
     var options = {
       compact: true,
       trim: true,
@@ -99,7 +98,7 @@ export default function Layout() {
   }
   return (
     <Flex className="h-full w-full" direction="col">
-      <h1 className="text-2xl font-bold my-6" >JSON To XML</h1>
+      <h1 className="text-2xl font-bold my-6" >JSON To YAML</h1>
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

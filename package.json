@@ -16,6 +16,8 @@
     "@ant-design/nextjs-registry": "^1.0.1",
     "@codemirror/commands": "^6.7.0",
     "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lang-xml": "^6.1.0",
+    "@codemirror/lang-yaml": "^6.1.1",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.34.1",
     "@next/mdx": "^14.2.15",

@@ -1,7 +1,30 @@
 import React from 'react';
 import Button from '../Button';
 
+type Props = {
+  onChange: (file: File) => void,
+
+}
+function generateRandomId(length) {
+  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return id;
+}
+
 const UploadButton = (props) => {
+  const labelRef: React.RefObject<HTMLLabelElement> = React.useRef();
+  const inputRef: React.RefObject<HTMLInputElement> = React.useRef();
+
+  React.useEffect(() => {
+    const uploadId = `file-upload-${generateRandomId(12)}`;
+    if (labelRef.current && inputRef.current) {
+      labelRef.current.setAttribute('for', uploadId);
+      inputRef.current.setAttribute('id', uploadId);
+    }
+  }, []);
 
   const handleFileChange = (e) => {
     props?.onChange(e.target.files[0]);
@@ -10,14 +33,14 @@ const UploadButton = (props) => {
   return (
     <Button>
       <label
-        htmlFor="file-upload"
+        ref={labelRef}
         className='cursor-pointer'
       >
         {props.children}
       </label>
       <input
         type="file"
-        id="file-upload"
+        ref={inputRef}
         onChange={handleFileChange}
         className="hidden"
       />

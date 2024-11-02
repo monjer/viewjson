@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import ResponseContainer from '../ResponseContainer';
-import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 import './index.scss';;
 
 const HeaderNav = [
@@ -38,6 +38,30 @@ export default function Header() {
     setOpen(true);
   }
 
+
+  const navs = [
+    //   {
+    //   name: "JSON Format",
+    //   href: "/format"
+    // },
+    {
+      label: "JSON Convert",
+      href: "/convert/json-to-xml",
+      items: [
+        {
+          label: "JSON to XML",
+          href: "/convert/json-to-xml",
+        },
+        {
+          label: "JSON to YAML",
+          href: "/convert/json-to-yaml",
+        },
+      ]
+    },
+    {
+      label: "Learn JSON",
+      href: "/docs/what-is-json",
+    }]
   return (
     <div className='app-header-container sticky top-0 z-10 border-b border-b-stone-300 dark:border-b-gray-700 bg-white dark:bg-gray-900'>
       <ResponseContainer className='app-header flex-grow flex items-center px-4 position-relative  '>
@@ -46,22 +70,7 @@ export default function Header() {
             <a href='/'>
               <h1 className="text-xl font-bold">ViewJson</h1>
             </a>
-            <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-              {
-                HeaderNav.map((item, index) => {
-                  const active = pathname.indexOf(item.href) === 0;
-                  let className = "hover:text-gray-900 dark:hover:text-white";
-                  if (active) {
-                    className += " text-gray-900 dark:text-white"
-                  }
-                  return (
-                    <Link className={`mr-5 ${className}`} href={item.href} key={item.href} >
-                      {item.name}
-                    </Link>
-                  )
-                })
-              }
-            </nav>
+            <Navbar items={navs} />
           </Flex>
           <Flex>
             <span onClick={onChangeTheme} className='cursor-pointer'>

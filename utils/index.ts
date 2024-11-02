@@ -1,3 +1,7 @@
+
+import { json } from "@codemirror/lang-json";
+import { xml } from "@codemirror/lang-xml";
+
 /**
  * Attach outside click listener
  * @param elements The inside elements
@@ -34,4 +38,12 @@ export const readFileAsText = async (file): Promise<string> => {
     };
     reader.readAsText(file);
   });
+}
+
+
+export const getLanguage = (type: string) => {
+  return {
+    json: json(),
+    xml: xml()
+  }[type];
 }

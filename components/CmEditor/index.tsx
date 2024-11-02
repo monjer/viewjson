@@ -1,8 +1,7 @@
 import React from "react";
 import { EditorView, keymap, ViewUpdate } from "@codemirror/view";
-import { EditorState, Compartment, StateField, EditorSelection } from '@codemirror/state';
+import { EditorState, Compartment, StateField, EditorSelection, Extension } from '@codemirror/state';
 import { basicSetup } from "codemirror";
-import { json } from "@codemirror/lang-json";
 import { coolGlow, clouds } from 'thememirror';
 import { standardKeymap, indentWithTab } from '@codemirror/commands';
 
@@ -35,13 +34,13 @@ export const insertTabAtCoursor = keymap.of([{
   }
 }]);
 
-
-
 type CMEditorProps = {
   code: string
   onChange?: (code: string) => void
+  extensions?: Extension[]
 }
-function CmEditor({ code, onChange }: CMEditorProps) {
+
+function CmEditor({ code, onChange, extensions }: CMEditorProps) {
 
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
@@ -52,7 +51,6 @@ function CmEditor({ code, onChange }: CMEditorProps) {
       const newValue = viewUpdate.state.doc.toString();
       onChange(newValue);
     }
-    // editorFooterElRef.current.style.paddingLeft = `${getGutterWidth(editorGutterViewRef.current)}px`;
   }
 
 
@@ -74,17 +72,10 @@ function CmEditor({ code, onChange }: CMEditorProps) {
       const newSelection = update.state.selection;
       const editor = viewRef.current;
       if (editor) {
-        console.log(newSelection?.ranges)
         setCursorPosition({
           anchor: newSelection?.ranges[0].anchor,
           head: newSelection?.ranges[0].head
-        })
-        // editor.dispatch({
-        //   selection: {
-        //     anchor: newSelection?.ranges[0].anchor,
-        //     head: newSelection?.ranges[0].head
-        //   }
-        // });
+        });
       }
     }
   }
@@ -94,7 +85,7 @@ function CmEditor({ code, onChange }: CMEditorProps) {
       doc: code,
       extensions: [
         basicSetup,
-        json(),
+        [...extensions],
         insertTabAtCoursor,
         EditorState.tabSize.of(2),
         EditorView.lineWrapping,
@@ -142,18 +133,18 @@ function CmEditor({ code, onChange }: CMEditorProps) {
   React.useEffect(() => {
     if (viewRef.current) {
       const darkMode = document.documentElement.classList.contains('dark');
-      const viewUpdate = {
-        effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
-        changes: {
-          from: 0,
-          to: viewRef.current.state.doc.length,
-          insert: code
-        },
+      const currentValue = viewRef.current.state.doc.toString();
+      if (currentValue !== code) { // 避免cursor失去焦点
+        const viewUpdate = {
+          effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
+          changes: {
+            from: 0,
+            to: currentValue.length,
+            insert: code
+          },
+        }
+        viewRef.current.dispatch(viewUpdate);
       }
-      if (cursorPosition) {
-        Object.assign(viewUpdate, { selection: { anchor: cursorPosition.anchor, head: cursorPosition.head } })
-      }
-      viewRef.current.dispatch(viewUpdate);
     }
   }, [code]);
 
