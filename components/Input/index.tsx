@@ -1,14 +1,14 @@
 // src/components/Input.js
 import React from 'react';
 
-type InputProps = {
+interface InputProps {
   type?: string;
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
   className?: string;
   style?: React.CSSProperties;
-};
+}
 const Input = (props: InputProps) => {
   const { type = 'text', value, onChange, placeholder, className, ...rest } = props
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

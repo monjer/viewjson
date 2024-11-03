@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Dropdown from '../Dropdown';
 
-type DropdownItem = {
+interface DropdownItem {
   label: string;
   href: string;
   items?: DropdownItem[]
 }
-type NavbarProps = {
+interface NavbarProps {
   items?: DropdownItem[];
   onSelect?: (item: DropdownItem) => void;
 }

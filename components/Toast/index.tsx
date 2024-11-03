@@ -7,7 +7,7 @@ import './index.scss';
 type ToastType = 'success' | 'error' | 'warning' | 'info';
 const mountNodeId = 'app-toast'
 
-type Props = {
+interface Props {
   message: string;
   duration?: number;
   onClose?: () => void;

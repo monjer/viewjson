@@ -31,11 +31,11 @@ export default function Layout() {
 
 
   function nativeType(value) {
-    var nValue = Number(value);
+    const nValue = Number(value);
     if (!isNaN(nValue)) {
       return nValue;
     }
-    var bValue = value.toLowerCase();
+    const bValue = value.toLowerCase();
     if (bValue === 'true') {
       return true;
     } else if (bValue === 'false') {
@@ -45,10 +45,10 @@ export default function Layout() {
   }
 
 
-  var removeJsonTextAttribute = function (value, parentElement) {
+  const removeJsonTextAttribute = function (value, parentElement) {
     try {
-      var keyNo = Object.keys(parentElement._parent).length;
-      var keyName = Object.keys(parentElement._parent)[keyNo - 1];
+      const keyNo = Object.keys(parentElement._parent).length;
+      const keyName = Object.keys(parentElement._parent)[keyNo - 1];
       parentElement._parent[keyName] = nativeType(value);
     } catch (e) { }
   }
@@ -59,7 +59,7 @@ export default function Layout() {
       return;
     }
     // https://github.com/nashwaan/xml-js/issues/53
-    var options = {
+    const options = {
       compact: true,
       trim: true,
       spaces: 2,
@@ -71,7 +71,6 @@ export default function Layout() {
       ignoreDoctype: true,
       textFn: removeJsonTextAttribute
     };
-    debugger
     const xmlStr = xml2json(xmlContent, options);
     const obj = JSON.parse(xmlStr);
     setJsonContent(JSON.stringify(obj, null, 2))

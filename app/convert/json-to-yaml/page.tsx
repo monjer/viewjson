@@ -2,84 +2,36 @@
 import React from "react";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
-import { json2xml, xml2json } from 'xml-js'
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import Toast from "@/components/Toast";
+import yaml from 'yaml'
 
 export default function Layout() {
-  const [xmlContent, setXMLContent] = React.useState('')
   const [jsonContent, setJsonContent] = React.useState('')
+  const [yamlContent, setYamlContent] = React.useState('')
 
-  const onJSONToXML = () => {
+  const onJSONToYAML = () => {
     if (!validateJSON(jsonContent)) {
-      Toast.error('Please input JSON string');
+      Toast.error('Json string format error');
       return;
     }
-    const $declaration = { _attributes: { version: "1.0", encoding: "utf-8" } };
-    const obj = JSON.parse(jsonContent);
-    const jsonStr = json2xml(JSON.stringify({
-      $declaration, // 添加declaration声明 <?xml version="1.0" encoding="utf-8"?>
-      ...obj
-    }), {
-      compact: true,
-      spaces: 4,
-      ignoreDoctype: true,
-      declarationKey: '$declaration'
-    });
-    setXMLContent(jsonStr);
+    const yamlStr = yaml.stringify(JSON.parse(jsonContent));
+    setYamlContent(yamlStr);
   }
 
-
-  function nativeType(value) {
-    var nValue = Number(value);
-    if (!isNaN(nValue)) {
-      return nValue;
-    }
-    var bValue = value.toLowerCase();
-    if (bValue === 'true') {
-      return true;
-    } else if (bValue === 'false') {
-      return false;
-    }
-    return value;
-  }
-
-
-  var removeJsonTextAttribute = function (value, parentElement) {
+  const onYamlToJSON = () => {
     try {
-      var keyNo = Object.keys(parentElement._parent).length;
-      var keyName = Object.keys(parentElement._parent)[keyNo - 1];
-      parentElement._parent[keyName] = nativeType(value);
-    } catch (e) { }
-  }
-
-  const onXMLToJson = () => {
-    if (!validateXML(xmlContent)) {
-      Toast.error('Please input xml string');
-      return;
+      const object = yaml.parse(yamlContent);
+      setJsonContent(JSON.stringify(object, null, 2));
+    } catch (error) {
+      Toast.error('YAML string format error');
     }
-    var options = {
-      compact: true,
-      trim: true,
-      spaces: 2,
-      ignoreDeclaration: true,
-      ignoreInstruction: true,
-      ignoreAttributes: true,
-      ignoreComment: true,
-      ignoreCdata: true,
-      ignoreDoctype: true,
-      textFn: removeJsonTextAttribute
-    };
-    debugger
-    const xmlStr = xml2json(xmlContent, options);
-    const obj = JSON.parse(xmlStr);
-    setJsonContent(JSON.stringify(obj, null, 2))
   }
 
   function validateJSON(str) {
     try {
       JSON.parse(str);
-    } catch (e) {
+    } catch (error) {
       return false;
     }
     return true;
@@ -109,19 +61,16 @@ export default function Layout() {
           language="json"
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" style={{ width: '100px' }} justify="start">
-          <Button onClick={onJSONToXML}>json-to-xml</Button>
-          <Button onClick={onXMLToJson}>xml-to-json</Button>
+          <Button onClick={onJSONToYAML}>json-to-xml</Button>
+          <Button onClick={onYamlToJSON}>xml-to-json</Button>
         </Flex>
         <CodeEditorPanel
-          value={xmlContent}
-          filename="data.xml"
-          mime="text/xml"
-          onChange={(v) => {
-            console.log(v)
-            setXMLContent(v)
-          }}
+          value={yamlContent}
+          filename="data.yaml"
+          mime="text/yaml"
+          onChange={setYamlContent}
           validateValue={validateXML}
-          language="xml" />
+          language="yaml" />
       </Flex>
     </Flex>
   );

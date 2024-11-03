@@ -5,29 +5,13 @@ import Flex from '@/components/Flex';
 import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';
 import { useTheme } from 'next-themes'
-import { usePathname } from 'next/navigation'
 import ResponseContainer from '../ResponseContainer';
 import Navbar from '@/components/Navbar';
 import './index.scss';;
 
-const HeaderNav = [
-  //   {
-  //   name: "JSON Format",
-  //   href: "/format"
-  // },
-  {
-    name: "JSON Convert",
-    href: "/convert/json-to-xml"
-  },
-  {
-    name: "Learn JSON",
-    href: "/docs/what-is-json",
-  }]
 export default function Header() {
   const [open, setOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
-  const pathname = usePathname()
-
   const darkMode = theme === 'dark';
 
   const onChangeTheme = () => {
@@ -40,10 +24,6 @@ export default function Header() {
 
 
   const navs = [
-    //   {
-    //   name: "JSON Format",
-    //   href: "/format"
-    // },
     {
       label: "JSON Convert",
       href: "/convert/json-to-xml",

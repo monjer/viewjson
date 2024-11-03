@@ -5,13 +5,13 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import './index.scss';
 
-type NavItemProps = {
+interface NavItemProps {
   title: string;
   href: string;
   items: NavItemProps[]
 }
 
-type ItemLink = {
+interface ItemLink {
   title: string;
   href: string;
   className?: string;

@@ -16,7 +16,7 @@ interface Props {
 
 const Popover: React.FC<Props> = (props: Props) => {
   const { content = '', trigger = 'click', title = "", children, onVisibleChange, visible = false } = props;
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(visible);
   const triggerRef = React.useRef(null);
   const popoverRef = React.useRef(null);
 
@@ -33,7 +33,7 @@ const Popover: React.FC<Props> = (props: Props) => {
   }, [visible]);
 
   const hidePopOver = () => {
-    if (onVisibleChange) {
+    if ('visible' in props) {
       onVisibleChange(false);
     } else {
       setIsVisible(false);

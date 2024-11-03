@@ -31,7 +31,7 @@ function Main() {
 
   const [viewType, setViewType] = React.useState(ViewType.Plain);
 
-  const formatJson = (obj: any, space: number = 0) => {
+  const formatJson = (obj: any, space = 0) => {
     try {
       const obj = JSON.parse(value);
       const formattedStr = JSON.stringify(obj, null, space);

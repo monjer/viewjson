@@ -34,7 +34,7 @@ export const insertTabAtCoursor = keymap.of([{
   }
 }]);
 
-type CMEditorProps = {
+interface CMEditorProps {
   code: string
   onChange?: (code: string) => void
   extensions?: Extension[]

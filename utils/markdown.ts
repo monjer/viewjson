@@ -101,10 +101,10 @@ export async function getDocTocs(slug: string) {
   return extractedHeadings;
 }
 
-export type BaseMdxFrontmatter = {
+export interface BaseMdxFrontmatter {
   title: string;
   description: string;
-};
+}
 
 async function getDocContent(slug: string) {
   const contentPath = await getDocsContentPath(slug);

@@ -18,7 +18,7 @@ enum ErrrorType {
   InputError = 'InputError'
 }
 
-type Props = {
+interface Props {
   filename: string;
   mime: string;
   value?: string;

@@ -1,9 +1,9 @@
-export type DocRoute = {
+export interface DocRoute {
   title?: string;
   href?: string;
   noLink?: true;
   items?: DocRoute[];
-};
+}
 
 const docRoutes: DocRoute[] = [
   {

@@ -2,9 +2,9 @@ import React from "react";
 import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
 import docRoutes from "@/config/docSidebar";
-type PageProps = {
+interface PageProps {
   params: { slug: string[] };
-};
+}
 function CodeStyle(props) {
   return <div className="prose-code:font-code prose-pre:border  prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>
 }

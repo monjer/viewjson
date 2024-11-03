@@ -1,6 +1,7 @@
 
 import { json } from "@codemirror/lang-json";
 import { xml } from "@codemirror/lang-xml";
+import { yaml } from "@codemirror/lang-yaml";
 
 /**
  * Attach outside click listener
@@ -13,10 +14,10 @@ export const outsideClick = (
 ) => {
   if (typeof window == 'undefined') return () => { };
 
-  let elementsArray = Array.isArray(elements) ? elements : [elements];
+  const elementsArray = Array.isArray(elements) ? elements : [elements];
 
-  let handler = (evt: MouseEvent) => {
-    let targetElement = evt.target as HTMLElement;
+  const handler = (evt: MouseEvent) => {
+    const targetElement = evt.target as HTMLElement;
     if (elementsArray.every(element => {
       return !element?.contains(targetElement) && targetElement !== element
     })) {
@@ -44,6 +45,7 @@ export const readFileAsText = async (file): Promise<string> => {
 export const getLanguage = (type: string) => {
   return {
     json: json(),
-    xml: xml()
+    xml: xml(),
+    yaml: yaml()
   }[type];
 }

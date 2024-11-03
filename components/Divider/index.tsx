@@ -1,10 +1,10 @@
 import React from 'react';
 
-type DividerProps = {
+interface DividerProps {
   className?: string;
   style?: React.CSSProperties;
   vertical?: boolean;
-};
+}
 
 const Divider = (props: DividerProps) => {
   const { className = "", style = {}, vertical = false } = props
