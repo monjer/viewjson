@@ -1,5 +1,5 @@
 import React from "react";
-import Card from '@/components/Card'
+import Card from '@/components/Card';
 import TextArea from "@/components/TextArea";
 
 function ToJSONStringView({ value, onChange }: { value: string, onChange: (value: string) => void }) {
@@ -17,7 +17,7 @@ function ToJSONStringView({ value, onChange }: { value: string, onChange: (value
   const handleChange = (e: any) => {
     setJson(e.target.value);
     onChange(JSON.stringify(JSON.parse(JSON.parse(e.target.value))));
-  }
+  };
 
   return (
     <Card className="h-full w-full overflow-hidden">

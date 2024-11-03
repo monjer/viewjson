@@ -6,7 +6,7 @@ interface PageProps {
   params: { slug: string[] };
 }
 function CodeStyle(props) {
-  return <div className="prose-code:font-code prose-pre:border  prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>
+  return <div className="prose-code:font-code prose-pre:border  prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>;
 }
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {

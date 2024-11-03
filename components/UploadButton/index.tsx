@@ -3,7 +3,6 @@ import Button from '../Button';
 
 interface Props {
   onChange: (file: File) => void,
-
 }
 function generateRandomId(length) {
   const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -14,7 +13,7 @@ function generateRandomId(length) {
   return id;
 }
 
-const UploadButton = (props) => {
+const UploadButton = (props: Props) => {
   const labelRef: React.RefObject<HTMLLabelElement> = React.useRef();
   const inputRef: React.RefObject<HTMLInputElement> = React.useRef();
 

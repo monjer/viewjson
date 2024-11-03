@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import React from "react";
 import "./index.scss";
-import Button from '@/components/Button'
+import Button from '@/components/Button';
 import Flex from "@/components/Flex";
 import PlainView from "./PlainView";
 import Toast from "@/components/Toast";
 import Popover from "@/components/Popover";
-import Input from '@/components/Input'
+import Input from '@/components/Input';
 import HighlightView from "./HighlightView";
 import ToJSONStringView from "./ToJSONStringView";
 import Divider from "@/components/Divider";
@@ -40,7 +40,7 @@ function Main() {
       setToastVisible(true);
       return obj;
     }
-  }
+  };
   const onCompressBtnClick = () => {
     const formattedStr = formatJson(value);
     setViewType(ViewType.Plain);
@@ -57,7 +57,7 @@ function Main() {
     const formattedStr = formatJson(value, 2);
     setViewType(ViewType.Highlight);
     setValue(formattedStr);
-  }
+  };
 
   const onValueChange = (value) => {
     setValue(value);
@@ -65,7 +65,7 @@ function Main() {
 
   const onCleanBtnClick = () => {
     setValue('');
-  }
+  };
 
   function validateJson(str, errorMsg = 'Please input json string') {
     try {
@@ -79,26 +79,26 @@ function Main() {
 
   const onLoadBtnClick = async () => {
     setLoading(true);
-    let success = true
+    let success = true;
     try {
       const response = await fetch(jsonUrl);
       const data = await response.json();
       setValue(JSON.stringify(data, null, 2));
     } catch (error) {
-      success = false
+      success = false;
     }
     setLoading(false);
     setPopOverVisible(false);
     setRequestTipVisible(true);
     setRequestSuccess(success);
     setJsonUrl('');
-  }
+  };
 
   const onToJSONString = () => {
     const formattedStr = formatJson(value);
     setValue(formattedStr);
     setViewType(ViewType.ToJSONString);
-  }
+  };
 
   const getValueBuType = () => {
     const val = {
@@ -106,8 +106,8 @@ function Main() {
       [ViewType.Highlight]: value,
       [ViewType.ToJSONString]: JSON.stringify(JSON.stringify(JSON.parse(value))),
     }[viewType];
-    return val
-  }
+    return val;
+  };
 
   const onCopyBtnClick = () => {
     if (!value) {
@@ -118,16 +118,16 @@ function Main() {
     navigator.clipboard.writeText(copyValue);
     Toast.success('copy success');
 
-  }
+  };
 
   const renderView = () => {
     const ViewByType = {
       [ViewType.Plain]: <PlainView value={value} onChange={onValueChange} />,
       [ViewType.Highlight]: < HighlightView value={value} />,
       [ViewType.ToJSONString]: <ToJSONStringView value={value} onChange={onValueChange} />,
-    }[viewType]
+    }[viewType];
     return ViewByType;
-  }
+  };
 
   const onPasetBtnClick = async () => {
     try {
@@ -139,7 +139,7 @@ function Main() {
     } catch (err) {
       Toast.error('copy error');
     }
-  }
+  };
 
   const onLoadFile = async (file) => {
     try {
@@ -150,7 +150,7 @@ function Main() {
     } catch (error) {
       Toast.error('Please upload a json file');
     }
-  }
+  };
 
   const downloadStringAsFile = (str, filename, mimeType = 'text/plain') => {
     const blob = new Blob([str], { type: mimeType });
@@ -160,7 +160,7 @@ function Main() {
     a.download = filename;
     a.click();
     URL.revokeObjectURL(url);
-  }
+  };
 
   const onDownloadBtnClick = () => {
     if (!value) {
@@ -175,7 +175,7 @@ function Main() {
       Toast.success('Download success');
     }
 
-  }
+  };
 
   return (
     <>
@@ -215,7 +215,7 @@ function Main() {
           <Button onClick={onCleanBtnClick}>Clean</Button>
 
         </Flex>
-        <div style={{ flex: 1, overflow: 'hidden', }} className="mb-10">
+        <div style={{ flex: 1, overflow: 'hidden' }} className="mb-10">
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
             {renderView()}
           </Dropzone>
@@ -225,7 +225,7 @@ function Main() {
         type="error"
         message={"Please input json string!"}
         visible={toastVisible}
-        onClose={() => { setToastVisible(false) }}
+        onClose={() => { setToastVisible(false); }}
       />
       <Toast
         message={
@@ -233,7 +233,7 @@ function Main() {
         }
         type={requestSuccess ? 'success' : 'error'}
         visible={requestTipVisible}
-        onClose={() => { setRequestTipVisible(false) }} />
+        onClose={() => { setRequestTipVisible(false); }} />
     </>
   );
 }

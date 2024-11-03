@@ -1,14 +1,14 @@
-'use client'
+'use client';
 import React from "react";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import Toast from "@/components/Toast";
-import yaml from 'yaml'
+import yaml from 'yaml';
 
 export default function Layout() {
-  const [jsonContent, setJsonContent] = React.useState('')
-  const [yamlContent, setYamlContent] = React.useState('')
+  const [jsonContent, setJsonContent] = React.useState('');
+  const [yamlContent, setYamlContent] = React.useState('');
 
   const onJSONToYAML = () => {
     if (!validateJSON(jsonContent)) {
@@ -17,7 +17,7 @@ export default function Layout() {
     }
     const yamlStr = yaml.stringify(JSON.parse(jsonContent));
     setYamlContent(yamlStr);
-  }
+  };
 
   const onYamlToJSON = () => {
     try {
@@ -26,7 +26,7 @@ export default function Layout() {
     } catch (error) {
       Toast.error('YAML string format error');
     }
-  }
+  };
 
   function validateJSON(str) {
     try {

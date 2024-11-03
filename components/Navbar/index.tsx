@@ -9,18 +9,23 @@ interface DropdownItem {
   items?: DropdownItem[]
 }
 interface NavbarProps {
+  activeItem?: DropdownItem;
   items?: DropdownItem[];
   onSelect?: (item: DropdownItem) => void;
 }
 
-const Navbar = ({ items = [], onSelect }: NavbarProps) => {
-  const [activeItem, setActiveItem] = useState(null);
-  const pathname = usePathname()
+const Navbar = (props: NavbarProps) => {
+  const { items = [], onSelect } = props;
+  const [, setActiveItem] = useState(null);
+  const pathname = usePathname();
 
   const handleItemClick = (item) => {
-    setActiveItem(item);
-    if (onSelect) {
-      onSelect(item);
+    if ('activeItem' in props) {
+      if (onSelect) {
+        onSelect(item);
+      }
+    } else {
+      setActiveItem(item);
     }
   };
 
@@ -34,7 +39,7 @@ const Navbar = ({ items = [], onSelect }: NavbarProps) => {
                 const active = pathname.indexOf(item.href) === 0;
                 let className = "cursor-pointer hover:text-gray-900 dark:hover:text-white";
                 if (active) {
-                  className += " text-gray-900 dark:text-white"
+                  className += " text-gray-900 dark:text-white";
                 }
                 if (item.items?.length > 0) {
                   return (
@@ -43,13 +48,13 @@ const Navbar = ({ items = [], onSelect }: NavbarProps) => {
                         {item.label}
                       </a>
                     </Dropdown>
-                  )
+                  );
                 }
                 return (
                   <Link className={`mr-5  ${className}`} href={item.href} key={item.href} >
                     {item.label}
                   </Link>
-                )
+                );
               })
             }
           </div>

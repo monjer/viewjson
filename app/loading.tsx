@@ -6,5 +6,5 @@ export default function Loading() {
     <div className='text-center text-2xl p-10'>
       Loading
     </div>
-  )
+  );
 }

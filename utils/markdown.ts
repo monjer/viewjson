@@ -1,6 +1,6 @@
-import { compileMDX } from 'next-mdx-remote/rsc'
-import path from 'path'
-import fsp from 'fs/promises'
+import { compileMDX } from 'next-mdx-remote/rsc';
+import path from 'path';
+import fsp from 'fs/promises';
 import remarkGfm from "remark-gfm";
 import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -17,7 +17,7 @@ async function isFileExists(filePath: string) {
     await fsp.access(filePath);
     return true;
   } catch (err) {
-    return false
+    return false;
   }
 }
 
@@ -56,28 +56,28 @@ async function parseMdx<Frontmatter>(rawMdx: string) {
           rehypePrism,
           rehypeSlug,
           rehypeAutolinkHeadings,
-          postProcess
+          postProcess,
         ],
         remarkPlugins: [remarkGfm],
       },
     },
     components: {
-      pre: Pre
-    }
+      pre: Pre,
+    },
   });
 }
 
 async function getDocsContentPath(slug: string) {
   const exist = await isFileExists(path.join(DOC_PATH, `${slug}.mdx`));
   if (exist) {
-    return path.join(DOC_PATH, `${slug}.mdx`)
+    return path.join(DOC_PATH, `${slug}.mdx`);
   } else {
     return path.join(DOC_PATH, `${slug}/index.mdx`);
   }
 }
 
 function sluggify(text: string) {
-  const slugger = new GithubSlugger()
+  const slugger = new GithubSlugger();
   return slugger.slug(text);
   // const slug = text.toLowerCase().replace(/\s+/g, "-").replace(/\./g, '');
 }
@@ -97,7 +97,7 @@ export async function getDocTocs(slug: string) {
       href: `#${slug.toLowerCase()}`,
     });
   }
-  console.log(extractedHeadings)
+  console.log(extractedHeadings);
   return extractedHeadings;
 }
 
@@ -109,7 +109,7 @@ export interface BaseMdxFrontmatter {
 async function getDocContent(slug: string) {
   const contentPath = await getDocsContentPath(slug);
   const markdownContent = await fsp.readFile(contentPath, "utf-8");
-  return markdownContent
+  return markdownContent;
 }
 export async function getDocsForSlug(slug: string) {
   try {

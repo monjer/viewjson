@@ -1,4 +1,4 @@
-import Script from 'next/script'
+import Script from 'next/script';
 
 export default function DashboardLayout({
   children,
@@ -10,5 +10,5 @@ export default function DashboardLayout({
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.5.0/fxparser.min.js" strategy="beforeInteractive" />
       {children}
     </>
-  )
+  );
 }

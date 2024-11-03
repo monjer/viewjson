@@ -1,14 +1,14 @@
-'use client'
+'use client';
 import React from "react";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
-import { json2xml, xml2json } from 'xml-js'
+import { json2xml, xml2json } from 'xml-js';
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import Toast from "@/components/Toast";
 
 export default function Layout() {
-  const [xmlContent, setXMLContent] = React.useState('')
-  const [jsonContent, setJsonContent] = React.useState('')
+  const [xmlContent, setXMLContent] = React.useState('');
+  const [jsonContent, setJsonContent] = React.useState('');
 
   const onJSONToXML = () => {
     if (!validateJSON(jsonContent)) {
@@ -19,15 +19,15 @@ export default function Layout() {
     const obj = JSON.parse(jsonContent);
     const jsonStr = json2xml(JSON.stringify({
       $declaration, // 添加declaration声明 <?xml version="1.0" encoding="utf-8"?>
-      ...obj
+      ...obj,
     }), {
       compact: true,
       spaces: 4,
       ignoreDoctype: true,
-      declarationKey: '$declaration'
+      declarationKey: '$declaration',
     });
     setXMLContent(jsonStr);
-  }
+  };
 
 
   function nativeType(value) {
@@ -51,7 +51,7 @@ export default function Layout() {
       const keyName = Object.keys(parentElement._parent)[keyNo - 1];
       parentElement._parent[keyName] = nativeType(value);
     } catch (e) { }
-  }
+  };
 
   const onXMLToJson = () => {
     if (!validateXML(xmlContent)) {
@@ -69,12 +69,12 @@ export default function Layout() {
       ignoreComment: true,
       ignoreCdata: true,
       ignoreDoctype: true,
-      textFn: removeJsonTextAttribute
+      textFn: removeJsonTextAttribute,
     };
     const xmlStr = xml2json(xmlContent, options);
     const obj = JSON.parse(xmlStr);
-    setJsonContent(JSON.stringify(obj, null, 2))
-  }
+    setJsonContent(JSON.stringify(obj, null, 2));
+  };
 
   function validateJSON(str) {
     try {
@@ -117,8 +117,8 @@ export default function Layout() {
           filename="data.xml"
           mime="text/xml"
           onChange={(v) => {
-            console.log(v)
-            setXMLContent(v)
+            console.log(v);
+            setXMLContent(v);
           }}
           validateValue={validateXML}
           language="xml" />

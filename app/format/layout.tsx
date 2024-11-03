@@ -9,7 +9,7 @@ const FormatLayout: React.FC = (props: FormatLayoutProps) => {
     <ResponseContainer className="app-format-content h-[calc(100vh-80px)] overflow-hidden">
       {props.children}
     </ResponseContainer>
-  )
-}
+  );
+};
 
 export default FormatLayout;

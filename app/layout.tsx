@@ -1,16 +1,16 @@
 
-import React from 'react'
-import Layout from '@/slots/Layout'
-import type { Metadata } from 'next'
+import React from 'react';
+import Layout from '@/slots/Layout';
+import type { Metadata } from 'next';
 import './global.scss';
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { ThemeProvider } from 'next-themes'
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { ThemeProvider } from 'next-themes';
 
 
 export const metadata: Metadata = {
   title: 'view-json',
   description: 'view-json, a tool to view json',
-}
+};
 
 export default function RootLayout({
   children,
@@ -30,5 +30,5 @@ export default function RootLayout({
         }
       </body>
     </html >
-  )
+  );
 }

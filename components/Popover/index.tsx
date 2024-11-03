@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import Portal from '../Portal';
 import { outsideClick } from '@/utils';
@@ -44,18 +44,18 @@ const Popover: React.FC<Props> = (props: Props) => {
     let destory = null;
     if (isVisible) {
       destory = outsideClick([popoverRef.current, triggerRef.current], () => {
-        hidePopOver()
+        hidePopOver();
       });
     }
     return () => {
       destory && destory();
-    }
+    };
   }, [isVisible]);
 
   React.useEffect(() => {
     if (isVisible) {
       const { top, left } = position(popoverRef.current, triggerRef.current, 'bottom-left');
-      const verticalOffset = 6
+      const verticalOffset = 6;
       popoverRef.current.style.top = `${top + verticalOffset}px`;
       popoverRef.current.style.left = `${left}px`;
     }
@@ -72,12 +72,12 @@ const Popover: React.FC<Props> = (props: Props) => {
         hidePopOver();
       }
     }
-  }
+  };
   return (
     <>
       {React.cloneElement(children, {
         ref: triggerRef,
-        onClick: onClick
+        onClick: onClick,
       })}
       <Portal>
         {isVisible && (
@@ -96,7 +96,7 @@ const Popover: React.FC<Props> = (props: Props) => {
         )}
       </Portal>
     </>
-  )
+  );
 };
 
 export default Popover;

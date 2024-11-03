@@ -35,5 +35,5 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
 
     </button>
   );
-}
+};
 export default React.forwardRef(Button);

@@ -39,12 +39,12 @@ const Dropdown = (props: DropdownProps) => {
     let destory = null;
     if (isOpen) {
       destory = outsideClick([popoverRef.current, triggerRef.current], () => {
-        toggleDropdown()
+        toggleDropdown();
       });
     }
     return () => {
       destory && destory();
-    }
+    };
   }, [isOpen]);
 
 

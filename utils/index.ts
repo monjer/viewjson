@@ -10,8 +10,9 @@ import { yaml } from "@codemirror/lang-yaml";
  */
 export const outsideClick = (
   elements: HTMLElement | HTMLElement[],
-  onOutsideClick: (evt: MouseEvent) => any
+  onOutsideClick: (evt: MouseEvent) => void,
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   if (typeof window == 'undefined') return () => { };
 
   const elementsArray = Array.isArray(elements) ? elements : [elements];
@@ -19,7 +20,7 @@ export const outsideClick = (
   const handler = (evt: MouseEvent) => {
     const targetElement = evt.target as HTMLElement;
     if (elementsArray.every(element => {
-      return !element?.contains(targetElement) && targetElement !== element
+      return !element?.contains(targetElement) && targetElement !== element;
     })) {
       onOutsideClick(evt);
     }
@@ -39,13 +40,13 @@ export const readFileAsText = async (file): Promise<string> => {
     };
     reader.readAsText(file);
   });
-}
+};
 
 
 export const getLanguage = (type: string) => {
   return {
     json: json(),
     xml: xml(),
-    yaml: yaml()
+    yaml: yaml(),
   }[type];
-}
+};

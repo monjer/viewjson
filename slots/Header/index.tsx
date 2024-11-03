@@ -4,7 +4,7 @@ import React from 'react';
 import Flex from '@/components/Flex';
 import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';
-import { useTheme } from 'next-themes'
+import { useTheme } from 'next-themes';
 import ResponseContainer from '../ResponseContainer';
 import Navbar from '@/components/Navbar';
 import './index.scss';;
@@ -15,12 +15,12 @@ export default function Header() {
   const darkMode = theme === 'dark';
 
   const onChangeTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   const onClick = () => {
     setOpen(true);
-  }
+  };
 
 
   const navs = [
@@ -36,12 +36,12 @@ export default function Header() {
           label: "JSON to YAML",
           href: "/convert/json-to-yaml",
         },
-      ]
+      ],
     },
     {
       label: "Learn JSON",
       href: "/docs/what-is-json",
-    }]
+    }];
   return (
     <div className='app-header-container sticky top-0 z-10 border-b border-b-stone-300 dark:border-b-gray-700 bg-white dark:bg-gray-900'>
       <ResponseContainer className='app-header flex-grow flex items-center px-4 position-relative  '>

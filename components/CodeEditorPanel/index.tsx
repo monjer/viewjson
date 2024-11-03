@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import React from "react";
-import Button from '@/components/Button'
+import Button from '@/components/Button';
 import Flex from "@/components/Flex";
 import Toast from "@/components/Toast";
 import Popover from "@/components/Popover";
-import Input from '@/components/Input'
+import Input from '@/components/Input';
 import Divider from "@/components/Divider";
 import UploadButton from "@/components/UploadButton";
 import { readFileAsText } from "@/utils";
@@ -43,16 +43,16 @@ function CodeEditorPanel(props: Props) {
     return {
       [ErrrorType.UploadError]: `Please upload a ${language} file`,
       [ErrrorType.InputError]: `Please input ${language} string`,
-    }[type]
-  }
+    }[type];
+  };
 
   const updateValeue = (val: string) => {
     if ('value' in props) {
-      props.onChange(val)
+      props.onChange(val);
     } else {
       setValue(value);
     }
-  }
+  };
 
   const onValueChange = (value) => {
     updateValeue(value);
@@ -60,24 +60,24 @@ function CodeEditorPanel(props: Props) {
 
   const onCleanBtnClick = () => {
     updateValeue('');
-  }
+  };
 
   const onLoadBtnClick = async () => {
     setLoading(true);
-    let success = true
+    let success = true;
     try {
       const response = await fetch(jsonUrl);
       const data = await response.json();
       updateValeue(JSON.stringify(data, null, 2));
     } catch (error) {
-      success = false
+      success = false;
     }
     setLoading(false);
     setPopOverVisible(false);
     setRequestTipVisible(true);
     setRequestSuccess(success);
     setJsonUrl('');
-  }
+  };
 
   const onCopyBtnClick = () => {
     if (!value) {
@@ -87,7 +87,7 @@ function CodeEditorPanel(props: Props) {
     navigator.clipboard.writeText(value);
     Toast.success('copy success');
 
-  }
+  };
 
   const onPasetBtnClick = async () => {
     try {
@@ -100,12 +100,12 @@ function CodeEditorPanel(props: Props) {
     } catch (err) {
       Toast.error('copy error');
     }
-  }
+  };
 
   const onLoadFile = async (file) => {
     try {
       const jsontext = await readFileAsText(file);
-      if (validateValue(jsontext,)) {
+      if (validateValue(jsontext)) {
         updateValeue(jsontext);
       } else {
         Toast.error(getErrorMessage(ErrrorType.UploadError));
@@ -113,7 +113,7 @@ function CodeEditorPanel(props: Props) {
     } catch (error) {
       Toast.error(getErrorMessage(ErrrorType.UploadError));
     }
-  }
+  };
 
   const downloadStringAsFile = (str, filename, mimeType = 'text/plain') => {
     const blob = new Blob([str], { type: mimeType });
@@ -123,7 +123,7 @@ function CodeEditorPanel(props: Props) {
     a.download = filename;
     a.click();
     URL.revokeObjectURL(url);
-  }
+  };
 
   const onDownloadBtnClick = () => {
     if (!value) {
@@ -132,13 +132,13 @@ function CodeEditorPanel(props: Props) {
     }
     downloadStringAsFile(value, filename, mime);
     Toast.success('Download success');
-  }
+  };
 
   React.useEffect(() => {
     if ('value' in props) {
       setValue(props.value);
     }
-  }, [props.value])
+  }, [props.value]);
 
   return (
     <>
@@ -173,7 +173,7 @@ function CodeEditorPanel(props: Props) {
           <Button onClick={onCleanBtnClick}>Clean</Button>
 
         </Flex>
-        <div style={{ flex: 1, overflow: 'hidden', }}>
+        <div style={{ flex: 1, overflow: 'hidden' }}>
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
             <Card className="app-highlight-json-block h-full w-full overflow-auto" >
               <CmEditor code={value} onChange={onValueChange} extensions={[langExtension]} />
@@ -185,7 +185,7 @@ function CodeEditorPanel(props: Props) {
         type="error"
         message={"Please input json string!"}
         visible={toastVisible}
-        onClose={() => { setToastVisible(false) }}
+        onClose={() => { setToastVisible(false); }}
       />
       <Toast
         message={
@@ -193,7 +193,7 @@ function CodeEditorPanel(props: Props) {
         }
         type={requestSuccess ? 'success' : 'error'}
         visible={requestTipVisible}
-        onClose={() => { setRequestTipVisible(false) }} />
+        onClose={() => { setRequestTipVisible(false); }} />
     </>
   );
 }

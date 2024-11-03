@@ -1,5 +1,5 @@
-import DocSidebar from "@/slots/DocSidebar"
-import Flex from "@/components/Flex"
+import DocSidebar from "@/slots/DocSidebar";
+import Flex from "@/components/Flex";
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   return (
     <Flex className="app-doc-content container mx-auto ">
@@ -8,5 +8,5 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
       </aside>
       {children}
     </Flex>
-  )
+  );
 }

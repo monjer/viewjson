@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@/components/Button'
-import './index.scss'
+import Button from '@/components/Button';
+import './index.scss';
+
 const Dialog = (props: {
   open?: boolean;
   onOk?: () => void;
@@ -16,14 +16,14 @@ const Dialog = (props: {
   const { open = true, onOk = null, onCancel = null, title, children, cancelProps = {}, okProps = {}, onClose } = props;
   const [destroyed, setDestroyed] = React.useState(true);
   const backdropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const modalRef: React.RefObject<HTMLDivElement> = React.useRef(null)
+  const modalRef: React.RefObject<HTMLDivElement> = React.useRef(null);
 
   React.useEffect(() => {
     const handler = () => {
       if (!open) {
         setDestroyed(true);
       }
-    }
+    };
     backdropRef?.current?.addEventListener('animationend', handler);
     if (open) {
       setDestroyed(false);
@@ -57,7 +57,7 @@ const Dialog = (props: {
         </footer>
       </div>
     </div>
-  )
+  );
 
 };
 

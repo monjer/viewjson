@@ -1,6 +1,6 @@
 import React from "react";
 import { EditorView, keymap, ViewUpdate } from "@codemirror/view";
-import { EditorState, Compartment, StateField, EditorSelection, Extension } from '@codemirror/state';
+import { EditorState, Compartment, EditorSelection, Extension } from '@codemirror/state';
 import { basicSetup } from "codemirror";
 import { coolGlow, clouds } from 'thememirror';
 import { standardKeymap, indentWithTab } from '@codemirror/commands';
@@ -19,19 +19,19 @@ export const insertTabAtCoursor = keymap.of([{
       if (range.empty) {
         return {
           changes: { from: range.from, insert: '\t' },
-          range: EditorSelection.cursor(range.from + 1)
+          range: EditorSelection.cursor(range.from + 1),
         };
       } else {
         return {
           changes: { from: range.from, insert: '\t' },
-          range: EditorSelection.cursor(range.from + 1)
+          range: EditorSelection.cursor(range.from + 1),
         };
       }
 
     });
     view.dispatch(changes);
     return true;
-  }
+  },
 }]);
 
 interface CMEditorProps {
@@ -44,7 +44,7 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
 
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
-  const [cursorPosition, setCursorPosition] = React.useState(null);
+  const [, setCursorPosition] = React.useState(null);
 
   function onEditorChange(viewUpdate: ViewUpdate) {
     if (viewUpdate.changes) {
@@ -74,11 +74,11 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
       if (editor) {
         setCursorPosition({
           anchor: newSelection?.ranges[0].anchor,
-          head: newSelection?.ranges[0].head
+          head: newSelection?.ranges[0].head,
         });
       }
     }
-  }
+  };
 
   React.useEffect(() => {
     viewRef.current = new EditorView({
@@ -98,10 +98,10 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
         EditorView.domEventHandlers({
           keydown: (event) => {
             interceptSaveKeydown(event);
-          }
-        })
+          },
+        }),
       ],
-      parent: elRef.current
+      parent: elRef.current,
     });
     const targetNode = document.documentElement;
     // 配置观察选项
@@ -114,11 +114,11 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
           if (target.classList.contains('dark')) {
             viewRef.current.dispatch({
               effects: themeConfig.reconfigure(coolGlow),
-            })
+            });
           } else {
             viewRef.current.dispatch({
               effects: themeConfig.reconfigure(clouds),
-            })
+            });
           }
         }
       }
@@ -127,7 +127,7 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
     return () => {
       viewRef.current.destroy();
       observer.disconnect();
-    }
+    };
   }, []);
 
   React.useEffect(() => {
@@ -140,9 +140,9 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
           changes: {
             from: 0,
             to: currentValue.length,
-            insert: code
+            insert: code,
           },
-        }
+        };
         viewRef.current.dispatch(viewUpdate);
       }
     }
