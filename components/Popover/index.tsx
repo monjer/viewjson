@@ -48,7 +48,7 @@ const Popover: React.FC<Props> = (props: Props) => {
       });
     }
     return () => {
-      destory && destory();
+      destory?.();
     };
   }, [isVisible]);
 

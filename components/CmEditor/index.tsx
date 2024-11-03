@@ -56,7 +56,7 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
 
   const saveCommand = () => {
     const editorCode = viewRef.current.state.doc.toString();
-    onChange && onChange(editorCode);
+    onChange?.(editorCode);
     return true;
   };
 

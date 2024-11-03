@@ -50,7 +50,11 @@ export default function Layout() {
       const keyNo = Object.keys(parentElement._parent).length;
       const keyName = Object.keys(parentElement._parent)[keyNo - 1];
       parentElement._parent[keyName] = nativeType(value);
-    } catch (e) { }
+    } catch (error) {
+      console.log(error);
+    }
+
+
   };
 
   const onXMLToJson = () => {

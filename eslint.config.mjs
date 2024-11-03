@@ -5,8 +5,15 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    // config with just ignores is the replacement for `.eslintignore`
-    ignores: ['**/.next/**', '**/dist/**', 'next.config.js', 'tailwind.config.js', 'postcss.config.js'],
+    ignores: [
+      '**/.next/**/*',
+      '.vercel/**/*',
+      'node_modules/**/*',
+      'dist/**/*',
+      'next.config.js',
+      'tailwind.config.js',
+      'postcss.config.js',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -15,6 +22,7 @@ export default tseslint.config(
     rules: {
       "comma-dangle": ["error", "always-multiline"],
       "semi": ["error", "always"],
+      "@typescript-eslint/no-unused-vars": ["error", { "caughtErrors": "none" }],
     },
   },
 );

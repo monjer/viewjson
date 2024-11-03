@@ -14,7 +14,7 @@ function ToJSONStringView({ value, onChange }: { value: string, onChange: (value
     }
   }, [value]);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setJson(e.target.value);
     onChange(JSON.stringify(JSON.parse(JSON.parse(e.target.value))));
   };

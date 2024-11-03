@@ -69,6 +69,7 @@ function CodeEditorPanel(props: Props) {
       const response = await fetch(jsonUrl);
       const data = await response.json();
       updateValeue(JSON.stringify(data, null, 2));
+
     } catch (error) {
       success = false;
     }
@@ -110,6 +111,7 @@ function CodeEditorPanel(props: Props) {
       } else {
         Toast.error(getErrorMessage(ErrrorType.UploadError));
       }
+
     } catch (error) {
       Toast.error(getErrorMessage(ErrrorType.UploadError));
     }

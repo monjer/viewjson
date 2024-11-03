@@ -3,6 +3,7 @@ import Button from '../Button';
 
 interface Props {
   onChange: (file: File) => void,
+  children: React.ReactNode
 }
 function generateRandomId(length) {
   const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';

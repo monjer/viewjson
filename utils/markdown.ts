@@ -16,6 +16,7 @@ async function isFileExists(filePath: string) {
   try {
     await fsp.access(filePath);
     return true;
+     
   } catch (err) {
     return false;
   }
@@ -23,6 +24,7 @@ async function isFileExists(filePath: string) {
 
 
 // for copying the code
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const preProcess = () => (tree: any) => {
   visit(tree, (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
@@ -33,11 +35,11 @@ const preProcess = () => (tree: any) => {
   });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const postProcess = () => (tree: any) => {
   visit(tree, "element", (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
       node.properties["raw"] = node.raw;
-      // console.log(node);
     }
   });
 };

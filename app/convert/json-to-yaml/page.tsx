@@ -43,7 +43,7 @@ export default function Layout() {
       // 检查解析后的结果是否包含错误
       const hasError = xmlDoc.getElementsByTagName("parsererror").length > 0;
       return !hasError;
-    } catch (e) {
+    } catch (error) {
       // 如果捕获到异常，说明字符串不是有效的XML
       return false;
     }

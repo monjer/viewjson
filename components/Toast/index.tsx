@@ -19,7 +19,7 @@ const Toast = (props: Props) => {
   const { message, onClose, type = "info", visible = false, closable = true } = props;
   const [destroy, setDestroy] = useState(true);
   const toastRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const timerRef = React.useRef<any>();
+  const timerRef = React.useRef<unknown>();
 
   React.useEffect(() => {
     const handler = () => {
@@ -42,7 +42,7 @@ const Toast = (props: Props) => {
   }, [visible]);
 
   const onCloseBtnClick = () => {
-    onClose && onClose();
+    onClose?.();
   };
 
   if (destroy) {

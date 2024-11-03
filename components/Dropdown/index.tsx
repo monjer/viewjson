@@ -21,7 +21,7 @@ const Dropdown = (props: DropdownProps) => {
 
   const toggleDropdown = () => {
     if ('visible' in props) {
-      onOpenChange && onOpenChange(!isOpen);
+      onOpenChange?.(!isOpen);
     } else {
       setIsOpen(!isOpen);
     }
@@ -43,7 +43,7 @@ const Dropdown = (props: DropdownProps) => {
       });
     }
     return () => {
-      destory && destory();
+      destory?.();
     };
   }, [isOpen]);
 
