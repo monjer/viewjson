@@ -6,7 +6,7 @@ import { outsideClick } from '@/utils';
 interface DropdownProps {
   defaultOpen?: boolean
   open?: boolean
-  items?: { label: string; href: string }[];
+  items?: { label: string; href?: string }[];
   onSelect?: (item: { label: string; href: string }) => void;
   children: React.ReactNode;
   className?: string;
@@ -56,12 +56,12 @@ const Dropdown = (props: DropdownProps) => {
         <ChevronDown size={12} />
       </span>
       {isOpen && (
-        <nav ref={popoverRef} className="absolute left-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <nav ref={popoverRef} className="absolute left-0 w-56 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-900">
           <ul className='py-2'>
             {items.map((item, index) => (
               <li
-                key={index}
-                className="px-4 py-4 text-md cursor-pointer text-gray-700 hover:bg-gray-100"
+                key={`${item.href}-${index}`}
+                className="px-4 py-4 text-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
                 onClick={() => handleItemClick(item)}
               >
                 <Link className="flex items-center" href={item.href} >

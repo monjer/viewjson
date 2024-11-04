@@ -5,6 +5,9 @@ import Button from "@/components/Button";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import Toast from "@/components/Toast";
 import yaml from 'yaml';
+import Tooltip from "@/components/Tooltip";
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+
 
 export default function Layout() {
   const [jsonContent, setJsonContent] = React.useState('');
@@ -36,18 +39,10 @@ export default function Layout() {
     }
     return true;
   }
-  function validateXML(str) {
-    try {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(str, "text/xml");
-      // 检查解析后的结果是否包含错误
-      const hasError = xmlDoc.getElementsByTagName("parsererror").length > 0;
-      return !hasError;
-    } catch (error) {
-      // 如果捕获到异常，说明字符串不是有效的XML
-      return false;
-    }
+  function validateYAML() {
+    return true;
   }
+
   return (
     <Flex className="h-full w-full" direction="col">
       <h1 className="text-2xl font-bold my-6" >JSON To YAML</h1>
@@ -60,16 +55,20 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
         />
-        <Flex className="gap-2 mx-2 mt-20" direction="col" style={{ width: '100px' }} justify="start">
-          <Button onClick={onJSONToYAML}>json-to-xml</Button>
-          <Button onClick={onYamlToJSON}>xml-to-json</Button>
+        <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
+          <Tooltip text="json to yaml">
+            <Button onClick={onJSONToYAML} style={{ width: '30px', height: '30px' }}><ChevronRight size={20} /></Button>
+          </Tooltip>
+          <Tooltip text="yaml to json ">
+            <Button onClick={onYamlToJSON} style={{ width: '30px', height: '30px' }}><ChevronLeft size={20} /></Button>
+          </Tooltip>
         </Flex>
         <CodeEditorPanel
           value={yamlContent}
           filename="data.yaml"
           mime="text/yaml"
           onChange={setYamlContent}
-          validateValue={validateXML}
+          validateValue={validateYAML}
           language="yaml" />
       </Flex>
     </Flex>

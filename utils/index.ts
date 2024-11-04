@@ -2,6 +2,8 @@
 import { json } from "@codemirror/lang-json";
 import { xml } from "@codemirror/lang-xml";
 import { yaml } from "@codemirror/lang-yaml";
+import { LRLanguage, indentNodeProp, foldNodeProp } from '@codemirror/language';
+
 
 /**
  * Attach outside click listener
@@ -41,7 +43,6 @@ export const readFileAsText = async (file): Promise<string> => {
     reader.readAsText(file);
   });
 };
-
 
 export const getLanguage = (type: string) => {
   return {

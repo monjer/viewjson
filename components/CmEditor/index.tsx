@@ -81,11 +81,14 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
   };
 
   React.useEffect(() => {
+    const finalExtensions = extensions.filter((item) => {
+      return item;
+    }) || [];
     viewRef.current = new EditorView({
       doc: code,
       extensions: [
         basicSetup,
-        [...extensions],
+        [...finalExtensions],
         insertTabAtCoursor,
         EditorState.tabSize.of(2),
         EditorView.lineWrapping,

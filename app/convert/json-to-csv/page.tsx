@@ -1,0 +1,75 @@
+'use client';
+import React from "react";
+import Flex from "@/components/Flex";
+import Button from "@/components/Button";
+import CodeEditorPanel from "@/components/CodeEditorPanel";
+import Toast from "@/components/Toast";
+import Papa from 'papaparse';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import Tooltip from "@/components/Tooltip";
+
+export default function Layout() {
+  const [csvContent, setCsvContent] = React.useState('');
+  const [jsonContent, setJsonContent] = React.useState('');
+
+  const onJSONToCsv = () => {
+    if (!validateJSON(jsonContent)) {
+      Toast.error('Please input JSON string');
+      return;
+    }
+    const obj = JSON.parse(jsonContent);
+    const jsonStr = Papa.unparse(obj);
+    setCsvContent(jsonStr);
+  };
+
+  const onCsvToJson = () => {
+    const csvStr = Papa.parse(csvContent);
+    const obj = JSON.parse(csvStr);
+    setJsonContent(JSON.stringify(obj, null, 2));
+  };
+
+  function validateJSON(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+  function validateCSV() {
+    return true;
+  }
+  return (
+    <Flex className="h-full w-full" direction="col">
+      <h1 className="text-2xl font-bold my-6" >JSON To CSV</h1>
+      <Flex className="mb-5 overflow-hidden grow">
+        <CodeEditorPanel
+          value={jsonContent}
+          filename="data.json"
+          mime="application/json"
+          onChange={setJsonContent}
+          validateValue={validateJSON}
+          language="json"
+        />
+        <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
+          <Tooltip text="json to csv">
+            <Button onClick={onJSONToCsv} style={{ width: '30px', height: '30px' }}><ChevronRight size={20} /></Button>
+          </Tooltip>
+          <Tooltip text="csv to json ">
+            <Button onClick={onCsvToJson} style={{ width: '30px', height: '30px' }}><ChevronLeft size={20} /></Button>
+          </Tooltip>
+        </Flex>
+        <CodeEditorPanel
+          value={csvContent}
+          filename="data.csv"
+          mime="text/csv"
+          onChange={(v) => {
+            console.log(v);
+            setCsvContent(v);
+          }}
+          validateValue={validateCSV}
+          language="csv" />
+      </Flex>
+    </Flex>
+  );
+}

@@ -5,6 +5,8 @@ import Button from "@/components/Button";
 import { json2xml, xml2json } from 'xml-js';
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import Toast from "@/components/Toast";
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import Tooltip from "@/components/Tooltip";
 
 export default function Layout() {
   const [xmlContent, setXMLContent] = React.useState('');
@@ -112,9 +114,13 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
         />
-        <Flex className="gap-2 mx-2 mt-20" direction="col" style={{ width: '100px' }} justify="start">
-          <Button onClick={onJSONToXML}>json-to-xml</Button>
-          <Button onClick={onXMLToJson}>xml-to-json</Button>
+        <Flex className="gap-2 mx-4 mt-20" direction="col" justify="start">
+          <Tooltip text="json to xml">
+            <Button onClick={onJSONToXML} style={{ width: '30px', height: '30px' }}><ChevronRight size={20} /></Button>
+          </Tooltip>
+          <Tooltip text="xml to json ">
+            <Button onClick={onXMLToJson} style={{ width: '30px', height: '30px' }}><ChevronLeft size={20} /></Button>
+          </Tooltip>
         </Flex>
         <CodeEditorPanel
           value={xmlContent}

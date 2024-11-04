@@ -36,7 +36,6 @@ function Main() {
       const obj = JSON.parse(value);
       const formattedStr = JSON.stringify(obj, null, space);
       return formattedStr;
-       
     } catch (error) {
       setToastVisible(true);
       return obj;
@@ -71,7 +70,7 @@ function Main() {
   function validateJson(str, errorMsg = 'Please input json string') {
     try {
       JSON.parse(str);
-       
+
     } catch (e) {
       Toast.error(errorMsg);
       return false;
@@ -86,7 +85,7 @@ function Main() {
       const response = await fetch(jsonUrl);
       const data = await response.json();
       setValue(JSON.stringify(data, null, 2));
-       
+
     } catch (error) {
       success = false;
     }
@@ -138,7 +137,7 @@ function Main() {
       if (validateJson(text, 'Please copy a json string')) {
         setValue(text);
       }
-       
+
     } catch (err) {
       Toast.error('copy error');
     }
@@ -150,7 +149,7 @@ function Main() {
       if (validateJson(jsontext, 'Please upload a json file')) {
         setValue(jsontext);
       }
-       
+
     } catch (error) {
       Toast.error('Please upload a json file');
     }
