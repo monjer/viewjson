@@ -22,10 +22,16 @@ export default function Layout() {
     setCsvContent(jsonStr);
   };
 
-  const onCsvToJson = () => {
-    const csvStr = Papa.parse(csvContent);
-    const obj = JSON.parse(csvStr);
-    setJsonContent(JSON.stringify(obj, null, 2));
+  const onCsvToJson = async () => {
+    const result = await new Promise((resolve) => {
+      Papa.parse(csvContent, { worker: true, header: true, dynamicTyping: true, complete: resolve });
+    }) as { errors: unknown[], data: object };
+    if (result.errors.length > 0) {
+      Toast.error('Parse error');
+    } else {
+      setJsonContent(JSON.stringify(result.data, null, 2));
+    }
+
   };
 
   function validateJSON(str) {
