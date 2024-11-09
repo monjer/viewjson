@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/prefer-for-of */
+/* eslint-disable prefer-const */
 import {
   EditorView, ViewPlugin, Decoration, DecorationSet,
   WidgetType, ViewUpdate, Command, logException, KeyBinding,
@@ -254,6 +257,7 @@ export const closeLintPanel: Command = (view: EditorView) => {
 export const nextDiagnostic: Command = (view: EditorView) => {
   const field = view.state.field(lintState, false);
   if (!field) return false;
+
   let sel = view.state.selection.main, next = field.diagnostics.iter(sel.to + 1);
   if (!next.value) {
     next = field.diagnostics.iter(0);
@@ -292,7 +296,7 @@ export type LintSource = (view: EditorView) => readonly Diagnostic[] | Promise<r
 
 const lintPlugin = ViewPlugin.fromClass(class {
   lintTime: number;
-  timeout = -1;
+  timeout: any = -1;
   set = true;
 
   constructor(readonly view: EditorView) {

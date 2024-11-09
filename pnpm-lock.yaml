@@ -26,9 +26,6 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.3
         version: 6.10.3
-      '@codemirror/lint':
-        specifier: ^6.8.2
-        version: 6.8.2
       '@codemirror/state':
         specifier: ^6.4.1
         version: 6.4.1
