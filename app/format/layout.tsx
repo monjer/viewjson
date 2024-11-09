@@ -6,7 +6,7 @@ interface FormatLayoutProps {
 }
 const FormatLayout: React.FC = (props: FormatLayoutProps) => {
   return (
-    <ResponseContainer className="app-format-content h-[calc(100vh-80px)] overflow-hidden">
+    <ResponseContainer className="h-[calc(100vh-60px)] overflow-hidden">
       {props.children}
     </ResponseContainer>
   );

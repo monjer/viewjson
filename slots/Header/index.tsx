@@ -43,6 +43,10 @@ export default function Header() {
       ],
     },
     {
+      label: "JSON Validate",
+      href: "/validate",
+    },
+    {
       label: "Learn JSON",
       href: "/docs/what-is-json",
     }];

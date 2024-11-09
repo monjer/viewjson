@@ -12,6 +12,7 @@ import Dropzone from '@/components/Dropzone';
 import Card from "@/components/Card";
 import CmEditor from "@/components/CmEditor";
 import { getLanguage } from "@/utils";
+import { Extension } from '@codemirror/state';
 
 enum ErrrorType {
   UploadError = 'UploadError',
@@ -19,17 +20,18 @@ enum ErrrorType {
 }
 
 interface Props {
-  filename: string;
-  mime: string;
+  filename?: string;
+  mime?: string;
   value?: string;
   defaulValue?: string;
-  validateValue: (value: string) => boolean;
+  validateValue?: (value: string) => boolean;
   onChange?: (value: string) => void;
   language?: string;
+  extensions?: Extension[]
 }
 
 function CodeEditorPanel(props: Props) {
-  const { filename, mime, language = 'json', validateValue } = props;
+  const { filename, mime, language = 'json', validateValue, extensions = [] } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
@@ -145,7 +147,7 @@ function CodeEditorPanel(props: Props) {
   return (
     <>
       <Flex className="h-full w-full" style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-4" gap="2" align="center">
+        <Flex className="my-4" gap="2" align="center">
           <UploadButton onChange={onLoadFile} >Upload File</UploadButton>
           <Popover
             visible={popOverVisible}
@@ -178,7 +180,7 @@ function CodeEditorPanel(props: Props) {
         <div style={{ flex: 1, overflow: 'hidden' }}>
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
             <Card className="app-highlight-json-block h-full w-full overflow-auto" >
-              <CmEditor code={value} onChange={onValueChange} extensions={[langExtension]} />
+              <CmEditor code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
             </Card>
           </Dropzone>
         </div>

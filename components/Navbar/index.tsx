@@ -32,7 +32,7 @@ const Navbar = (props: NavbarProps) => {
   return (
     <nav >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex-1 space-x-4 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div className="flex-1 space-x-6 flex items-center justify-center sm:items-stretch sm:justify-start">
           {
             items.map((item) => {
               const active = pathname.indexOf(item.href) > -1;
@@ -42,7 +42,7 @@ const Navbar = (props: NavbarProps) => {
               }
               if (item.items?.length > 0) {
                 return (
-                  <Dropdown items={item.items} onSelect={handleItemClick} className={"mr-5"} key={item.href}>
+                  <Dropdown items={item.items} onSelect={handleItemClick} key={item.href}>
                     <a className={`${className}`} key={item.href} >
                       {item.label}
                     </a>

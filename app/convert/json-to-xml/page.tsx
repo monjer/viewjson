@@ -90,6 +90,7 @@ export default function Layout() {
     }
     return true;
   }
+
   function validateXML(str) {
     try {
       const parser = new DOMParser();
@@ -104,7 +105,7 @@ export default function Layout() {
   }
   return (
     <Flex className="h-full w-full" direction="col">
-      <h1 className="text-2xl font-bold my-6" >JSON To XML</h1>
+      <h1 className="text-2xl font-bold mt-5" >JSON To XML</h1>
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}
