@@ -40,6 +40,10 @@ export default function Header() {
           label: "JSON to CSV",
           href: "/convert/json-to-csv",
         },
+        {
+          label: "JSON to Base64",
+          href: "/convert/json-to-base64",
+        },
       ],
     },
     {
