@@ -7,7 +7,7 @@ import Toast from "@/components/Toast";
 import yaml from 'yaml';
 import Tooltip from "@/components/Tooltip";
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-
+import PageTitle from "@/components/PageTitle";
 
 export default function Layout() {
   const [jsonContent, setJsonContent] = React.useState('');
@@ -45,7 +45,7 @@ export default function Layout() {
 
   return (
     <Flex className="h-full w-full" direction="col">
-      <h1 className="text-2xl font-bold mt-5" >JSON To YAML</h1>
+      <PageTitle title="JSON To YAML" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

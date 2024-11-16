@@ -8,6 +8,7 @@ import Papa from 'papaparse';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Tooltip from "@/components/Tooltip";
 import { Base64 } from "js-base64";
+import PageTitle from "@/components/PageTitle";
 
 export default function Layout() {
   const [base64Content, setBase64Content] = React.useState('');
@@ -41,7 +42,7 @@ export default function Layout() {
 
   return (
     <Flex className="h-full w-full" direction="col">
-      <h1 className="text-2xl font-bold mt-5" >JSON To Base64</h1>
+      <PageTitle title="JSON To Base64" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

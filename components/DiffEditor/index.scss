@@ -1,0 +1,29 @@
+.cm-merge-gap {
+  background-color: #f3f4f6 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+
+/* Empty editor split line */
+.cm-merge-pane:empty::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+
+/* Empty editor placeholder text */
+.cm-merge-pane:empty::before {
+  content: 'No content';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #9ca3af;
+  font-size: 0.875rem;
+  pointer-events: none;
+}

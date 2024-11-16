@@ -7,6 +7,7 @@ import Toast from "@/components/Toast";
 import Papa from 'papaparse';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Tooltip from "@/components/Tooltip";
+import PageTitle from "@/components/PageTitle";
 
 export default function Layout() {
   const [csvContent, setCsvContent] = React.useState('');
@@ -47,7 +48,7 @@ export default function Layout() {
   }
   return (
     <Flex className="h-full w-full" direction="col">
-      <h1 className="text-2xl font-bold mt-5" >JSON To CSV</h1>
+      <PageTitle title="JSON To CSV" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

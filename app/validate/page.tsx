@@ -2,6 +2,7 @@
 import React from "react";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import { linter, Diagnostic, lintGutter } from "@/utils/lint";
+import PageTitle from "@/components/PageTitle";
 
 export default function Page() {
   const [jsonContent, setJsonContent] = React.useState(``);
@@ -57,6 +58,7 @@ export default function Page() {
 
   return (
     <div className="h-full">
+      <PageTitle title="JSON Validate" />
       <CodeEditorPanel
         value={jsonContent}
         filename="data.json"

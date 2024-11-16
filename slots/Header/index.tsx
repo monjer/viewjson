@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 import { useTheme } from 'next-themes';
 import ResponseContainer from '../ResponseContainer';
 import Navbar from '@/components/Navbar';
-import './index.scss';;
+import './index.scss';
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -21,7 +21,6 @@ export default function Header() {
   const onClick = () => {
     setOpen(true);
   };
-
 
   const navs = [
     {
@@ -45,6 +44,10 @@ export default function Header() {
           href: "/convert/json-to-base64",
         },
       ],
+    },
+    {
+      label: "JSON Diff",
+      href: "/diff",
     },
     {
       label: "JSON Validate",

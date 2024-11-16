@@ -4,6 +4,7 @@ import { EditorState, Compartment, EditorSelection, Extension } from '@codemirro
 import { basicSetup } from "codemirror";
 import { coolGlow, clouds } from 'thememirror';
 import { standardKeymap, indentWithTab } from '@codemirror/commands';
+import useEditorTheme from "@/hooks/useEditorTheme";
 
 const themeConfig = new Compartment();
 
@@ -45,6 +46,7 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
   const [, setCursorPosition] = React.useState(null);
+  const editorTheme = useEditorTheme();
 
   function onEditorChange(viewUpdate: ViewUpdate) {
     if (viewUpdate.changes) {
@@ -89,12 +91,11 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
       extensions: [
         basicSetup,
         [...finalExtensions],
-        insertTabAtCoursor,
         EditorState.tabSize.of(2),
         EditorView.lineWrapping,
         keymap.of([indentWithTab]),
         keymap.of(standardKeymap),
-        themeConfig.of(clouds),
+        themeConfig.of(editorTheme),
         EditorView.lineWrapping,
         EditorView.updateListener.of(onEditorChange),
         EditorView.updateListener.of(updateListener),
@@ -106,32 +107,16 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
       ],
       parent: elRef.current,
     });
-    const targetNode = document.documentElement;
-    // 配置观察选项
-    const config = { attributes: true, attributeFilter: ['class'] };
-    // 创建一个MutationObserver实例，并传入回调函数
-    const observer = new MutationObserver((mutationsList: MutationRecord[]) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          const target = mutation.target as HTMLElement;
-          if (target.classList.contains('dark')) {
-            viewRef.current.dispatch({
-              effects: themeConfig.reconfigure(coolGlow),
-            });
-          } else {
-            viewRef.current.dispatch({
-              effects: themeConfig.reconfigure(clouds),
-            });
-          }
-        }
-      }
-    });
-    observer.observe(targetNode, config);
     return () => {
       viewRef.current.destroy();
-      observer.disconnect();
     };
   }, []);
+
+  React.useEffect(() => {
+    viewRef?.current?.dispatch({
+      effects: themeConfig.reconfigure(editorTheme),
+    });
+  }, [editorTheme]);
 
   React.useEffect(() => {
     if (viewRef.current) {
