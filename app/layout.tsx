@@ -9,7 +9,8 @@ import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: 'view-json',
-  description: 'view-json, a tool to view json',
+  description: 'A powerful JSON data processing tool that supports JSON formatting, convert, dff, and validation tools.',
+  keywords: "JSON processing, JSON formatting, JSON compression, JSON dff, JSON validation, JSON Data Converter, JSON processing tool",
 };
 
 export default function RootLayout({
