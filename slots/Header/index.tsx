@@ -43,6 +43,10 @@ export default function Header() {
           label: "JSON to Base64",
           href: "/convert/json-to-base64",
         },
+        {
+          label: "JSON to HTML",
+          href: "/convert/json-to-html",
+        },
       ],
     },
     {

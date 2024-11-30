@@ -1,9 +1,8 @@
 
+import { html } from "@codemirror/lang-html";
 import { json } from "@codemirror/lang-json";
 import { xml } from "@codemirror/lang-xml";
 import { yaml } from "@codemirror/lang-yaml";
-import { LRLanguage, indentNodeProp, foldNodeProp } from '@codemirror/language';
-
 
 /**
  * Attach outside click listener
@@ -49,5 +48,6 @@ export const getLanguage = (type: string) => {
     json: json(),
     xml: xml(),
     yaml: yaml(),
+    html: html(),
   }[type];
 };

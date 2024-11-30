@@ -13,6 +13,7 @@ import Card from "@/components/Card";
 import CmEditor from "@/components/CmEditor";
 import { getLanguage } from "@/utils";
 import { Extension } from '@codemirror/state';
+import formatCode from "@/utils/formatCode";
 
 enum ErrrorType {
   UploadError = 'UploadError',
@@ -27,11 +28,13 @@ interface Props {
   validateValue?: (value: string) => boolean;
   onChange?: (value: string) => void;
   language?: string;
-  extensions?: Extension[]
+  extensions?: Extension[],
+  actionButtonVisible?: boolean
 }
 
+
 function CodeEditorPanel(props: Props) {
-  const { filename, mime, language = 'json', validateValue, extensions = [] } = props;
+  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
@@ -138,6 +141,11 @@ function CodeEditorPanel(props: Props) {
     Toast.success('Download success');
   };
 
+  const onPrettyPrintBtnClick = async () => {
+    const formattedStr = await formatCode(value, language);
+    setValue(formattedStr);
+  };
+
   React.useEffect(() => {
     if ('value' in props) {
       setValue(props.value);
@@ -148,29 +156,36 @@ function CodeEditorPanel(props: Props) {
     <>
       <Flex className="h-full w-full" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="my-4" gap="2" align="center">
-          <UploadButton onChange={onLoadFile} >Upload File</UploadButton>
-          <Popover
-            visible={popOverVisible}
-            onVisibleChange={(visible) => {
-              setPopOverVisible(visible);
-              if (!visible) {
-                setJsonUrl('');
-              }
-            }}
-            title="Load data from URL"
-            content={
-              <section style={{ width: '400px' }}>
-                <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
-                <Flex justify="end">
-                  <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
-                </Flex>
-              </section>
-            }
-          >
-            <Button >Load From URL</Button>
-          </Popover>
-          <Button onClick={onPasetBtnClick}>Paste</Button>
-          <Divider vertical />
+          {
+            actionButtonVisible && (
+              <>
+                <UploadButton onChange={onLoadFile} >Upload File</UploadButton>
+                <Popover
+                  visible={popOverVisible}
+                  onVisibleChange={(visible) => {
+                    setPopOverVisible(visible);
+                    if (!visible) {
+                      setJsonUrl('');
+                    }
+                  }}
+                  title="Load data from URL"
+                  content={
+                    <section style={{ width: '400px' }}>
+                      <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
+                      <Flex justify="end">
+                        <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                      </Flex>
+                    </section>
+                  }
+                >
+                  <Button >Load From URL</Button>
+                </Popover>
+                <Button onClick={onPasetBtnClick}>Paste</Button>
+                <Divider vertical />
+              </>
+            )
+          }
+          <Button onClick={onPrettyPrintBtnClick}>Pretty Print</Button>
           <Button onClick={onCopyBtnClick}>Copy</Button>
           <Button onClick={onDownloadBtnClick}>Save</Button>
           <Divider vertical />
