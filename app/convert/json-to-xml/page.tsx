@@ -116,7 +116,7 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
         />
-        <Flex className="gap-2 mx-4 mt-20" direction="col" justify="start">
+        <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to xml">
             <Button onClick={onJSONToXML} style={{ width: '30px', height: '30px' }}><ChevronRight size={20} /></Button>
           </Tooltip>

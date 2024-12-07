@@ -37,19 +37,6 @@ export default function Layout() {
     return value;
   }
 
-
-  const removeJsonTextAttribute = function (value, parentElement) {
-    try {
-      const keyNo = Object.keys(parentElement._parent).length;
-      const keyName = Object.keys(parentElement._parent)[keyNo - 1];
-      parentElement._parent[keyName] = nativeType(value);
-    } catch (error) {
-      console.log(error);
-    }
-
-
-  };
-
   function validateJSON(str) {
     try {
       JSON.parse(str);
@@ -83,7 +70,7 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
         />
-        <Flex className="gap-2 mx-4 mt-20" direction="col" justify="start">
+        <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to html">
             <Button onClick={onJSONToHTML} style={{ width: '30px', height: '30px' }}><ChevronRight size={20} /></Button>
           </Tooltip>
