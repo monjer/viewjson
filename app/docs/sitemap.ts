@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import docRoutes from "@/config/docSidebar";
 import fs from 'fs';
 
-const BASE_URL = 'https://viewjson.com';
+const BASE_URL = 'https://viewjson.online';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
