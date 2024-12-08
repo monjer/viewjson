@@ -6,12 +6,12 @@ import './global.scss';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
 
-
 export const metadata: Metadata = {
-  title: 'ViewJson',
-  description: 'A simple json data tool that supports json formatting, convert, dff, and validation.',
-  keywords: "JSON processing, JSON formatting, JSON compression, JSON dff, JSON validation, JSON Data Converter, JSON processing tool, JSON online tools",
+  title: 'viewjson - json viewer, json formatter, json data converter, json diff, json validator ',
+  description: 'A free json online tools : json viewer, json beautifier, json formatter, json data converter, json diff, json validator, json tutorial.',
+  keywords: "online json viewer, json beautifier, json formatter, json diff, json validator, json data converter, json tutorial",
 };
+
 
 export default function RootLayout({
   children,
