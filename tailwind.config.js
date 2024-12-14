@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         background: "hsl(var(--background))",
+        textColor: 'black'
       },
     },
   },

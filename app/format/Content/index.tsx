@@ -182,7 +182,7 @@ function Main() {
 
   return (
     <>
-      <Flex className="h-full mx-4 mt-4" style={{ flexDirection: 'column', alignItems: "stretch" }}>
+      <Flex className="h-[calc(60vh)]" style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-4" gap="2" align="center">
           <Button onClick={onCompressBtnClick}>Minify</Button>
           <Button onClick={onFormtBtnClick}>Pretty</Button>

@@ -41,6 +41,7 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.3.0",
     "papaparse": "^5.4.1",
+    "path-to-regexp": "^8.2.0",
     "position.js": "^1.1.0",
     "prettier": "^3.3.3",
     "react": "^18.3.1",

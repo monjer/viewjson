@@ -7,11 +7,16 @@ import Button from '@/components/Button';
 import { useTheme } from 'next-themes';
 import ResponseContainer from '../ResponseContainer';
 import Navbar from '@/components/Navbar';
+import { pathToRegexp } from 'path-to-regexp';
+import { usePathname } from 'next/navigation';
+
 import './index.scss';
 
 export default function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
+  const [activeKeys, setActiveKeys] = React.useState([]);
   const darkMode = theme === 'dark';
 
   const onChangeTheme = () => {
@@ -25,42 +30,86 @@ export default function Header() {
   const navs = [
     {
       label: "JSON Convert",
-      href: "/convert",
+      key: "/convert",
+      highlights: ["/convert/:type"],
       items: [
         {
           label: "JSON to XML",
-          href: "/convert/json-to-xml",
+          key: "/convert/json-to-xml",
         },
         {
           label: "JSON to YAML",
-          href: "/convert/json-to-yaml",
+          key: "/convert/json-to-yaml",
         },
         {
           label: "JSON to CSV",
-          href: "/convert/json-to-csv",
+          key: "/convert/json-to-csv",
         },
         {
           label: "JSON to Base64",
-          href: "/convert/json-to-base64",
+          key: "/convert/json-to-base64",
         },
         {
           label: "JSON to HTML",
-          href: "/convert/json-to-html",
+          key: "/convert/json-to-html",
         },
       ],
     },
     {
       label: "JSON Diff",
-      href: "/diff",
+      key: "/diff",
     },
     {
       label: "JSON Validate",
-      href: "/validate",
+      key: "/validate",
     },
     {
       label: "Learn JSON",
-      href: "/docs/what-is-json",
+      key: "/docs/what-is-json",
+      highlights: ["/docs/:docs"],
     }];
+
+  React.useEffect(() => {
+    function findActiveKeys(item) {
+      const isItemActive = (item) => {
+        const { highlights, key } = item;
+        let isActive = false;
+        if (highlights) {
+          isActive = highlights.some((highlight) => {
+            const { regexp } = pathToRegexp(highlight);
+            const result = regexp.test(pathname);
+            return result;
+          });
+        } else {
+          isActive = pathToRegexp(key).regexp.test(pathname);
+        }
+        return isActive;
+      };
+      const search = (item, activeKeys = []) => {
+        if (Array.isArray(item)) {
+          item.forEach((item) => {
+            if (isItemActive(item)) {
+              activeKeys.push(item.key);
+            }
+            if (item.items?.length > 0) {
+              search(item.items, activeKeys);
+            }
+          });
+        } else {
+          if (isItemActive(item)) {
+            activeKeys.push(item.key);
+          }
+        }
+      };
+      const activeKeys = [];
+      search(item, activeKeys);
+      return activeKeys;
+    }
+    const activeKeys = findActiveKeys(navs);
+    console.log(activeKeys);
+    setActiveKeys(activeKeys || []);
+  }, [pathname]);
+
   return (
     <div className='app-header-container sticky top-0 z-10 border-b border-b-stone-300 drop-shadow	 dark:border-b-gray-700 bg-slate-50 dark:bg-gray-900'>
       <ResponseContainer className='app-header flex-grow flex items-center position-relative  '>
@@ -69,7 +118,7 @@ export default function Header() {
             <a href='/'>
               <h1 className="text-xl font-bold">ViewJson</h1>
             </a>
-            <Navbar items={navs} />
+            <Navbar items={navs} activeKeys={activeKeys} />
           </Flex>
           <Flex>
             <span onClick={onChangeTheme} className='cursor-pointer'>

@@ -6,8 +6,11 @@ import { outsideClick } from '@/utils';
 interface DropdownProps {
   defaultOpen?: boolean
   open?: boolean
-  items?: { label: string; href?: string }[];
-  onSelect?: (item: { label: string; href: string }) => void;
+  items?: {
+    label: string;
+    key?: string
+  }[];
+  onSelect?: (item: { label: string; key: string }) => void;
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -48,7 +51,6 @@ const Dropdown = (props: DropdownProps) => {
   }, [isOpen]);
 
 
-
   return (
     <div className={`relative ${className}`} style={style}>
       <span className='flex items-center select-none' onClick={toggleDropdown} ref={triggerRef}>
@@ -60,11 +62,11 @@ const Dropdown = (props: DropdownProps) => {
           <ul className='py-2'>
             {items.map((item, index) => (
               <li
-                key={`${item.href}-${index}`}
+                key={`${item.key}-${index}`}
                 className="px-4 py-4 text-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
                 onClick={() => handleItemClick(item)}
               >
-                <Link className="flex items-center" href={item.href} >
+                <Link className="flex items-center" href={item.key} >
                   {item.label}
                 </Link>
               </li>
