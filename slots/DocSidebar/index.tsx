@@ -40,7 +40,7 @@ function SubNav({ item }: { item: NavItemProps }) {
   const { items = [], title, href } = item;
   return (
     <>
-      <h1 className="text-lg">{href ? <ItemLink href={href} title={title} /> : title}</h1>
+      <h1 className="text-base m-0">{href ? <ItemLink href={href} title={title} /> : title}</h1>
       <ul className="flex flex-col">
         {items.map((item) => <NavItem item={item} key={item.href} />)}
       </ul>

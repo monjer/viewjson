@@ -129,8 +129,8 @@ const DiffEditor: React.FC<DiffEditorProps> = ({
   return (
     <Flex direction='col'>
       <div className="flex text-sm">
-        <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Original</div>
-        <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Modified</div>
+        <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Original data</div>
+        <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Compared data</div>
       </div>
       <Card >
         <div ref={containerRef} className="h-[calc(60vh)] overflow-auto" />

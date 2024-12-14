@@ -11,6 +11,7 @@ import { pathToRegexp } from 'path-to-regexp';
 import { usePathname } from 'next/navigation';
 
 import './index.scss';
+import Link from 'next/link';
 
 export default function Header() {
   const pathname = usePathname();
@@ -21,10 +22,6 @@ export default function Header() {
 
   const onChangeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  const onClick = () => {
-    setOpen(true);
   };
 
   const navs = [
@@ -116,7 +113,7 @@ export default function Header() {
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
             <a href='/'>
-              <h1 className="text-xl font-bold">ViewJson</h1>
+              <h1 className="text-3xl  text-black m-0">viewjson</h1>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
           </Flex>
@@ -132,7 +129,7 @@ export default function Header() {
                 </svg>
               }
             </span>
-            <Button type="text" onClick={onClick}>About</Button>
+            <Link href="/about" className='ml-4'>About</Link>
           </Flex>
           <Dialog title={"About"} open={open} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
             viewjson is a tool to view json data.

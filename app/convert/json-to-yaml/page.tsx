@@ -45,7 +45,7 @@ export default function Layout() {
 
   return (
     <Flex className="h-full w-full" direction="col">
-      <PageTitle title="JSON To YAML" />
+      <PageTitle title="Convert JSON To YAML" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

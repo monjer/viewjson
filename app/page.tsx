@@ -14,5 +14,5 @@ import Format from "./format/page";
 import ResponseContainer from "@/slots/ResponseContainer";
 
 export default function Page() {
-  return <ResponseContainer className="app-format-content h-[calc(100vh-80px)] overflow-hidden"><Format /></ResponseContainer>;
+  return <ResponseContainer className="app-format-content  overflow-hidden"><Format /></ResponseContainer>;
 }

@@ -48,7 +48,7 @@ export default function Layout() {
   }
   return (
     <Flex className="h-full w-full" direction="col">
-      <PageTitle title="JSON To CSV" />
+      <PageTitle title="Convert JSON To CSV" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

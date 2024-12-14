@@ -34,7 +34,7 @@ function DocToc(props) {
     };
   }, [dataSource]);
   return (
-    <aside className={`app-doc-toc sticky top-[80px] right-0 w-[18rem] max-h-[calc(80vh)] overflow-y-auto  px-4 xl:block ${className}`}>
+    <aside className={`app-doc-toc sticky text-sm	 top-[80px] right-0 w-[18rem] max-h-[calc(80vh)] overflow-y-auto  px-4 xl:block ${className}`}>
       <h2 className="font-medium text-lg px-2 mb-2">On this page</h2>
       <div className="py-4 overflow-hidden">
         {

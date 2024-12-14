@@ -42,7 +42,7 @@ export default function Layout() {
 
   return (
     <Flex className="h-full w-full" direction="col">
-      <PageTitle title="JSON To Base64" />
+      <PageTitle title="Convert JSON To Base64" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

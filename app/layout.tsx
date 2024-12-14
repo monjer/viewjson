@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className='relative overflow-auto text-slate-500	 bg-white dark:bg-gray-950 dark:text-gray-400'>
+      <body className='relative overflow-auto text-slate-600	 bg-white dark:bg-gray-950 dark:text-gray-400'>
         <ThemeProvider attribute="class">
           <Layout>
             {children}

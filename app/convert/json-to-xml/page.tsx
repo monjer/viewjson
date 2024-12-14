@@ -106,7 +106,7 @@ export default function Layout() {
   }
   return (
     <Flex className="h-full w-full" direction="col">
-      <PageTitle title="JSON To XML" />
+      <PageTitle title="Convert JSON To XML" />
       <Flex className="mb-5 overflow-hidden grow">
         <CodeEditorPanel
           value={jsonContent}

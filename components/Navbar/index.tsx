@@ -32,13 +32,13 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <nav >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm">
         <div className="flex-1 space-x-6 flex items-center justify-center sm:items-stretch sm:justify-start">
           {
             items.map((item) => {
               let className = "cursor-pointer hover:text-gray-900 dark:hover:text-white";
               if (activeKeys.includes(item.key)) {
-                className += " font-semibold	text-black dark:text-white dark:hover:text-white";
+                className += " font-semibold text-black dark:text-white dark:hover:text-white";
               }
               if (item.items?.length > 0) {
                 return (
