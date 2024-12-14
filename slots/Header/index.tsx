@@ -113,7 +113,7 @@ export default function Header() {
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
             <a href='/'>
-              <h1 className="text-3xl  text-black m-0">viewjson</h1>
+              <h1 className="text-3xl  text-black m-0 dark:text-white">viewjson</h1>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
           </Flex>
