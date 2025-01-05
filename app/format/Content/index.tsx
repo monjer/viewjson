@@ -184,12 +184,12 @@ function Main() {
     <>
       <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-4" gap="2" align="center">
-          <Button onClick={onCompressBtnClick}>Minify</Button>
-          <Button onClick={onFormtBtnClick}>Pretty</Button>
-          <Button onClick={onToJSONString}>To String</Button>
-          <Button onClick={onHighlightBtnClick}>Highlight</Button>
+          <Button title="minify json string" onClick={onCompressBtnClick}>Minify</Button>
+          <Button title="pretty json string" onClick={onFormtBtnClick}>Pretty</Button>
+          <Button title="stringify json string" onClick={onToJSONString}>Stringify</Button>
+          <Button title="highlight json string" onClick={onHighlightBtnClick}>Highlight</Button>
           <Divider vertical />
-          <UploadButton onChange={onLoadFile} >Upload JSON File</UploadButton>
+          <UploadButton title="upload a json file " onChange={onLoadFile} >Upload JSON File</UploadButton>
           <Popover
             visible={popOverVisible}
             onVisibleChange={(visible) => {
@@ -203,19 +203,19 @@ function Main() {
               <section style={{ width: '400px' }}>
                 <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
                 <Flex justify="end">
-                  <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                  <Button title="request json data from a url" onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
                 </Flex>
               </section>
             }
           >
-            <Button >Load JSON From URL</Button>
+            <Button title="request json data from a url">Load JSON From URL</Button>
           </Popover>
-          <Button onClick={onPasetBtnClick}>Paste</Button>
+          <Button onClick={onPasetBtnClick} title="paste json string">Paste</Button>
           <Divider vertical />
-          <Button onClick={onCopyBtnClick}>Copy</Button>
-          <Button onClick={onDownloadBtnClick}>Save</Button>
+          <Button onClick={onCopyBtnClick} title="copy json string">Copy</Button>
+          <Button onClick={onDownloadBtnClick} title="save json string and download as a file">Save</Button>
           <Divider vertical />
-          <Button onClick={onCleanBtnClick}>Clean</Button>
+          <Button onClick={onCleanBtnClick} title="clean json string">Clean</Button>
 
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden' }} >

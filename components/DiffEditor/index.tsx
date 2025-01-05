@@ -133,7 +133,7 @@ const DiffEditor: React.FC<DiffEditorProps> = ({
         <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Compared data</div>
       </div>
       <Card >
-        <div ref={containerRef} className="h-[calc(60vh)] overflow-auto" />
+        <div ref={containerRef} className="h-[calc(60vh)] overflow-auto" style={{ resize: 'vertical' }} />
       </Card>
     </Flex>
   );

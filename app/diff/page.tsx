@@ -14,6 +14,7 @@ function App() {
       <Flex>
         <PageTitle title="JSON Diff" />
       </Flex>
+
       <DiffEditor
         originalCode={originalCode}
         modifiedCode={modifiedCode}

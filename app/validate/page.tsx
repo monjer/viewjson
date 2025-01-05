@@ -57,13 +57,14 @@ export default function Page() {
   }
 
   return (
-    <div className="h-[80%]" >
+    <div  >
       <PageTitle title="JSON Validate" />
       <CodeEditorPanel
         value={jsonContent}
         filename="data.json"
         mime="application/json"
         onChange={onChange}
+        placeholder="Input a json string"
         validateValue={validateJSON}
         extensions={[lintExtension, lintGutter()]}
         language="json" />

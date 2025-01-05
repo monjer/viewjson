@@ -29,12 +29,13 @@ interface Props {
   onChange?: (value: string) => void;
   language?: string;
   extensions?: Extension[],
-  actionButtonVisible?: boolean
+  actionButtonVisible?: boolean,
+  placeholder?: string;
 }
 
 
 function CodeEditorPanel(props: Props) {
-  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true } = props;
+  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true, placeholder = '' } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
@@ -159,7 +160,7 @@ function CodeEditorPanel(props: Props) {
           {
             actionButtonVisible && (
               <>
-                <UploadButton onChange={onLoadFile} >Upload File</UploadButton>
+                <UploadButton onChange={onLoadFile} title={`upload a ${language} file`} >Upload File</UploadButton>
                 <Popover
                   visible={popOverVisible}
                   onVisibleChange={(visible) => {
@@ -168,7 +169,7 @@ function CodeEditorPanel(props: Props) {
                       setJsonUrl('');
                     }
                   }}
-                  title="Load data from URL"
+                  title={`Load ${language} data from URL`}
                   content={
                     <section style={{ width: '400px' }}>
                       <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
@@ -178,37 +179,37 @@ function CodeEditorPanel(props: Props) {
                     </section>
                   }
                 >
-                  <Button >Load From URL</Button>
+                  <Button title={`request ${language} data from a url`} >Load From URL</Button>
                 </Popover>
-                <Button onClick={onPasetBtnClick}>Paste</Button>
+                <Button title={`paste ${language} string from clipboard`} onClick={onPasetBtnClick}>Paste</Button>
                 <Divider vertical />
               </>
             )
           }
-          <Button onClick={onPrettyPrintBtnClick}>Pretty Print</Button>
-          <Button onClick={onCopyBtnClick}>Copy</Button>
-          <Button onClick={onDownloadBtnClick}>Save</Button>
+          <Button title={`format ${language} string`} onClick={onPrettyPrintBtnClick}>Format</Button>
+          <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}>Copy</Button>
+          <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}>Save</Button>
           <Divider vertical />
-          <Button onClick={onCleanBtnClick}>Clean</Button>
+          <Button title={`clean ${language} string`} onClick={onCleanBtnClick}>Clean</Button>
 
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden' }}>
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-            <Card className="app-highlight-json-block h-full w-full overflow-auto" >
-              <CmEditor code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
+            <Card className="app-highlight-json-block h-[calc(60vh)] w-full overflow-auto resize-y" >
+              <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
             </Card>
           </Dropzone>
         </div>
       </Flex>
       <Toast
         type="error"
-        message={"Please input json string!"}
+        message={`Please input ${language} string!`}
         visible={toastVisible}
         onClose={() => { setToastVisible(false); }}
       />
       <Toast
         message={
-          requestSuccess ? "JSON data url request success!" : 'JSON data url request fail!'
+          requestSuccess ? `${language} data url request success!` : `${language} data url request fail!`
         }
         type={requestSuccess ? 'success' : 'error'}
         visible={requestTipVisible}

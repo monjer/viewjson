@@ -3,7 +3,8 @@ import Button from '../Button';
 
 interface Props {
   onChange: (file: File) => void,
-  children: React.ReactNode
+  children: React.ReactNode,
+  [key: string]: unknown
 }
 function generateRandomId(length) {
   const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -15,6 +16,7 @@ function generateRandomId(length) {
 }
 
 const UploadButton = (props: Props) => {
+  const { children, onChange, ...rest } = props;
   const labelRef: React.RefObject<HTMLLabelElement> = React.useRef();
   const inputRef: React.RefObject<HTMLInputElement> = React.useRef();
 
@@ -27,16 +29,18 @@ const UploadButton = (props: Props) => {
   }, []);
 
   const handleFileChange = (e) => {
-    props?.onChange(e.target.files[0]);
+    if (onChange) {
+      onChange(e.target.files[0]);
+    }
   };
 
   return (
-    <Button>
+    <Button {...rest}>
       <label
         ref={labelRef}
         className='cursor-pointer'
       >
-        {props.children}
+        {children}
       </label>
       <input
         type="file"

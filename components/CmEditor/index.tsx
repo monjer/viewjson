@@ -1,13 +1,17 @@
 import React from "react";
-import { EditorView, keymap, ViewUpdate } from "@codemirror/view";
+import { EditorView, keymap, ViewUpdate, placeholder } from "@codemirror/view";
 import { EditorState, Compartment, EditorSelection, Extension } from '@codemirror/state';
 import { basicSetup } from "codemirror";
 import { coolGlow, clouds } from 'thememirror';
 import { standardKeymap, indentWithTab } from '@codemirror/commands';
 import useEditorTheme from "@/hooks/useEditorTheme";
+import Dropzone from '@/components/Dropzone';
+import { readFileAsText } from "@/utils";
+import Toast from "@/components/Toast";
+import "./index.scss";
 
 const themeConfig = new Compartment();
-
+const PlaceHolderExtension = placeholder;
 /**
  * 在光标所在位置插入Tab，codemirror6默认没有加入tab的绑定
  * @see https://codemirror.net/examples/tab/
@@ -38,11 +42,13 @@ export const insertTabAtCoursor = keymap.of([{
 interface CMEditorProps {
   code: string
   onChange?: (code: string) => void
-  extensions?: Extension[]
+  extensions?: Extension[],
+  placeholder?: string,
+  reiszeable?: boolean
 }
 
-function CmEditor({ code, onChange, extensions }: CMEditorProps) {
-
+function CmEditor(props: CMEditorProps) {
+  const { code, onChange, extensions, placeholder, reiszeable = true } = props;
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
   const [, setCursorPosition] = React.useState(null);
@@ -82,6 +88,16 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
     }
   };
 
+  const onLoadFile = async (file) => {
+    try {
+      const fileContent = await readFileAsText(file);
+      console.log(fileContent);
+      onChange(fileContent);
+    } catch (error) {
+      Toast.error('Please upload a json file');
+    }
+  };
+
   React.useEffect(() => {
     const finalExtensions = extensions.filter((item) => {
       return item;
@@ -90,6 +106,7 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
       doc: code,
       extensions: [
         basicSetup,
+        PlaceHolderExtension(placeholder),
         [...finalExtensions],
         EditorState.tabSize.of(2),
         EditorView.lineWrapping,
@@ -136,6 +153,11 @@ function CmEditor({ code, onChange, extensions }: CMEditorProps) {
     }
   }, [code]);
 
-  return <div ref={elRef} className="h-full"></div>;
+  return (
+    <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
+      <div ref={elRef} className={`h-full `}></div>
+    </Dropzone >
+  );
+
 }
 export default CmEditor;

@@ -9,7 +9,7 @@ function HighlightView({ value }: { value: string }) {
   return (
     <>
       <Card className="app-highlight-json-block h-full w-full overflow-auto" >
-        <CmEditor code={value} extensions={[json()]} />
+        <CmEditor code={value} extensions={[json()]} reiszeable={false} />
       </Card>
     </>
   );

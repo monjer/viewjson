@@ -6,7 +6,7 @@ function PlainView({ value, onChange }: { value: string, onChange: (value: strin
   return (
     <Card className="h-full w-full overflow-hidden">
       <TextArea
-        placeholder="Please input the json string or drag and drop a json file here"
+        placeholder="Input the json string or drag and drop a json file here to start"
         value={value} onChange={onChange}></TextArea>
     </Card>
   );

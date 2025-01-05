@@ -8,6 +8,7 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   style?: React.CSSProperties;
+  [key: string]: unknown;
 }
 
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {

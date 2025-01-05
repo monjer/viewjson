@@ -107,7 +107,7 @@ export default function Layout() {
   return (
     <Flex className="h-full w-full" direction="col">
       <PageTitle title="Convert JSON To XML" />
-      <Flex className="mb-5 overflow-hidden grow">
+      <Flex className="mb-5 grow ">
         <CodeEditorPanel
           value={jsonContent}
           filename="data.json"
@@ -115,6 +115,7 @@ export default function Layout() {
           onChange={setJsonContent}
           validateValue={validateJSON}
           language="json"
+          placeholder="Input a json string"
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to xml">
