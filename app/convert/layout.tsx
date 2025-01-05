@@ -6,7 +6,7 @@ interface Props {
 }
 const Layout: React.FC = (props: Props) => {
   return (
-    <ResponseContainer>
+    <ResponseContainer className="min-h-[calc(60vh)]">
       {props.children}
     </ResponseContainer>
   );

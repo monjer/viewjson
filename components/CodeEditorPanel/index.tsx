@@ -14,6 +14,7 @@ import CmEditor from "@/components/CmEditor";
 import { getLanguage } from "@/utils";
 import { Extension } from '@codemirror/state';
 import formatCode from "@/utils/formatCode";
+import { Download, Copy, Eraser, ClipboardPaste, Upload, CloudDownload, FileCode, Expand, Shrink } from "lucide-react";
 
 enum ErrrorType {
   UploadError = 'UploadError',
@@ -31,11 +32,12 @@ interface Props {
   extensions?: Extension[],
   actionButtonVisible?: boolean,
   placeholder?: string;
+  showExpandButton?: boolean;
 }
 
 
 function CodeEditorPanel(props: Props) {
-  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true, placeholder = '' } = props;
+  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true, placeholder = '', showExpandButton = true } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
@@ -44,6 +46,7 @@ function CodeEditorPanel(props: Props) {
   const [requestTipVisible, setRequestTipVisible] = React.useState(false);
   const [requestSuccess, setRequestSuccess] = React.useState(false);
   const langExtension = getLanguage(language);
+  const [expand, setExpand] = React.useState(false);
 
   const getErrorMessage = (type: ErrrorType) => {
     return {
@@ -147,59 +150,76 @@ function CodeEditorPanel(props: Props) {
     setValue(formattedStr);
   };
 
+  const onExpandBtnClick = () => {
+    setExpand(!expand);
+  };
+
   React.useEffect(() => {
     if ('value' in props) {
       setValue(props.value);
     }
   }, [props.value]);
 
+  const editorClassname = expand ? 'fixed bottom-0 left-0 top-[100px] right-0 bg-white dark:bg-gray-950 p-6 z-50' : 'h-full w-full';
+
   return (
     <>
-      <Flex className="h-full w-full" style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="my-4" gap="2" align="center">
-          {
-            actionButtonVisible && (
-              <>
-                <UploadButton onChange={onLoadFile} title={`upload a ${language} file`} >Upload File</UploadButton>
-                <Popover
-                  visible={popOverVisible}
-                  onVisibleChange={(visible) => {
-                    setPopOverVisible(visible);
-                    if (!visible) {
-                      setJsonUrl('');
+      <Flex className={editorClassname} style={{ flexDirection: 'column', alignItems: "stretch" }}>
+        <Flex className="mb-2" align="center" justify="between">
+          <Flex align="center" gap="2"  >
+            {
+              actionButtonVisible && (
+                <>
+                  <UploadButton onChange={onLoadFile} title={`upload a ${language} file`} >
+                    <Flex align="center">
+                      <Upload size={14} className="mr-1" />Upload
+                    </Flex>
+                  </UploadButton>
+                  <Popover
+                    visible={popOverVisible}
+                    onVisibleChange={(visible) => {
+                      setPopOverVisible(visible);
+                      if (!visible) {
+                        setJsonUrl('');
+                      }
+                    }}
+                    title={`Load ${language} data from URL`}
+                    content={
+                      <section style={{ width: '400px' }}>
+                        <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
+                        <Flex justify="end">
+                          <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                        </Flex>
+                      </section>
                     }
-                  }}
-                  title={`Load ${language} data from URL`}
-                  content={
-                    <section style={{ width: '400px' }}>
-                      <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
-                      <Flex justify="end">
-                        <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
-                      </Flex>
-                    </section>
-                  }
-                >
-                  <Button title={`request ${language} data from a url`} >Load From URL</Button>
-                </Popover>
-                <Button title={`paste ${language} string from clipboard`} onClick={onPasetBtnClick}>Paste</Button>
-                <Divider vertical />
-              </>
+                  >
+                    <Button title={`request ${language} data from a url`} ><CloudDownload size={14} className="mr-1" />Request</Button>
+                  </Popover>
+                  <Button title={`paste ${language} string from clipboard`} onClick={onPasetBtnClick}><ClipboardPaste size={14} className="mr-1" /> Paste</Button>
+                  <Divider vertical />
+                </>
+              )
+            }
+            <Button title={`format ${language} string`} onClick={onPrettyPrintBtnClick}><FileCode size={14} className="mr-1" />Format</Button>
+            <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}><Copy size={14} className="mr-1" />Copy</Button>
+            <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}><Download size={14} className="mr-1" />Save</Button>
+            <Divider vertical />
+            <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clean</Button>
+          </Flex>
+          {
+            showExpandButton && (
+              <Button type="text" onClick={onExpandBtnClick} className="pr-0">
+                {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
+              </Button>
             )
           }
-          <Button title={`format ${language} string`} onClick={onPrettyPrintBtnClick}>Format</Button>
-          <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}>Copy</Button>
-          <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}>Save</Button>
-          <Divider vertical />
-          <Button title={`clean ${language} string`} onClick={onCleanBtnClick}>Clean</Button>
 
         </Flex>
-        <div style={{ flex: 1, overflow: 'hidden' }}>
-          <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-            <Card className="app-highlight-json-block h-[calc(60vh)] w-full overflow-auto resize-y" >
-              <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
-            </Card>
-          </Dropzone>
-        </div>
+        <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
+          <Card className="h-[calc(60vh)] w-full overflow-auto  resize-y" >
+            <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
+          </Card>
+        </Dropzone>
       </Flex>
       <Toast
         type="error"

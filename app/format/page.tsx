@@ -3,7 +3,7 @@ import Content from './Content';
 
 export default function Page() {
   return (
-    <div className="mt-4">
+    <div className="mt-8">
       <Content />
       <article>
         <h1 >About viewjson.online</h1>

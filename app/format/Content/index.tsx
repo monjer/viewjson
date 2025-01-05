@@ -13,6 +13,8 @@ import Divider from "@/components/Divider";
 import UploadButton from "@/components/UploadButton";
 import { readFileAsText } from "@/utils";
 import Dropzone from '@/components/Dropzone';
+import { Download, Copy, Eraser, ClipboardPaste, Upload, CloudDownload, FileCode, Expand, FolderCode, Highlighter, Shrink, ReceiptText } from "lucide-react";
+
 enum ViewType {
   Plain = 'plain',
   Highlight = 'highlight',
@@ -28,6 +30,7 @@ function Main() {
   const [popOverVisible, setPopOverVisible] = React.useState(false);
   const [requestTipVisible, setRequestTipVisible] = React.useState(false);
   const [requestSuccess, setRequestSuccess] = React.useState(false);
+  const [expand, setExpand] = React.useState(false);
 
   const [viewType, setViewType] = React.useState(ViewType.Plain);
 
@@ -180,43 +183,56 @@ function Main() {
 
   };
 
-  return (
-    <>
-      <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-4" gap="2" align="center">
-          <Button title="minify json string" onClick={onCompressBtnClick}>Minify</Button>
-          <Button title="pretty json string" onClick={onFormtBtnClick}>Pretty</Button>
-          <Button title="stringify json string" onClick={onToJSONString}>Stringify</Button>
-          <Button title="highlight json string" onClick={onHighlightBtnClick}>Highlight</Button>
-          <Divider vertical />
-          <UploadButton title="upload a json file " onChange={onLoadFile} >Upload JSON File</UploadButton>
-          <Popover
-            visible={popOverVisible}
-            onVisibleChange={(visible) => {
-              setPopOverVisible(visible);
-              if (!visible) {
-                setJsonUrl('');
-              }
-            }}
-            title="Load JSON from URL"
-            content={
-              <section style={{ width: '400px' }}>
-                <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
-                <Flex justify="end">
-                  <Button title="request json data from a url" onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
-                </Flex>
-              </section>
-            }
-          >
-            <Button title="request json data from a url">Load JSON From URL</Button>
-          </Popover>
-          <Button onClick={onPasetBtnClick} title="paste json string">Paste</Button>
-          <Divider vertical />
-          <Button onClick={onCopyBtnClick} title="copy json string">Copy</Button>
-          <Button onClick={onDownloadBtnClick} title="save json string and download as a file">Save</Button>
-          <Divider vertical />
-          <Button onClick={onCleanBtnClick} title="clean json string">Clean</Button>
+  const onExpandBtnClick = () => {
+    setExpand(!expand);
+  };
 
+  const editorClassname = expand ? 'fixed bottom-0 left-0 top-[60px] right-0 bg-white dark:bg-gray-950 p-6' : '';
+  return (
+    <div className={editorClassname}>
+      <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
+        <Flex className="mb-2" align="center" justify="between">
+          <Flex gap="2" align="center">
+            <Button title="minify json string" onClick={onCompressBtnClick}><FolderCode size={14} className="mr-1" />Minify</Button>
+            <Button title="pretty json string" onClick={onFormtBtnClick}><FileCode size={14} className="mr-1" /> Format</Button>
+            <Button title="stringify json string" onClick={onToJSONString}> <ReceiptText size={14} className="mr-1" />Stringify</Button>
+            <Button title="highlight json string" onClick={onHighlightBtnClick}><Highlighter size={14} className="mr-1" />Highlight</Button>
+            <Divider vertical />
+            <UploadButton title="upload a json file " onChange={onLoadFile} >
+              <Flex>
+                <Upload size={14} className="mr-1" /> Upload
+              </Flex>
+            </UploadButton>
+            <Popover
+              visible={popOverVisible}
+              onVisibleChange={(visible) => {
+                setPopOverVisible(visible);
+                if (!visible) {
+                  setJsonUrl('');
+                }
+              }}
+              title="Load JSON from URL"
+              content={
+                <section style={{ width: '400px' }}>
+                  <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
+                  <Flex justify="end">
+                    <Button title="request json data from a url" onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                  </Flex>
+                </section>
+              }
+            >
+              <Button title="request json data from a url"><CloudDownload size={14} className="mr-1" /> Request</Button>
+            </Popover>
+            <Button onClick={onPasetBtnClick} title="paste json string"><ClipboardPaste size={14} className="mr-1" /> Paste</Button>
+            <Divider vertical />
+            <Button onClick={onCopyBtnClick} title="copy json string"><Copy size={14} className="mr-1" /> Copy</Button>
+            <Button onClick={onDownloadBtnClick} title="save json string and download as a file"><Download size={14} className="mr-1" />Save</Button>
+            <Divider vertical />
+            <Button onClick={onCleanBtnClick} title="clean json string"><Eraser size={14} className="mr-1" />Clean</Button>
+          </Flex>
+          <Button type="text" onClick={onExpandBtnClick}>
+            {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
+          </Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden' }} >
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
@@ -239,7 +255,7 @@ function Main() {
         type={requestSuccess ? 'success' : 'error'}
         visible={requestTipVisible}
         onClose={() => { setRequestTipVisible(false); }} />
-    </>
+    </div>
   );
 }
 export default Main;

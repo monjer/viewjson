@@ -67,6 +67,7 @@ export default function Page() {
         placeholder="Input a json string"
         validateValue={validateJSON}
         extensions={[lintExtension, lintGutter()]}
+        showExpandButton={false}
         language="json" />
     </div >
   );
