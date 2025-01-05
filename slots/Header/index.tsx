@@ -3,12 +3,14 @@
 import React from 'react';
 import Flex from '@/components/Flex';
 import Dialog from '@/components/Dialog';
-import Button from '@/components/Button';
 import { useTheme } from 'next-themes';
 import ResponseContainer from '../ResponseContainer';
 import Navbar from '@/components/Navbar';
 import { pathToRegexp } from 'path-to-regexp';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import LogoImage from './logo.png';
+import DarkLogoImage from './dark-logo.png';
 
 import './index.scss';
 import Link from 'next/link';
@@ -103,7 +105,6 @@ export default function Header() {
       return activeKeys;
     }
     const activeKeys = findActiveKeys(navs);
-    console.log(activeKeys);
     setActiveKeys(activeKeys || []);
   }, [pathname]);
 
@@ -112,8 +113,11 @@ export default function Header() {
       <ResponseContainer className='app-header flex-grow flex items-center position-relative  '>
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center'>
-            <a href='/'>
-              <h1 className="text-3xl  text-black m-0 dark:text-white">viewjson</h1>
+            <a href='/' className='mr-4'>
+              <Flex align='center' className='cursor-pointer'>
+                <img src={darkMode ? "images/logo.dark.png" : "/images/logo.png"} width={40} height={40} alt='logo' className='size-10 mr-1' />
+                <h2 className="text-2xl  text-black m-0 dark:text-white">viewjson</h2>
+              </Flex>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
           </Flex>

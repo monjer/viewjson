@@ -23,34 +23,37 @@ body {
     --background: 0 0% 100%;
   }
 
-  h1,
-  h2,
-  h3 {
-    // color: rgb(30 41 59);
-    margin: 10px 0;
-  }
+  article {
 
-  h1 {
-    font-size: 28px;
-  }
+    h1,
+    h2,
+    h3 {
+      // color: rgb(30 41 59);
+      margin: 10px 0;
+    }
 
-  h2 {
-    font-size: 20px;
-  }
+    h1 {
+      font-size: 28px;
+    }
 
-  h3 {
-    font-size: 16px;
-  }
+    h2 {
+      font-size: 20px;
+    }
 
-  p {
-    margin-bottom: 10px;
-  }
+    h3 {
+      font-size: 16px;
+    }
 
-  .link {
-    color: #0078e7;
+    p {
+      margin-bottom: 10px;
+    }
 
-    &:hover {
-      text-decoration: underline;
+    .link {
+      color: #0078e7;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

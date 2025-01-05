@@ -4,3 +4,10 @@
   width: 100%;
   overflow: auto;
 }
+
+.resize-board {
+  resize: vertical;
+  overflow: hidden;
+  height: calc(40vh);
+  min-height: 300px;
+}

@@ -182,7 +182,7 @@ function Main() {
 
   return (
     <>
-      <Flex className="h-[calc(60vh)]" style={{ flexDirection: 'column', alignItems: "stretch" }}>
+      <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
         <Flex className="mb-4" gap="2" align="center">
           <Button onClick={onCompressBtnClick}>Minify</Button>
           <Button onClick={onFormtBtnClick}>Pretty</Button>
@@ -218,9 +218,11 @@ function Main() {
           <Button onClick={onCleanBtnClick}>Clean</Button>
 
         </Flex>
-        <div style={{ flex: 1, overflow: 'hidden' }} className="mb-10">
+        <div style={{ flex: 1, overflow: 'hidden' }} >
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-            {renderView()}
+            <div className="resize-board">
+              {renderView()}
+            </div>
           </Dropzone>
         </div>
       </Flex>
