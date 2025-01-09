@@ -5,7 +5,7 @@ import Header from "../Header";
 import './index.scss';
 
 function Layout({ children }: { children: React.ReactNode }) {
-
+  const date = new Date().getFullYear();
   return (
     <>
       <Header />
@@ -13,7 +13,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer>
-        <p className="text-center my-4">©2024 viewjson.online. All rights reserved.</p>
+        <p className="text-center my-8">©{date} viewjson.online. All rights reserved.</p>
       </footer>
     </>
   );

@@ -26,6 +26,9 @@ const OptionsByLanguage = {
   },
 };
 
-export default async (code = '', language: string) => {
+export default async function (code = '', language: string) {
+  if (language === 'json') {
+    return JSON.stringify(JSON.parse(code), null, 2);
+  }
   return await prettier.format(code, OptionsByLanguage[language]);
 };
