@@ -8,6 +8,5 @@
 .resize-board {
   resize: vertical;
   overflow: hidden;
-  height: calc(40vh);
-  min-height: 300px;
+  height: calc(100vh - 160px);
 }

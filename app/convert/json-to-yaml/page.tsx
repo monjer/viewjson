@@ -54,6 +54,7 @@ export default function Layout() {
           onChange={setJsonContent}
           validateValue={validateJSON}
           language="json"
+          placeholder="Input a json string"
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to yaml">

@@ -48,7 +48,7 @@ interface CMEditorProps {
 }
 
 function CmEditor(props: CMEditorProps) {
-  const { code, onChange, extensions, placeholder, reiszeable = true } = props;
+  const { code, onChange, extensions, placeholder } = props;
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
   const [, setCursorPosition] = React.useState(null);

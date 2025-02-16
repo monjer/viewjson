@@ -3,7 +3,7 @@ import Content from './Content';
 
 export default function Page() {
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <Content />
       <article>
         <h1 >About viewjson.online</h1>
@@ -19,7 +19,7 @@ export default function Page() {
               <li>
                 <h3>JSON Conversion</h3>
                 <p>Easily convert JSON data to and from various formats, including <a href="/convert/json-to-xml" className="link">JSON to XML</a>,
-                  <a href="/convert/json-to-csv" className="link">JSON to CSV</a>, <a className="link">JSON to YAML</a>, <a href="/convert/json-to-base64"> JSON to Base64</a>,
+                  <a href="/convert/json-to-csv" className="link">JSON to CSV</a>, <a className="link" href="/convert/json-to-yaml">JSON to YAML</a>, <a className="link" href="/convert/json-to-base64"> JSON to Base64</a>,
                   <a href="/convert/json-to-html" className="link">JSON to  HTML</a>.</p>
               </li>
               <li>

@@ -191,7 +191,7 @@ function Main() {
   return (
     <div className={editorClassname}>
       <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-2" align="center" justify="between">
+        <Flex className="mb-4" align="center" justify="between">
           <Flex gap="2" align="center">
             <Button title="minify json string" onClick={onCompressBtnClick}><FolderCode size={14} className="mr-1" />Minify</Button>
             <Button title="pretty json string" onClick={onFormtBtnClick}><FileCode size={14} className="mr-1" /> Format</Button>

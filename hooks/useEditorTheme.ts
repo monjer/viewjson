@@ -1,8 +1,8 @@
 import React from "react";
-import { coolGlow, clouds } from 'thememirror';
+import { coolGlow, espresso } from 'thememirror';
 
 export default function useEditorTheme() {
-  const [themeConfig, setThemeConfig] = React.useState(clouds);
+  const [themeConfig, setThemeConfig] = React.useState(espresso);
   React.useEffect(() => {
     const targetNode = document.documentElement;
     // 配置观察选项
@@ -11,7 +11,7 @@ export default function useEditorTheme() {
       if (targetNode.classList.contains('dark')) {
         setThemeConfig(coolGlow);
       } else {
-        setThemeConfig(clouds);
+        setThemeConfig(espresso);
       }
     };
     // 创建一个MutationObserver实例，并传入回调函数
