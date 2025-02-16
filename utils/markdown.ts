@@ -16,7 +16,7 @@ async function isFileExists(filePath: string) {
   try {
     await fsp.access(filePath);
     return true;
-     
+
   } catch (err) {
     return false;
   }
