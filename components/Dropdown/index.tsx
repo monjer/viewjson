@@ -59,9 +59,9 @@ const Dropdown = (props: DropdownProps) => {
       </span>
       {isOpen && (
         <nav ref={popoverRef} className="absolute left-0 w-56 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-900">
-          <ul className='py-2'>
+          <div className='py-2'>
             {items.map((item, index) => (
-              <li
+              <div
                 key={`${item.key}-${index}`}
                 className="px-4 py-4 text-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
                 onClick={() => handleItemClick(item)}
@@ -69,9 +69,9 @@ const Dropdown = (props: DropdownProps) => {
                 <Link className="flex items-center" href={item.key} >
                   {item.label}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </nav>
       )}
     </div>
