@@ -56,8 +56,12 @@ export default function Header() {
       key: "/diff",
     },
     {
-      label: "JSON Validate",
+      label: "JSON Lint",
       key: "/validate",
+    },
+    {
+      label: "JSON Path",
+      key: "/jsonpath",
     },
     {
       label: "Learn JSON",
@@ -113,7 +117,7 @@ export default function Header() {
             <a href='/' className='mr-4'>
               <Flex align='center' className='cursor-pointer'>
                 <Logo key={theme} />
-                <h2 className="text-2xl  text-black m-0 dark:text-white">viewjson</h2>
+                <h2 className="text-3xl  text-black m-0 dark:text-white">viewjson</h2>
               </Flex>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
@@ -128,7 +132,7 @@ export default function Header() {
               </svg>
 
             </span>
-            <Link href="/about" className='ml-4'>About</Link>
+            <Link href="/about" className='ml-4 text-lg'>About</Link>
           </Flex>
           <Dialog title={"About"} open={open} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
             viewjson is a tool to view json data.

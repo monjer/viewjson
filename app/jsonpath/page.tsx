@@ -58,7 +58,7 @@ export default function Page() {
 
   return (
     <div  >
-      <PageTitle title="JSON Lint" />
+      <PageTitle title="JSONPath" />
       <CodeEditorPanel
         value={jsonContent}
         filename="data.json"
