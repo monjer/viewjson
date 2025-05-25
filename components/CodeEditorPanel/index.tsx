@@ -33,11 +33,22 @@ interface Props {
   actionButtonVisible?: boolean,
   placeholder?: string;
   showExpandButton?: boolean;
+  hideTopbar?: boolean
 }
 
 
 function CodeEditorPanel(props: Props) {
-  const { filename, mime, language = 'json', validateValue, extensions = [], actionButtonVisible = true, placeholder = '', showExpandButton = true } = props;
+  const {
+    filename,
+    mime,
+    language = 'json',
+    validateValue,
+    extensions = [],
+    actionButtonVisible = true,
+    placeholder = '',
+    showExpandButton = true,
+    hideTopbar = false,
+  } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
   const [jsonUrl, setJsonUrl] = React.useState('');
@@ -165,56 +176,60 @@ function CodeEditorPanel(props: Props) {
   return (
     <>
       <Flex className={editorClassname} style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-2" align="center" justify="between">
-          <Flex align="center" gap="2"  >
-            {
-              actionButtonVisible && (
-                <>
-                  <UploadButton onChange={onLoadFile} title={`upload a ${language} file`} >
-                    <Flex align="center">
-                      <Upload size={14} className="mr-1" />Upload
-                    </Flex>
-                  </UploadButton>
-                  <Popover
-                    visible={popOverVisible}
-                    onVisibleChange={(visible) => {
-                      setPopOverVisible(visible);
-                      if (!visible) {
-                        setJsonUrl('');
+        {!hideTopbar && (
+          <Flex className="mb-2" align="center" justify="between">
+            <Flex align="center" gap="2"  >
+              {
+                actionButtonVisible && (
+                  <>
+                    <UploadButton onChange={onLoadFile} title={`upload a ${language} file`} >
+                      <Flex align="center">
+                        <Upload size={14} className="mr-1" />Upload
+                      </Flex>
+                    </UploadButton>
+                    <Popover
+                      visible={popOverVisible}
+                      onVisibleChange={(visible) => {
+                        setPopOverVisible(visible);
+                        if (!visible) {
+                          setJsonUrl('');
+                        }
+                      }}
+                      title={`Load ${language} data from URL`}
+                      content={
+                        <section style={{ width: '400px' }}>
+                          <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
+                          <Flex justify="end">
+                            <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
+                          </Flex>
+                        </section>
                       }
-                    }}
-                    title={`Load ${language} data from URL`}
-                    content={
-                      <section style={{ width: '400px' }}>
-                        <div className="mb-4"><Input value={jsonUrl} onChange={setJsonUrl} /></div>
-                        <Flex justify="end">
-                          <Button onClick={onLoadBtnClick} loading={loading} disabled={loading}>Load</Button>
-                        </Flex>
-                      </section>
-                    }
-                  >
-                    <Button title={`request ${language} data from a url`} ><CloudDownload size={14} className="mr-1" />Request</Button>
-                  </Popover>
-                  <Button title={`paste ${language} string from clipboard`} onClick={onPasetBtnClick}><ClipboardPaste size={14} className="mr-1" /> Paste</Button>
-                  <Divider vertical />
-                </>
+                    >
+                      <Button title={`request ${language} data from a url`} ><CloudDownload size={14} className="mr-1" />Request</Button>
+                    </Popover>
+                    <Button title={`paste ${language} string from clipboard`} onClick={onPasetBtnClick}><ClipboardPaste size={14} className="mr-1" /> Paste</Button>
+                    <Divider vertical />
+                  </>
+                )
+              }
+              <Button title={`format ${language} string`} onClick={onPrettyPrintBtnClick}><FileCode size={14} className="mr-1" />Format</Button>
+              <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}><Copy size={14} className="mr-1" />Copy</Button>
+              <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}><Download size={14} className="mr-1" />Save</Button>
+              <Divider vertical />
+              <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clean</Button>
+            </Flex>
+            {
+              showExpandButton && (
+                <Button type="text" onClick={onExpandBtnClick} className="pr-0">
+                  {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
+                </Button>
               )
             }
-            <Button title={`format ${language} string`} onClick={onPrettyPrintBtnClick}><FileCode size={14} className="mr-1" />Format</Button>
-            <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}><Copy size={14} className="mr-1" />Copy</Button>
-            <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}><Download size={14} className="mr-1" />Save</Button>
-            <Divider vertical />
-            <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clean</Button>
-          </Flex>
-          {
-            showExpandButton && (
-              <Button type="text" onClick={onExpandBtnClick} className="pr-0">
-                {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
-              </Button>
-            )
-          }
 
-        </Flex>
+          </Flex>
+
+        )}
+
         <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
           <Card className="h-[calc(60vh)] w-full overflow-auto  resize-y" >
             <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />

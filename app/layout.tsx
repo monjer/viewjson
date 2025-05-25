@@ -20,6 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css"
+        />
+      </head>
       <body className='relative overflow-auto text-slate-600	 bg-white dark:bg-gray-950 dark:text-gray-400'>
         <ThemeProvider attribute="class">
           <Layout>

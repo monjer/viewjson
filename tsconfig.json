@@ -25,7 +25,8 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "target": "ES2017"
   },
   "include": [
     "**/*.ts",
@@ -37,7 +38,7 @@
     ".next/**/*",
     ".vercel",
     "tailwind.config.js",
-    "postcss.config.js",
+    "postcss.config.mjs",
     "next.config.js"
   ]
 }

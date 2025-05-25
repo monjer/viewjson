@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
 @import "./syntax.scss";
 
 * {
@@ -74,4 +74,10 @@ body {
 
 :root {
   --app-site-header-h: 56px;
+}
+
+.app-textarea {
+  resize: none;
+  outline: none;
+  background: inherit;
 }

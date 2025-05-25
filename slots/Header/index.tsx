@@ -57,10 +57,10 @@ export default function Header() {
     },
     {
       label: "JSON Lint",
-      key: "/validate",
+      key: "/jsonlint",
     },
     {
-      label: "JSON Path",
+      label: "JSONPath Evaluator",
       key: "/jsonpath",
     },
     {
