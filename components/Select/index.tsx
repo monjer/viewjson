@@ -108,8 +108,8 @@ const Select: React.FC<SelectProps> = ({
         aria-expanded={isOpen}
         aria-labelledby={label ? `${label}-label` : undefined}
         className={`
-          relative w-full px-3 py-2 text-left bg-white border rounded-md
-          focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500
+          relative w-full px-3 py-2 text-left bg-white border rounded-md outline-hidden  border-gray-300
+          focus:outline-hidden  focus:border-blue-500
           ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer hover:border-gray-400'}
           ${className}
         `}

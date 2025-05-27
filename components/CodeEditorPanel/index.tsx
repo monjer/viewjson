@@ -33,7 +33,8 @@ interface Props {
   actionButtonVisible?: boolean,
   placeholder?: string;
   showExpandButton?: boolean;
-  hideTopbar?: boolean
+  hideTopbar?: boolean,
+  editorContainerStyle?: React.CSSProperties;
 }
 
 
@@ -48,6 +49,7 @@ function CodeEditorPanel(props: Props) {
     placeholder = '',
     showExpandButton = true,
     hideTopbar = false,
+    editorContainerStyle = {},
   } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
@@ -220,18 +222,16 @@ function CodeEditorPanel(props: Props) {
             </Flex>
             {
               showExpandButton && (
-                <Button type="text" onClick={onExpandBtnClick} className="pr-0">
-                  {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
+                <Button type="text" onClick={onExpandBtnClick} className="px-0">
+                  {expand ? <Shrink size={16} /> : <Expand size={16} />}
                 </Button>
               )
             }
-
           </Flex>
-
         )}
 
         <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-          <Card className="h-[calc(60vh)] w-full overflow-auto  resize-y" >
+          <Card className="w-full overflow-auto h-full resize-y" style={editorContainerStyle}>
             <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
           </Card>
         </Dropzone>

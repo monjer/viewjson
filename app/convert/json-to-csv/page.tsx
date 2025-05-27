@@ -49,7 +49,7 @@ export default function Layout() {
   return (
     <Flex className="h-full w-full" direction="col">
       <PageTitle title="Convert JSON To CSV" />
-      <Flex className="mb-5 overflow-hidden grow">
+      <Flex className="mb-5 overflow-hidden grow  w-full">
         <CodeEditorPanel
           value={jsonContent}
           filename="data.json"
@@ -58,6 +58,7 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
           placeholder="Input a json string"
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to csv">
@@ -71,6 +72,7 @@ export default function Layout() {
           value={csvContent}
           filename="data.csv"
           mime="text/csv"
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           onChange={(v) => {
             console.log(v);
             setCsvContent(v);

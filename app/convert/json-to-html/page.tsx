@@ -22,21 +22,6 @@ export default function Layout() {
     setHTMLContent(htmlStr);
   };
 
-
-  function nativeType(value) {
-    const nValue = Number(value);
-    if (!isNaN(nValue)) {
-      return nValue;
-    }
-    const bValue = value.toLowerCase();
-    if (bValue === 'true') {
-      return true;
-    } else if (bValue === 'false') {
-      return false;
-    }
-    return value;
-  }
-
   function validateJSON(str) {
     try {
       JSON.parse(str);
@@ -61,7 +46,7 @@ export default function Layout() {
   return (
     <Flex className="h-full w-full" direction="col">
       <PageTitle title="Convert JSON To HTML" />
-      <Flex className="mb-5 overflow-hidden grow">
+      <Flex className="mb-5 overflow-hidden grow w-full">
         <CodeEditorPanel
           value={jsonContent}
           filename="data.json"
@@ -70,6 +55,7 @@ export default function Layout() {
           validateValue={validateJSON}
           language="json"
           placeholder="Input a json string"
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
           <Tooltip text="json to html">
@@ -85,6 +71,7 @@ export default function Layout() {
           }}
           validateValue={validateXML}
           actionButtonVisible={false}
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           language="html" />
       </Flex>
     </Flex>

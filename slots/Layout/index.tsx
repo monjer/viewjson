@@ -9,7 +9,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="page-main">
+      <main className="page-main mb-20">
         {children}
       </main>
       <footer>

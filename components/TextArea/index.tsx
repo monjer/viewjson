@@ -23,12 +23,12 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   };
   return (
-    <div className={`flex flex-col w-full ${className}`}>
+    <div className={`flex flex-col w-full h-full ${className}`}>
       <textarea
         className={`
           w-full h-full  p-3
           rounded-md border border-gray-300
-          focus:border-blue-500 outline-none
+          focus:border-blue-500 outline-hidden
           disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
           resize-y
           ${error ? 'border-red-500' : ''}          

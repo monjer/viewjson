@@ -44,7 +44,7 @@ const Dialog = (props: {
       <div className="fixed inset-0 flex items-center justify-center z-50">
         {/* background layer */}
         <div className="fade-in fixed h-full w-full inset-0 backdrop-blur-sm  bg-black/20 dark:bg-opacity-70" onClick={onClose} ref={backdropRef} ></div>
-        <div className="bg-white border rounded-lg shadow-lg z-10 p-6 w-1/3 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:shadow-gray-100/10	slide-in" ref={modalRef}>
+        <div className="bg-white border rounded-lg shadow-lg z-10 p-6 w-1/3 dark:bg-gray-900 dark:text-white dark:border-gray-300 dark:shadow-gray-100/10	slide-in" ref={modalRef}>
           <div className="flex justify-between mb-8">
             <h1 className="text-lg font-bold ">{title}</h1>
             <span onClick={onClose} className='cursor-pointer	'>

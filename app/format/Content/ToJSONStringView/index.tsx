@@ -1,5 +1,4 @@
 import React from "react";
-import Card from '@/components/Card';
 import TextArea from "@/components/TextArea";
 
 function ToJSONStringView({ value, onChange }: { value: string, onChange: (value: string) => void }) {
@@ -20,11 +19,9 @@ function ToJSONStringView({ value, onChange }: { value: string, onChange: (value
   };
 
   return (
-    <Card className="h-full w-full overflow-hidden">
-      <TextArea
-        placeholder="Please input the json string or drag and drop a json file here"
-        value={json} onChange={handleChange}></TextArea>
-    </Card>
+    <TextArea
+      placeholder="Please input the json string or drag and drop a json file here"
+      value={json} onChange={handleChange}></TextArea>
   );
 }
 export default ToJSONStringView;

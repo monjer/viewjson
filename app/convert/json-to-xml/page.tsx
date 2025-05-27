@@ -107,7 +107,7 @@ export default function Layout() {
   return (
     <Flex className="h-full w-full" direction="col">
       <PageTitle title="Convert JSON To XML" />
-      <Flex className="mb-5 grow ">
+      <Flex className="mb-5 grow  w-full">
         <CodeEditorPanel
           value={jsonContent}
           filename="data.json"
@@ -115,6 +115,7 @@ export default function Layout() {
           onChange={setJsonContent}
           validateValue={validateJSON}
           language="json"
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           placeholder="Input a json string"
         />
         <Flex className="gap-2 mx-2 mt-20" direction="col" justify="start">
@@ -134,6 +135,7 @@ export default function Layout() {
             setXMLContent(v);
           }}
           validateValue={validateXML}
+          editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           language="xml" />
       </Flex>
     </Flex>

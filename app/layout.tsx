@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '@/slots/Layout';
 import type { Metadata } from 'next';
-import './global.scss';
+import './global.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
 

@@ -1,32 +1,103 @@
 'use client';
 import React from "react";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
-import { linter, Diagnostic, lintGutter } from "@/utils/lint";
+import { lintGutter } from "@/utils/lint";
 import PageTitle from "@/components/PageTitle";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
 import Flex from "@/components/Flex";
-import Button from "@/components/Button";
 import TextArea from "@/components/TextArea";
+import { JSONPathJS } from "jsonpath-js";
+import { JSONPath } from 'jsonpath-plus';
+
+const JSONPathTypes = {
+  RFC: 'rfc',
+  JSONPathPlus: 'jsonpath-plus',
+};
+
+const options = [
+  { label: 'RFC 9535', value: JSONPathTypes.RFC },
+  { label: 'JSONPath Plus', value: JSONPathTypes.JSONPathPlus },
+];
+
+const defaultJSONString = `{
+  "store": {
+    "book": [
+      {
+        "category": "reference",
+        "author": "Nigel Rees",
+        "title": "Sayings of the Century",
+        "price": 8.95
+      },
+      {
+        "category": "fiction",
+        "author": "Evelyn Waugh",
+        "title": "Sword of Honour",
+        "price": 12.99
+      },
+      {
+        "category": "fiction",
+        "author": "Herman Melville",
+        "title": "Moby Dick",
+        "isbn": "0-553-21311-3",
+        "price": 8.99
+      },
+      {
+        "category": "fiction",
+        "author": "J. R. R. Tolkien",
+        "title": "The Lord of the Rings",
+        "isbn": "0-395-19395-8",
+        "price": 22.99
+      }
+    ],
+    "bicycle": {
+      "color": "red",
+      "price": 19.95
+    }
+  }
+}
+`;
 
 export default function Page() {
-  const [jsonContent, setJsonContent] = React.useState(``);
+  const [jsonContent, setJsonContent] = React.useState(defaultJSONString);
+  const [jsonPathResult, setJsonPathResult] = React.useState<string>('');
+  const [jsonPathError, setJsonPathError] = React.useState<string>('');
+  const [jsonPathType, setJsonPathType] = React.useState<string>(options[0].value);
+  const [jsonPathQuery, setJsonPathQuery] = React.useState<string>('');
 
   function validateJSON() {
     return true;
   }
 
   function onChange(value) {
+    console.log('onChange', value);
     setJsonContent(value);
   }
 
-  const options = [
-    { label: 'RFC 9535', value: 'rfc' },
-    { label: 'JSONPath Plus', value: 'jsonpath-plus' },
-  ];
+  React.useEffect(() => {
+    if (jsonPathQuery.trim() === '') {
+      setJsonPathResult('');
+      setJsonPathError('');
+      return;
+    }
+    try {
+      let result;
+      if (jsonPathType === JSONPathTypes.RFC) {
+        const query = new JSONPathJS(jsonPathQuery);
+        result = query.find(JSON.parse(jsonContent));
+      } else if (jsonPathType === 'jsonpath-plus') {
+        result = JSONPath({ path: jsonPathQuery, json: JSON.parse(jsonContent) });
+      }
+      setJsonPathResult(JSON.stringify(result, null, 2));
+      setJsonPathError('');
+    } catch (error) {
+      setJsonPathError(`Error evaluating JSONPath: ${error.message}`);
+      setJsonPathResult('');
+      return;
+    }
+  }, [jsonContent, jsonPathQuery, jsonPathType]);
 
-  const [selectedValue, setSelectedValue] = React.useState<string>(options[0].value);
-  const [jsonPathQuery, setJsonPathQuery] = React.useState<string>('');
+
 
   return (
     <div  >
@@ -34,16 +105,20 @@ export default function Page() {
       <Flex className="mb-4">
         <Select
           options={options}
-          value={selectedValue}
-          onChange={(value: string) => setSelectedValue(value)}
+          value={jsonPathType}
+          onChange={(value: string) => setJsonPathType(value)}
           placeholder="Select an option"
           width="200px"
         />
-        <Input placeholder="Input JSONPath query" value={jsonPathQuery} onChange={setJsonPathQuery} />
-        <Button>Evaluate</Button>
+        <div className="grow ">
+          <Input placeholder="Input JSONPath query" value={jsonPathQuery} onChange={setJsonPathQuery} />
+          <div className="text-red-500 mt-2">
+            {jsonPathError}
+          </div>
+        </div>
       </Flex>
-      <Flex>
-        <div className="grow">
+      <Flex justify="stretch" style={{ height: '600px' }}>
+        <div className="grow h-full">
           <h2 className="mb-2 text-lg font-bold">JSON Document</h2>
           <CodeEditorPanel
             hideTopbar
@@ -57,10 +132,10 @@ export default function Page() {
             showExpandButton={false}
             language="json" />
         </div>
-        <Flex className="grow" direction="col">
+        <div className="grow h-full" >
           <h2 className="mb-2 text-lg font-bold">Evaluation Results</h2>
-          <TextArea value={jsonContent} className="flex-shrink h-full"></TextArea>
-        </Flex>
+          <TextArea value={jsonPathResult} className="h-full"></TextArea>
+        </div>
       </Flex>
     </div >
   );

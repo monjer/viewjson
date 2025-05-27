@@ -59,16 +59,18 @@ export default function Page() {
   return (
     <div  >
       <PageTitle title="JSON Lint" />
-      <CodeEditorPanel
-        value={jsonContent}
-        filename="data.json"
-        mime="application/json"
-        onChange={onChange}
-        placeholder="Input a json string"
-        validateValue={validateJSON}
-        extensions={[lintExtension, lintGutter()]}
-        showExpandButton={false}
-        language="json" />
+      <div style={{ width: '100%', height: 'calc(80vh - 60px)', overflow: 'auto' }}>
+        <CodeEditorPanel
+          value={jsonContent}
+          filename="data.json"
+          mime="application/json"
+          onChange={onChange}
+          placeholder="Input a json string"
+          validateValue={validateJSON}
+          extensions={[lintExtension, lintGutter()]}
+          showExpandButton={false}
+          language="json" />
+      </div>
     </div >
   );
 }

@@ -1,30 +1,52 @@
-// src/components/Input.js
 import React from 'react';
 
-interface InputProps {
-  type?: string;
-  value?: string;
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  error?: string;
+  success?: boolean;
+  status?: 'error' | 'success' | 'warning' | 'default';
   onChange?: (value: string) => void;
-  placeholder?: string;
-  className?: string;
-  style?: React.CSSProperties;
 }
-const Input = (props: InputProps) => {
-  const { type = 'text', value, onChange, placeholder, className, ...rest } = props;
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
+
+const Input: React.FC<InputProps> = ({
+  error,
+  success,
+  status = 'default',
+  className = '',
+  onChange,
+  ...props
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target.value);
   };
+
+  // Define styles based on status
+  const statusStyles = {
+    default: 'border-gray-300 focus:border-blue-500 ',
+    error: 'border-red-500 focus:border-red-500 ',
+    success: 'border-green-500 focus:border-green-500 ',
+    warning: 'border-yellow-500 focus:border-yellow-500 ',
+  };
+
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <input
-        type={type}
-        value={value}
+        className={`
+          w-full px-3 py-2
+          border rounded-md
+          bg-white
+          outline-hidden
+          focus:outline-none 
+          disabled:bg-gray-100 disabled:cursor-not-allowed
+          placeholder:text-gray-400
+          ${statusStyles[error ? 'error' : success ? 'success' : status]}
+          ${className}
+        `}
         onChange={handleChange}
-        placeholder={placeholder}
-        className={`w-full p-2 border outline-none border-gray-300 rounded-md focus:border-blue-500  ${className}`}
-        {...rest}
+        {...props}
       />
-      asdasd
+      {error && (
+        <p className="mt-1 text-sm text-red-500">{error}</p>
+      )}
     </div>
   );
 };

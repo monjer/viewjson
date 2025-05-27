@@ -191,7 +191,7 @@ function Main() {
   return (
     <div className={editorClassname}>
       <Flex style={{ flexDirection: 'column', alignItems: "stretch" }}>
-        <Flex className="mb-4" align="center" justify="between">
+        <Flex className="mb-2" align="center" justify="between">
           <Flex gap="2" align="center">
             <Button title="minify json string" onClick={onCompressBtnClick}><FolderCode size={14} className="mr-1" />Minify</Button>
             <Button title="pretty json string" onClick={onFormtBtnClick}><FileCode size={14} className="mr-1" /> Format</Button>
@@ -231,7 +231,7 @@ function Main() {
             <Button onClick={onCleanBtnClick} title="clean json string"><Eraser size={14} className="mr-1" />Clean</Button>
           </Flex>
           <Button type="text" onClick={onExpandBtnClick}>
-            {expand ? <Shrink size={16} className="mr-1" /> : <Expand size={16} className="mr-1" />}
+            {expand ? <Shrink size={16} /> : <Expand size={16} />}
           </Button>
         </Flex>
         <div style={{ flex: 1, overflow: 'hidden' }} >

@@ -128,7 +128,7 @@ const DiffEditor: React.FC<DiffEditorProps> = ({
 
   return (
     <Flex direction='col'>
-      <div className="flex text-sm">
+      <div className="flex text-sm w-full">
         <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Original data</div>
         <div className="flex-1 bg-gray-800 text-white px-4 py-2 font-medium">Compared data</div>
       </div>

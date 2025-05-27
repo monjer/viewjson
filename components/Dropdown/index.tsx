@@ -58,7 +58,7 @@ const Dropdown = (props: DropdownProps) => {
         <ChevronDown size={12} />
       </span>
       {isOpen && (
-        <nav ref={popoverRef} className="absolute left-0 w-56 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-900">
+        <nav ref={popoverRef} className="absolute left-0 w-56 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg  focus:outline-hidden dark:bg-gray-900">
           <div className='py-2'>
             {items.map((item, index) => (
               <div

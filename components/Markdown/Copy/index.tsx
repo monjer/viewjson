@@ -17,7 +17,7 @@ export default function Copy({ content }: { content: string }) {
 
   return (
     <span
-      className="border block border-gray-600 rounded-md p-1 hover:bg-gray-600 dark:hover:bg-gray-700 cursor-pointer"
+      className="border block border-gray-300 rounded-md p-1 hover:bg-gray-600 dark:hover:bg-gray-700 cursor-pointer"
       onClick={handleCopy}
     >
       {isCopied ? (
