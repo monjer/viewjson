@@ -15,13 +15,9 @@ import Logo from './Logo';
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   const [activeKeys, setActiveKeys] = React.useState([]);
-  const darkMode = theme === 'dark';
 
-  const onChangeTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
 
   const navs = [
     {

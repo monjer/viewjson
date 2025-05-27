@@ -16,7 +16,7 @@ const MonacoEditor: React.FC<MonacoEditorProps> = ({
   language = 'javascript',
   onChange,
   height = '100%',
-  options = {}
+  options = {},
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
@@ -41,7 +41,7 @@ const MonacoEditor: React.FC<MonacoEditorProps> = ({
         vertical: 'visible',
         horizontal: 'visible',
       },
-      ...options
+      ...options,
     };
 
     editorRef.current = monaco.editor.create(containerRef.current, defaultOptions);

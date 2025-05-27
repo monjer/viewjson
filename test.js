@@ -1,2 +1,0 @@
-const jsonlint = require('jsonlint');
-
