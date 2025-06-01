@@ -113,7 +113,6 @@ function CmEditor(props: CMEditorProps) {
         keymap.of([indentWithTab]),
         keymap.of(standardKeymap),
         themeConfig.of(editorTheme),
-        EditorView.lineWrapping,
         EditorView.updateListener.of(onEditorChange),
         EditorView.updateListener.of(updateListener),
         EditorView.domEventHandlers({
@@ -155,7 +154,7 @@ function CmEditor(props: CMEditorProps) {
 
   return (
     <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-      <div ref={elRef} className={`h-full `}></div>
+      <div ref={elRef} className={`h-full`}></div>
     </Dropzone >
   );
 

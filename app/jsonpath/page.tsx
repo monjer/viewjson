@@ -118,7 +118,7 @@ export default function Page() {
         </div>
       </Flex>
       <Flex justify="stretch" style={{ height: '600px' }}>
-        <div className="grow h-full">
+        <div className="grow-1 shrink-0 flex-none  h-full" style={{ width: '50%' }}>
           <h2 className="mb-2 text-lg font-bold">JSON Document</h2>
           <CodeEditorPanel
             hideTopbar
@@ -132,7 +132,7 @@ export default function Page() {
             showExpandButton={false}
             language="json" />
         </div>
-        <div className="grow h-full" >
+        <div className="grow-1 shrink-0 h-full" style={{ width: '50%' }} >
           <h2 className="mb-2 text-lg font-bold">Evaluation Results</h2>
           <TextArea value={jsonPathResult} className="h-full"></TextArea>
         </div>

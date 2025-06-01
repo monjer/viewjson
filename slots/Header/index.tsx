@@ -106,7 +106,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <div className='app-header-container sticky top-0 z-10 border-b border-b-stone-300 drop-shadow dark:border-b-gray-700 bg-slate-50 dark:bg-gray-900'>
+    <div className='app-header-container sticky top-0 z-10 border-b bg-white'>
       <ResponseContainer className='app-header flex-grow flex items-center position-relative  '>
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center' className='grow'>

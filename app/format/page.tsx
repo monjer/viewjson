@@ -34,6 +34,10 @@ export default function Page() {
                 <h3>JSON Diff</h3>
                 <p>Use <a href="/diff" className="link">json diff tool</a> to Compare two JSON files and identify the differences between them.</p>
               </li>
+              <li>
+                <h3>JSON Path</h3>
+                <p>Use <a href="/jsonpath" className="link">json path tool</a> to query and extract data from JSON documents using JSONPath expressions. </p>
+              </li>
             </ul>
           </div>
         </section>

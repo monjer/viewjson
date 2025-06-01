@@ -16,6 +16,8 @@ export default function About() {
           <li><a target="_blank" href="https://prettier.io/">prettier</a>, used to format json string.</li>
           <li><a target="_blank" href="https://github.com/yaml/yaml">yaml</a>, used to convert json string to yaml format.</li>
           <li><a target="_blank" href="https://github.com/nashwaan/xml-js">xml-js</a>, used to convert json string to xml format.</li>
+          <li><a target="_blank" href="github.com/ashphy/jsonpath-js">jsonpath-js</a>, a JavaScript implementation of JSONPath base on JSONPath RFC 9535, which is a query language for JSON similar to how XPath is used for XML. It allows you to extract data from JSON structures using path expressions.</li>
+          <li><a target="_blank" href="https://github.com/nashwaan/xml-js">jsonpath-plus</a>, analyse, transform, and selectively extract data from JSON documents (and JavaScript objects).jsonpath-plus expands on the original specification to add some additional operators and makes explicit some behaviors the original did not spell out.</li>
         </ul>
       </article>
     </ResponseContainer >
