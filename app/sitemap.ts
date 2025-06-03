@@ -42,6 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/jsonpath',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
     },
   ];
 }
