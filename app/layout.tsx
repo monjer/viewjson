@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import './global.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'viewjson - json viewer, json formatter, json data converter, json diff, json validator ',
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css"
-        />
+        /> */}
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5347284824666460"
+          crossOrigin="anonymous"></Script>
       </head>
       <body className='relative overflow-auto text-slate-600	 bg-white dark:bg-gray-950 dark:text-gray-400'>
         <ThemeProvider attribute="class">
