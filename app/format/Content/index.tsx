@@ -184,6 +184,7 @@ function Main() {
   };
 
   const onExpandBtnClick = () => {
+    document.body.style.overflow = expand ? 'auto' : 'hidden';
     setExpand(!expand);
   };
 
