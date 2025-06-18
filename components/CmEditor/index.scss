@@ -1,8 +1,4 @@
-.editor-resizable {
-  .cm-editor {
-    height: calc(60vh);
-    min-height: 300px;
-    resize: vertical;
-    overflow: auto;
-  }
+.cm-editor {
+  height: 100%;
+  overflow: auto;
 }
