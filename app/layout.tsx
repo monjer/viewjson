@@ -8,9 +8,9 @@ import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'viewjson - json viewer, json formatter, json data converter, json diff, json validator ',
-  description: 'A free json online tools : json viewer, json beautifier, json formatter, json data converter, json diff, json validator, json tutorial.',
-  keywords: "online json viewer, json beautifier, json formatter, json diff, json validator, json data converter, json tutorial",
+  title: 'viewjson - json viewer, json formatter, json data converter, json diff, json lint, json schema validator',
+  description: 'A free json online tools : json viewer, json beautifier, json formatter, json data converter, json diff, json lint, json schema validator, json tutorial.',
+  keywords: "online json viewer, json beautifier, json formatter, json diff, json validator, json data converter, json schema validator, json tutorial, json beautifier online",
 };
 
 
