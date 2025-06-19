@@ -10,19 +10,20 @@ function CodeStyle(props) {
   return <div className="prose-code:font-code prose-pre:border prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>;
 }
 
-export default async function DocPage({ params }: { params: { slug: string[] } }) {
-  const { slug = [] } = params;
+export default async function DocPage({ params }) {
+  const { slug = [] } = await params;
   const docPath = slug.join("/");
   const docInfo = await getDocsForSlug(docPath);
   const tocs = await getDocTocs(docPath);
   return (
     <>
-      <article className="prose prose-zinc max-w-[100%] px-8 py-4 dark:prose-invert"><CodeStyle>{docInfo?.content}</CodeStyle></article>
+      <article className="prose prose-zinc grow-1 px-2 py-4 max-w-[100%] dark:prose-invert overflow-auto"><CodeStyle>{docInfo?.content}</CodeStyle></article>
       <DocToc dataSource={tocs} className="grow-0	shrink-0 hidden" />
     </>
   );
 }
-export async function generateMetadata({ params: { slug = [] } }: PageProps) {
+export async function generateMetadata({ params }: PageProps) {
+  const { slug = [] } = await params;
   const pathName = slug.join("/");
   const res = await getDocsForSlug(pathName);
   if (!res) return null;

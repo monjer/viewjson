@@ -7,7 +7,7 @@ export default function Pre({
   ...rest
 }: ComponentProps<"pre"> & { raw?: string }) {
   return (
-    <div className="my-5 relative max-w-[60vw]">
+    <div className="my-5 relative w-full">
       <div className="relative ">
         <pre {...rest}>{children}</pre>
       </div>
