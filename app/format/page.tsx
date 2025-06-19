@@ -12,7 +12,7 @@ export default function Page() {
           independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
           These properties make JSON an ideal data-interchange language.</p>
         <h1>Why use JSON?</h1>
-        <p>
+        <div>
           <ul>
             <li><strong>Human-Readable:</strong> JSON is easy to read and understand, making it accessible for developers and non-developers alike.</li>
             <li><strong>Lightweight:</strong> JSON is a lightweight format, which means it requires less bandwidth and storage compared to other formats like XML.</li>
@@ -20,7 +20,7 @@ export default function Page() {
             <li><strong>Structured Data:</strong> JSON supports complex data structures, including nested objects and arrays, allowing for rich data representation.</li>
             <li><strong>Widely Supported:</strong> JSON is widely supported by web APIs and services, making it a standard choice for data exchange on the web.</li>
           </ul>
-        </p>
+        </div>
         <h1>Structure and Syntax</h1>
 
         <div className="space-y-8">

@@ -21,7 +21,7 @@ function ItemLink({ href, title, className = "", style = {} }: ItemLink) {
   const pathname = usePathname();
   const active = pathname.indexOf(href) > -1;
   return (
-    <Link href={href} title={title} className={`hover:text-black dark:hover:text-white ${className} ${active ? 'text-red-500 dark:text-white' : ''}`} style={style}>{title}</Link>
+    <Link href={href} title={title} className={`no-underline hover:text-black  dark:hover:text-white ${className} ${active ? 'text-black dark:text-white' : ''}`} style={style}>{title}</Link>
   );
 }
 
@@ -41,9 +41,10 @@ function SubNav({ item }: { item: NavItemProps }) {
   return (
     <>
       <h1 className="text-base m-0">{href ? <ItemLink href={href} title={title} /> : title}</h1>
-      <ul className="flex flex-col">
+      {items?.length > 0 && <ul className="flex flex-col">
         {items.map((item) => <NavItem item={item} key={item.href} />)}
       </ul>
+      }
     </>
   );
 }
