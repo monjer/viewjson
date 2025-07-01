@@ -6,12 +6,12 @@ export default function Page() {
     <div className="mt-4">
       <Content />
       <article>
-        <h1>What is JSON?</h1>
+        <h2>What is JSON?</h2>
         <p> JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It
           is based on a subset of the JavaScript Programming Language Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language
           independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
           These properties make JSON an ideal data-interchange language.</p>
-        <h1>Why use JSON?</h1>
+        <h2>Why use JSON?</h2>
         <div>
           <ul>
             <li><strong>Human-Readable:</strong> JSON is easy to read and understand, making it accessible for developers and non-developers alike.</li>
@@ -21,11 +21,11 @@ export default function Page() {
             <li><strong>Widely Supported:</strong> JSON is widely supported by web APIs and services, making it a standard choice for data exchange on the web.</li>
           </ul>
         </div>
-        <h1>Structure and Syntax</h1>
+        <h2>Structure and Syntax</h2>
 
         <div className="space-y-8">
           <section>
-            <h3 className="text-lg font-semibold mb-2">1. Primitive Types</h3>
+            <h4 className="font-semibold mb-2">1. Primitive Types</h4>
             <p className="mb-2">JSON supports these primitive data types:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800">
               {`{
@@ -39,7 +39,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">2. Arrays</h3>
+            <h4 className="font-semibold mb-2">2. Arrays</h4>
             <p className="mb-2">Arrays are ordered collections of values:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800">
               {`{
@@ -53,7 +53,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">3. Objects</h3>
+            <h4 className="font-semibold mb-2">3. Objects</h4>
             <p className="mb-2">Objects are collections of key-value pairs:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800">
               {`{
@@ -70,7 +70,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">4. Complex Example</h3>
+            <h4 className="font-semibold mb-2">4. Complex Example</h4>
             <p className="mb-2">Real-world JSON often combines multiple types:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800">
               {`{
@@ -99,10 +99,10 @@ export default function Page() {
             </pre>
           </section>
         </div>
-        <h1>Common JSON Errors</h1>
+        <h2>Common JSON Errors</h2>
         <div className="space-y-8">
           <section>
-            <h3 className="text-lg font-semibold mb-2">1. Missing or Extra Commas</h3>
+            <h4 className="font-semibold mb-2">1. Missing or Extra Commas</h4>
             <p className="mb-2">Commas must separate array elements and object properties, but shouldn't appear after the last item:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -114,7 +114,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">2. Single Quotes Instead of Double Quotes</h3>
+            <h4 className="font-semibold mb-2">2. Single Quotes Instead of Double Quotes</h4>
             <p className="mb-2">JSON requires double quotes for strings:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -125,7 +125,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">3. Including Functions or Undefined</h3>
+            <h4 className="font-semibold mb-2">3. Including Functions or Undefined</h4>
             <p className="mb-2">JSON doesn't support functions or undefined values:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -137,7 +137,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">4. Unquoted Property Names</h3>
+            <h4 className="font-semibold mb-2">4. Unquoted Property Names</h4>
             <p className="mb-2">All object property names must be quoted:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -148,7 +148,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">5. Invalid Number Formats</h3>
+            <h4 className="font-semibold mb-2">5. Invalid Number Formats</h4>
             <p className="mb-2">Numbers can't start with multiple zeros or use certain notations:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -161,7 +161,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">6. Comments in JSON</h3>
+            <h4 className="font-semibold mb-2">6. Comments in JSON</h4>
             <p className="mb-2">JSON doesn't support comments:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -173,7 +173,7 @@ export default function Page() {
           </section>
 
           <section>
-            <h3 className="text-lg font-semibold mb-2">7. Unclosed Structures</h3>
+            <h4 className="font-semibold mb-2">7. Unclosed Structures</h4>
             <p className="mb-2">All arrays and objects must be properly closed:</p>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-800 text-red-500">
               {`{
@@ -188,11 +188,11 @@ export default function Page() {
         </div>
       </article>
       <article>
-        <h1 >About viewjson.online</h1>
+        <h2>About viewjson.online</h2>
         <p>viewjson is an online json viewer, json beautifier, json formatter, json data converter, json diff, json validator tools.</p>
         <section className="features">
           <div className="container">
-            <h2>Features</h2>
+            <h3>Features</h3>
             <ul className="feature-list">
               <li>
                 <h3>JSON Basic Process</h3>
