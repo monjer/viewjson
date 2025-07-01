@@ -17,7 +17,7 @@ export default async function DocPage({ params }) {
   const tocs = await getDocTocs(docPath);
   return (
     <>
-      <article className="prose prose-zinc grow-1 px-2 py-4 max-w-[100%] dark:prose-invert overflow-auto"><CodeStyle>{docInfo?.content}</CodeStyle></article>
+      <article className="prose prose-zinc grow-1 px-2 py-4 text-sm max-w-[100%] dark:prose-invert overflow-auto"><CodeStyle>{docInfo?.content}</CodeStyle></article>
       <DocToc dataSource={tocs} className="grow-0	shrink-0 hidden" />
     </>
   );

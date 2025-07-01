@@ -25,7 +25,7 @@ export default function RootLayout({
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5347284824666460"
           crossOrigin="anonymous"></Script>
       </head>
-      <body className='relative overflow-auto  text-gray-600	 bg-white dark:bg-gray-950 dark:text-gray-400'>
+      <body className='relative overflow-auto  text-gray-700	 bg-white dark:bg-gray-950 dark:text-gray-400'>
         <ThemeProvider attribute="class">
           <Layout>
             {children}

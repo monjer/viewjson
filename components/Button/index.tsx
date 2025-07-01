@@ -13,7 +13,7 @@ interface ButtonProps {
 
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
   const { className, type = "primary", children, disabled, loading, style = {}, ...rest } = props;
-  const baseStyles = 'inline-flex items-center justify-center whitespace-nowrap rounded cursor-pointer border border-gray-300 text-sm transition-all ease-in-outrounded px-1 py-1 shrink-0 grow-0';
+  const baseStyles = 'inline-flex items-center justify-center whitespace-nowrap rounded cursor-pointer border border-gray-300  transition-all ease-in-outrounded px-1 py-1 shrink-0 grow-0';
   const loadingStyles = loading || disabled ? 'bg-gray-300 cursor-not-allowed disabled:opacity-50' : '';
   const typeStyles = {
     primary: 'bg-slate-200 text-black enabled:hover:bg-slate-700 enabled:hover:text-white dark:bg-blue-500 dark:text-white enabled:dark:hover:bg-blue-700 enabled:dark:hover:text-white',

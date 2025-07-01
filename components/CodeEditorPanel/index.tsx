@@ -173,7 +173,7 @@ function CodeEditorPanel(props: Props) {
     }
   }, [props.value]);
 
-  const editorClassname = expand ? 'fixed bottom-0 left-0 top-[100px] right-0 bg-white dark:bg-gray-950 p-6 z-50' : 'h-full w-full';
+  const editorClassname = expand ? 'fixed bottom-0 left-0 top-[59px] right-0 bg-white dark:bg-gray-950 p-6 z-50' : 'h-full w-full';
 
   return (
     <>
