@@ -218,7 +218,7 @@ function CodeEditorPanel(props: Props) {
               <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}><Copy size={14} className="mr-1" />Copy</Button>
               <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}><Download size={14} className="mr-1" />Save</Button>
               <Divider vertical />
-              <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clean</Button>
+              <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clear</Button>
             </Flex>
             {
               showExpandButton && (

@@ -19,6 +19,10 @@ export default function Layout() {
       return;
     }
     const obj = JSON.parse(jsonContent);
+    if (!Array.isArray(obj)) {
+      Toast.error('The JSON string should be an array.');
+    }
+
     const jsonStr = Papa.unparse(obj);
     setCsvContent(jsonStr);
   };
@@ -28,7 +32,7 @@ export default function Layout() {
       Papa.parse(csvContent, { worker: true, header: true, dynamicTyping: true, complete: resolve });
     }) as { errors: unknown[], data: object };
     if (result.errors.length > 0) {
-      Toast.error('Parse error');
+      Toast.error('Convert error');
     } else {
       setJsonContent(JSON.stringify(result.data, null, 2));
     }

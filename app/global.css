@@ -33,7 +33,7 @@
 
 body {
   overflow: auto;
-  font-size: 12px;
+  @apply text-sm;
   font-family: "Open Sans",
     "Helvetica Neue",
     Helvetica,

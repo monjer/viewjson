@@ -60,7 +60,7 @@ export default function Header() {
       key: "/jsonpath",
     },
     {
-      label: "Learn JSON",
+      label: "JSON tutorial",
       key: "/docs/what-is-json",
       highlights: ["/docs/:docs"],
     }];

@@ -12,8 +12,12 @@ function Layout({ children }: { children: React.ReactNode }) {
       <main className="page-main w-full m-auto md:w-[1200px] mb-20">
         {children}
       </main>
-      <footer>
-        <p className="text-center my-8">©{date} viewjson.online. All rights reserved.</p>
+      <footer >
+        <article>
+          <p className="text-center my-8">©{date} viewjson.online. All rights reserved.
+            <a href="/privacy" className="ml-2">Privacy Policy</a>
+          </p>
+        </article>
       </footer>
     </div>
   );
