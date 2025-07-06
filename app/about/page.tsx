@@ -1,10 +1,9 @@
-import ResponseContainer from "@/slots/ResponseContainer";
 import React from "react";
 
 export default function About() {
 
   return (
-    <ResponseContainer className="gt-4">
+    <div className="gt-4 max-w-[800px] m-auto">
       <article>
         <h1>About viewjson</h1>
         <p>Welcome to viewjson, viewjson is an online tool for processing json data, which can be used to format, compress, verify, and convert json data to other data formats.</p>
@@ -20,6 +19,6 @@ export default function About() {
           <li><a target="_blank" href="https://github.com/nashwaan/xml-js">jsonpath-plus</a>, analyse, transform, and selectively extract data from JSON documents (and JavaScript objects).jsonpath-plus expands on the original specification to add some additional operators and makes explicit some behaviors the original did not spell out.</li>
         </ul>
       </article>
-    </ResponseContainer >
+    </div >
   );
 }
