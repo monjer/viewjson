@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/",
+    canonical: "https://viewjson.online",
   },
 };
 
