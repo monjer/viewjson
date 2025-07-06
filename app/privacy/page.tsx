@@ -67,10 +67,10 @@ export default function About() {
         </p>
 
         <h3>Contact Us</h3>
-        {/* <p>
+        <p>
           If you have any questions about this Privacy Policy, please contact us at:<br />
-          <b>Email:</b> <a href="mailto:viewjson.online@gmail.com">viewjson.online@gmail.com</a>
-        </p> */}
+          <a href="https://github.com/monjer/viewjson/issues" target="_blank">Gihub page</a>
+        </p>
         <h3>Consent</h3>
         <p>
           By using our website, you hereby consent to our Privacy Policy and agree to its terms and conditions.
