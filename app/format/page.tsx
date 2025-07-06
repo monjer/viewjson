@@ -1,12 +1,5 @@
 import React from "react";
 import Content from './Content';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
-};
 
 export default function Page() {
   return (
