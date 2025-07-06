@@ -20,7 +20,7 @@ function ToJSONStringView({ value, onChange }: { value: string, onChange: (value
 
   return (
     <TextArea
-      placeholder="Please input the json string or drag and drop a json file here"
+      placeholder="Please input a json string or drag and drop a json file here to start"
       value={json} onChange={handleChange}></TextArea>
   );
 }

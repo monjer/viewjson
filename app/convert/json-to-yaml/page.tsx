@@ -54,7 +54,7 @@ export default function Layout() {
           onChange={setJsonContent}
           validateValue={validateJSON}
           language="json"
-          placeholder="Input a json string"
+          placeholder="Please input a json string or drag and drop a json file here to start"
           editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
 
         />

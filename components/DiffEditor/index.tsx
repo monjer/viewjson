@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { basicSetup } from "codemirror";
-import { EditorView, keymap } from '@codemirror/view';
+import { EditorView, keymap, placeholder } from '@codemirror/view';
 import { json } from '@codemirror/lang-json';
 import { MergeView } from '@codemirror/merge';
 import { EditorState, Compartment } from '@codemirror/state';
@@ -41,6 +41,7 @@ const DiffEditor: React.FC<DiffEditorProps> = ({
         extensions: [
           basicSetup,
           json(),
+          placeholder("Input the original json data"),
           themeConfig.of(editorTheme),
           keymap.of([indentWithTab]),
           keymap.of(standardKeymap),
@@ -62,6 +63,7 @@ const DiffEditor: React.FC<DiffEditorProps> = ({
         extensions: [
           basicSetup,
           json(),
+          placeholder("Input the compared json data"),
           themeConfig.of(editorTheme),
           keymap.of([indentWithTab]),
           keymap.of(standardKeymap),

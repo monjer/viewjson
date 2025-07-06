@@ -222,7 +222,7 @@ function CodeEditorPanel(props: Props) {
             </Flex>
             {
               showExpandButton && (
-                <Button type="text" onClick={onExpandBtnClick} className="px-0">
+                <Button type="text" onClick={onExpandBtnClick} className="!px-1">
                   {expand ? <Shrink size={16} /> : <Expand size={16} />}
                 </Button>
               )

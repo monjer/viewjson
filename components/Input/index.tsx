@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({
 
   // Define styles based on status
   const statusStyles = {
-    default: 'border-gray-300 focus:border-blue-500 ',
+    default: 'border-gray-300 focus:border-blue-500 hover:border-blue-500 dark:border-gray-800 dark:focus:border-gray-700 dark:hover:border-gray-700',
     error: 'border-red-500 focus:border-red-500 ',
     success: 'border-green-500 focus:border-green-500 ',
     warning: 'border-yellow-500 focus:border-yellow-500 ',
@@ -32,8 +32,8 @@ const Input: React.FC<InputProps> = ({
       <input
         className={`
           w-full px-3 py-2
-          border rounded-md
-          bg-white
+          border rounded
+          bg-white dark:bg-gray-950
           outline-hidden
           focus:outline-none 
           disabled:bg-gray-100 disabled:cursor-not-allowed

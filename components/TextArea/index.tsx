@@ -27,8 +27,11 @@ const TextArea: React.FC<TextAreaProps> = ({
       <textarea
         className={`
           w-full h-full  p-3
-          rounded-md border border-gray-300
-          focus:border-blue-500 outline-hidden
+          rounded
+          border border-gray-300 dark:border-gray-800
+          focus:border-blue-500 dark:focus:border-gray-700
+          hover:border-blue-500 dark:hover:border-gray-700
+          outline-hidden
           disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
           resize-y
           ${error ? 'border-red-500' : ''}          

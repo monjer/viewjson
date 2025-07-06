@@ -126,7 +126,7 @@ export default function Page() {
             filename="data.json"
             mime="application/json"
             onChange={onChange}
-            placeholder="Input a json string"
+            placeholder="Please input a json string or drag and drop a json file here to start"
             validateValue={validateJSON}
             extensions={[lintGutter()]}
             showExpandButton={false}

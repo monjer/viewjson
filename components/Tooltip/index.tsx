@@ -7,7 +7,7 @@ interface Props {
 
 const Tooltip = ({ children, text }: Props) => {
   const [visible, setVisible] = useState(false);
-  let cls = 'absolute z-10 px-6 py-2 whitespace-nowrap rounded border border-gray-300 shadow-lg bg-white text-black dark:bg-gray-800  dark:border-gray-300 dark:text-white transition duration-300 ease-in-out ';
+  let cls = 'absolute z-10 px-6 py-2 whitespace-nowrap rounded border border-gray-800 shadow-lg bg-white text-black dark:bg-gray-800  dark:border-gray-800 dark:text-white transition duration-300 ease-in-out ';
   if (visible) {
     cls += 'opacity-100';
   } else {

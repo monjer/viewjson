@@ -81,11 +81,14 @@ const Popover: React.FC<Props> = (props: Props) => {
       })}
       <Portal>
         {isVisible && (
-          <div className="fixed z-10 border border-gray-300 rounded shadow-lg bg-white dark:bg-gray-900 dark:border-gray-300 dark:shadow-gray-100/10"
+          <div className="fixed z-10 
+          rounded
+          border border-gray-300 dark:border-gray-800  dark:shadow-gray-100/10
+          shadow-lg bg-white dark:bg-gray-900 "
             ref={popoverRef}>
             <div>
               <div className='m-0'>
-                <h1 className="text-md font-bold p-4 ">{title}</h1>
+                <h1 className="text-md font-semibold p-4 ">{title}</h1>
                 <Divider className='mt-0 mb-0' />
               </div>
               <div className='px-4 py-6'>

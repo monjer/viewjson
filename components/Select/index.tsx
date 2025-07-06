@@ -108,8 +108,12 @@ const Select: React.FC<SelectProps> = ({
         aria-expanded={isOpen}
         aria-labelledby={label ? `${label}-label` : undefined}
         className={`
-          relative w-full px-3 py-2 text-left bg-white border rounded-md outline-hidden  border-gray-300
-          focus:outline-hidden  focus:border-blue-500
+          relative w-full px-3 py-2 text-left 
+          bg-white  dark:bg-gray-950 
+          border rounded outline-hidden border-gray-300 dark:border-gray-800 
+          focus:outline-hidden  
+          focus:border-blue-500 dark:focus:border-gray-700
+          hover:border-blue-500 dark:hover:border-gray-700
           ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer hover:border-gray-400'}
           ${className}
         `}
@@ -136,11 +140,16 @@ const Select: React.FC<SelectProps> = ({
 
       {isOpen && !disabled && (
         <div
-          className="absolute z-50 mt-1 bg-white rounded-md shadow-lg border border-gray-200"
+          className={
+            `absolute z-50 mt-1 
+            bg-white dark:bg-gray-900
+            shadow-lg
+            rounded-md border border-gray-300 dark:border-gray-800`
+          }
           style={dropdownStyles}
         >
           <div
-            className="py-1 overflow-auto text-base max-h-60"
+            className="py-1 overflow-auto text-sm max-h-60"
             role="listbox"
           >
             {options.map((option, index) => (
@@ -151,12 +160,11 @@ const Select: React.FC<SelectProps> = ({
                 onClick={() => handleSelect(option)}
                 onMouseEnter={() => setHighlightedIndex(index)}
                 className={`
-                  cursor-pointer select-none relative px-3 py-2
+                  cursor-pointer select-none relative px-3 py-2 mb-1
                   ${selectedOption?.value === option.value
-                    ? 'bg-blue-50 text-blue-900'
-                    : 'text-gray-900 hover:bg-gray-100'
+                    ? 'bg-gray-100 text-blue-900 dark:bg-gray-800 dark:text-white'
+                    : 'bg-white hover:text-blue-900 hover:bg-gray-100 dark:bg-gray-900 dark:hover:text-white dark:hover:bg-gray-800'
                   }
-                  ${highlightedIndex === index ? 'bg-gray-100' : ''}
                 `}
               >
                 {option.label}

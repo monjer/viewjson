@@ -59,11 +59,11 @@ const Dropdown = (props: DropdownProps) => {
       </span>
       {isOpen && (
         <nav ref={popoverRef} className="absolute left-0 w-56 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg  focus:outline-hidden dark:bg-gray-900">
-          <div className='py-2'>
+          <div className='py-2 shadow-lg'>
             {items.map((item, index) => (
               <div
                 key={`${item.key}-${index}`}
-                className="px-4 py-4 text-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="px-4 py-2 mb-1 text-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
                 onClick={() => handleItemClick(item)}
               >
                 <Link className="flex items-center" href={item.key} >
