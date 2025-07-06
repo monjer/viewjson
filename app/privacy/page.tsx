@@ -68,8 +68,7 @@ export default function About() {
 
         <h3>Contact Us</h3>
         <p>
-          If you have any questions about this Privacy Policy, please contact us at:<br />
-          <a href="https://github.com/monjer/viewjson/issues" target="_blank">Gihub page</a>
+          If you have any questions about this Privacy Policy, please contact us at our  <a href="https://github.com/monjer/viewjson/issues" target="_blank">Gihub page</a>
         </p>
         <h3>Consent</h3>
         <p>
