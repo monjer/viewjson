@@ -32,8 +32,14 @@ export default function RootLayout({
             {children}
           </Layout>
         </ThemeProvider>
+        <script>
+          {process.env.ENABLE_ANALYSIS}
+        </script>
         {
           process.env.ENABLE_ANALYSIS === 'true' && <GoogleAnalytics gaId="G-V3525DMF56" />
+        }
+        {
+          process.env.ENABLE_ANALYSIS && <GoogleAnalytics gaId="G-V3525DMF56" />
         }
       </body>
     </html >
