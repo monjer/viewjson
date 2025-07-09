@@ -26,8 +26,8 @@ export default function Page() {
                 <span>Keep your JSON data organized with our formatting tools that ensure readability and consistency.</span>
               </li>
               <li>
-                <strong>JSON Validation: </strong>
-                <span>Provide a simple and efficient <a href="/validate" className="link">json vaildation tool </a>to find any json data syntax errors.</span>
+                <strong>JSON Lint: </strong>
+                <span>Provide a simple and efficient <a href="/jsonlint" className="link">json lint tool </a>to find any json data syntax errors.</span>
               </li>
               <li>
                 <strong>JSON Diff: </strong>
