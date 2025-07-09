@@ -17,7 +17,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   const loadingStyles = loading || disabled ? 'bg-gray-300 cursor-not-allowed disabled:opacity-50' : '';
   const typeStyles = {
     primary: `
-    bg-neutral-500 text-neutral-100  enabled:hover:bg-neutral-700 enabled:hover:text-white
+    bg-neutral-700 text-neutral-100  enabled:hover:bg-neutral-900 enabled:hover:text-white
     dark:bg-neutral-800 dark:text-white enabled:dark:hover:bg-neutral-700 enabled:dark:hover:text-white
     boder-neutral-800 dark:border-neutral-700`,
     danger: 'bg-red-500 text-white hover:bg-red-700',
