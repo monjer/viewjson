@@ -6,6 +6,43 @@ export default function Page() {
     <div className="mt-4">
       <Content />
       <article>
+        <h2>About viewjson.online</h2>
+        <p>viewjson.online is an online json viewer, json beautifier, json formatter, json data converter, json diff, json path checker, json validator tools.</p>
+        <section className="features">
+          <div className="container">
+            <ul className="feature-list">
+              <li>
+                <strong>JSON Basic Process: </strong>
+                <span>Provide some basic json data process methods daily used, such as json minify, json prettify, json highlight.</span>
+              </li>
+              <li>
+                <strong>JSON Conversion: </strong>
+                <span>Easily convert JSON data to and from various formats, including <a href="/convert/json-to-xml" className="link mr-1">JSON to XML</a>, &nbsp;
+                  <a href="/convert/json-to-csv" className="link mr-1">JSON to CSV</a>,&nbsp;<a className="link mr-1" href="/convert/json-to-yaml">JSON to YAML</a>,&nbsp;<a className="link mr-1" href="/convert/json-to-base64">JSON to Base64</a>,&nbsp;
+                  <a href="/convert/json-to-html" className="link">JSON to  HTML</a>.</span>
+              </li>
+              <li>
+                <strong>JSON Formatting: </strong>
+                <span>Keep your JSON data organized with our formatting tools that ensure readability and consistency.</span>
+              </li>
+              <li>
+                <strong>JSON Validation: </strong>
+                <span>Provide a simple and efficient <a href="/validate" className="link">json vaildation tool </a>to find any json data syntax errors.</span>
+              </li>
+              <li>
+                <strong>JSON Diff: </strong>
+                <span>Use <a href="/diff" className="link">json diff tool</a> to Compare two JSON files and identify the differences between them.</span>
+              </li>
+              <li>
+                <strong>JSON Path: </strong>
+                <span>Use <a href="/jsonpath" className="link">json path tool</a> to query and extract data from JSON documents using JSONPath expressions. </span>
+              </li>
+              <li><strong>JSON Tutorial: </strong>There are some simple <a href="/docs/what-is-json" className="link">json tutorials</a> to help learn some basic knowledge json.</li>
+            </ul>
+          </div>
+        </section>
+      </article>
+      <article>
         <h2>What is JSON?</h2>
         <p> JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It
           is based on a subset of the JavaScript Programming Language Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language
@@ -187,43 +224,7 @@ export default function Page() {
           </section>
         </div>
       </article>
-      <article>
-        <h2>About viewjson.online</h2>
-        <p>viewjson is an online json viewer, json beautifier, json formatter, json data converter, json diff, json validator tools.</p>
-        <section className="features">
-          <div className="container">
-            <h3>Features</h3>
-            <ul className="feature-list">
-              <li>
-                <h3>JSON Basic Process</h3>
-                <p>Provide some basic json data process methods daily used, such as json minify, json prettify, json highlight.</p>
-              </li>
-              <li>
-                <h3>JSON Conversion</h3>
-                <p>Easily convert JSON data to and from various formats, including <a href="/convert/json-to-xml" className="link">JSON to XML</a>,
-                  <a href="/convert/json-to-csv" className="link">JSON to CSV</a>, <a className="link" href="/convert/json-to-yaml">JSON to YAML</a>, <a className="link" href="/convert/json-to-base64"> JSON to Base64</a>,
-                  <a href="/convert/json-to-html" className="link">JSON to  HTML</a>.</p>
-              </li>
-              <li>
-                <h3>JSON Formatting</h3>
-                <p>Keep your JSON data organized with our formatting tools that ensure readability and consistency.</p>
-              </li>
-              <li>
-                <h3>JSON Validation</h3>
-                <p>Provide a simple and efficient <a href="/validate" className="link">json vaildation tool </a>to find any json data syntax errors.</p>
-              </li>
-              <li>
-                <h3>JSON Diff</h3>
-                <p>Use <a href="/diff" className="link">json diff tool</a> to Compare two JSON files and identify the differences between them.</p>
-              </li>
-              <li>
-                <h3>JSON Path</h3>
-                <p>Use <a href="/jsonpath" className="link">json path tool</a> to query and extract data from JSON documents using JSONPath expressions. </p>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </article>
+
     </div>
   );
 }
