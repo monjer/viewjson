@@ -13,16 +13,21 @@ const docRoutes: DocRoute[] = [
     file: "docs/what-is-json.mdx",
   },
   {
-    title: "JSON Syntax and Structure",
+    title: "JSON Syntax And Structure",
     href: "/docs/basic-syntax",
     file: "docs/basic-syntax.mdx",
   },
   {
-    title: 'Creating and Parsing JSON',
+    title: "Common Syntax Error",
+    href: "/docs/common-syntax-error",
+    file: "docs/common-syntax-error.mdx",
+  },
+  {
+    title: 'Creating And Parsing JSON',
     href: '/docs/create-json',
     file: 'docs/create-json.mdx',
   }, {
-    title: 'JSON In web development',
+    title: 'JSON In Web Development',
     href: '/docs/json-in-web-development',
     file: 'docs/json-in-web-development.mdx',
   }, {
@@ -33,6 +38,10 @@ const docRoutes: DocRoute[] = [
     title: 'JSON Advance',
     href: '/docs/json-advance',
     file: 'docs/json-advance.mdx',
+  }, {
+    title: 'What Is JSON5',
+    href: '/docs/what-is-json5',
+    file: 'docs/what-is-json5.mdx',
   }, {
     title: 'JSON Vs XML',
     href: '/docs/json-vs-xml',

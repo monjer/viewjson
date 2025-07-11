@@ -1,0 +1,93 @@
+---
+title: Common JSON Syntax Error
+description: Learn some common syntax error when use json data.
+keywords: JSON Syntax, JSON Structure, JSON Syntax Error
+---
+
+# Common JSON Syntax Error
+
+In this guide we will learn how to avoid some common syntax error when you use JSON data, so that you can use JSON data more effectively.
+
+
+## 1. Missing or Extra Commas
+
+Commas must separate array elements and object properties, but shouldn't appafter the last item:
+
+```json
+{
+  "name": "John",   // Correct
+  "age": 30,       // Correct
+  "city": "Boston", // Extra comma - ERROR!
+}
+```
+## 2. Single Quotes Instead of Double Quotes
+
+JSON requires double quotes for strings:
+
+```json
+{
+  'name': 'John',  // ERROR! Single quotes not allowed
+  "age": 30
+}
+```
+## 3. Including Functions or Undefined
+
+JSON doesn't support functions or undefined values:
+
+```json
+{
+  "name": "John",
+  "callback": function() {},  // ERROR! Functions not allowed
+  "status": undefined        // ERROR! undefined not allowed
+}
+```
+## 4. Unquoted Property Names
+
+All object property names must be quoted:
+
+```json
+{
+  name: "John",    // ERROR! Missing quotes around property name
+  "age": 30
+}
+```
+## 5. Invalid Number Formats
+
+Numbers can't start with multiple zeros or use certain notations:
+
+```json
+{
+  "amount": 01.50,        // ERROR! Leading zero
+  "hex": 0xFF,           // ERROR! Hex not allowed
+  "scientific": 1.23e5,  // Valid scientific notation
+  "infinity": Infinity   // ERROR! Infinity not allowed
+}
+```
+## 6. Comments in JSON
+
+JSON doesn't support comments:
+
+```json
+{
+  // This is a comment     ERROR!
+  "name": "John",
+  "age": 30              /* Block comment - ERROR! */
+}
+```
+## 7. Unclosed Structures
+
+All arrays and objects must be properly closed:
+
+```json
+{
+  "name": "John",
+  "items": [
+    "apple",
+    "orange"    // ERROR! Missing closing bracket
+  "age": 30
+
+```
+
+## Conclusion
+
+Understanding and avoiding common JSON syntax errors is essential for working effectively with JSON data. The most frequent mistakes include missing or extra commas, using single quotes instead of double quotes, including unsupported types like functions or undefined, omitting quotes around property names, using invalid number formats, adding comments, and leaving structures unclosed. By being aware of these pitfalls and following the correct JSON syntax, you can ensure your data is valid, easily parsed, and compatible across different systems and tools.
