@@ -1,11 +1,12 @@
 import React from "react";
+import Article from "@/components/Article";
 
 export default function About() {
 
   return (
-    <div className="gt-4 max-w-[800px] m-auto">
-      <article>
-        <h1>About viewjson</h1>
+    <div className="gt-4 max-w-[1024px] mx-auto">
+      <Article>
+        <h1 className="mt-4">About viewjson</h1>
         <p>Welcome to viewjson, viewjson is an online tool for processing json data, which can be used to format, compress, verify, and convert json data to other data formats.</p>
         <p>viewjson is built with other related open source tools, very thanks to all these open projects and their authors , including：</p>
         <ul>
@@ -18,7 +19,7 @@ export default function About() {
           <li><a target="_blank" href="github.com/ashphy/jsonpath-js">jsonpath-js</a>, a JavaScript implementation of JSONPath base on JSONPath RFC 9535, which is a query language for JSON similar to how XPath is used for XML. It allows you to extract data from JSON structures using path expressions.</li>
           <li><a target="_blank" href="https://github.com/nashwaan/xml-js">jsonpath-plus</a>, analyse, transform, and selectively extract data from JSON documents (and JavaScript objects).jsonpath-plus expands on the original specification to add some additional operators and makes explicit some behaviors the original did not spell out.</li>
         </ul>
-      </article>
+      </Article>
     </div >
   );
 }

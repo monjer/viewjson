@@ -1,11 +1,12 @@
+import Article from "@/components/Article";
 import React from "react";
 
 export default function About() {
 
   return (
-    <div className="gt-4 max-w-[800px] m-auto">
-      <article className="text-sm">
-        <h2>Privacy Policy</h2>
+    <div className="gt-4 max-w-[1024px] m-auto">
+      <Article >
+        <h1 className="mt-4">Privacy Policy</h1>
         <p>
           Thank you for visiting <a href="https://viewjson.online" target="_blank" rel="noopener">viewjson.online</a> ("we", "our", or "us"). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website.
         </p>
@@ -68,13 +69,13 @@ export default function About() {
 
         <h3>Contact Us</h3>
         <p>
-          If you have any questions about this Privacy Policy, please contact us at our  <a href="https://github.com/monjer/viewjson/issues" target="_blank">Gihub page</a>
+          If you have any questions about this Privacy Policy, please contact us at our  <a href="https://github.com/monjer/viewjson/issues" target="_blank">Github page</a>
         </p>
         <h3>Consent</h3>
         <p>
           By using our website, you hereby consent to our Privacy Policy and agree to its terms and conditions.
         </p>
-      </article>
+      </Article>
     </div>
   );
 }
