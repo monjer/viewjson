@@ -146,11 +146,11 @@ function CmEditor(props: CMEditorProps) {
 
   React.useLayoutEffect(() => {
     if (viewRef.current) {
-      // const darkMode = document.documentElement.classList.contains('dark');
+      const darkMode = document.documentElement.classList.contains('dark');
       const currentValue = viewRef.current.state.doc.toString();
       if (currentValue !== code) { // 避免cursor失去焦点
         const viewUpdate = {
-          // effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
+          effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
           changes: {
             from: 0,
             to: viewRef.current.state.doc.length,
