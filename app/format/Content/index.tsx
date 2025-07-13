@@ -14,6 +14,7 @@ import UploadButton from "@/components/UploadButton";
 import { readFileAsText } from "@/utils";
 import Dropzone from '@/components/Dropzone';
 import { Download, Copy, Eraser, ClipboardPaste, Upload, CloudDownload, FileCode, Expand, FolderCode, Highlighter, Shrink, ReceiptText } from "lucide-react";
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 enum ViewType {
   Plain = 'plain',
@@ -33,6 +34,13 @@ function Main() {
   const [expand, setExpand] = React.useState(false);
 
   const [viewType, setViewType] = React.useState(ViewType.Plain);
+
+  const { data } = useJsonFromUrl();
+  React.useEffect(() => {
+    if (data) {
+      setValue(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
   const formatJson = (obj: string, space = 0) => {
     try {

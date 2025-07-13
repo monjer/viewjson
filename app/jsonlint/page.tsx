@@ -5,6 +5,7 @@ import { linter, Diagnostic, lintGutter } from "@/utils/lint";
 import PageTitle from "@/components/PageTitle";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 const lintExtension = linter(async (view) => {
   const diagnostics: Diagnostic[] = [];
@@ -54,6 +55,13 @@ export default function Page() {
   const hasError = jsonContent?.trim() && error;
   const errorLine = error?.message?.match(/at position (\d+)/);
 
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
 
   function validateJSON() {

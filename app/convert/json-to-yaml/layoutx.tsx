@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'viewjson - Convert JSON to YAML',
   description: 'Convert JSON string to YAML and vice versa.',
-  keywords: 'JSON, YAML, converter, online tool',
+  keywords: 'JSON To YAML, YAML To JSON, JSON converter, online tool',
 };
 
 export default function DashboardLayout({

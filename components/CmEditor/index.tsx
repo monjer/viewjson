@@ -154,10 +154,9 @@ function CmEditor(props: CMEditorProps) {
           changes: {
             from: 0,
             to: viewRef.current.state.doc.length,
-            insert: "",
+            insert: code,
           },
         };
-        console.log('viewUpdate', code);
         viewRef.current.dispatch(viewUpdate);
       }
     }

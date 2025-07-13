@@ -8,5 +8,5 @@ export default function Page() {
 export const metadata: Metadata = {
   title: 'viewjson - Convert JSON to XML',
   description: 'Convert JSON string to XML and vice versa.',
-  keywords: 'JSON, XML, converter, online tool',
+  keywords: 'JSON To XML, XML To JSON, JSON Converter, online tool',
 };

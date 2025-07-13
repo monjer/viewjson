@@ -9,6 +9,7 @@ import Flex from "@/components/Flex";
 import TextArea from "@/components/TextArea";
 import { JSONPathJS } from "jsonpath-js";
 import { JSONPath } from 'jsonpath-plus';
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 const JSONPathTypes = {
   RFC: 'rfc',
@@ -21,40 +22,32 @@ const options = [
 ];
 
 const defaultJSONString = `{
-  "store": {
-    "book": [
-      {
-        "category": "reference",
-        "author": "Nigel Rees",
-        "title": "Sayings of the Century",
-        "price": 8.95
-      },
-      {
-        "category": "fiction",
-        "author": "Evelyn Waugh",
-        "title": "Sword of Honour",
-        "price": 12.99
-      },
-      {
-        "category": "fiction",
-        "author": "Herman Melville",
-        "title": "Moby Dick",
-        "isbn": "0-553-21311-3",
-        "price": 8.99
-      },
-      {
-        "category": "fiction",
-        "author": "J. R. R. Tolkien",
-        "title": "The Lord of the Rings",
-        "isbn": "0-395-19395-8",
-        "price": 22.99
-      }
-    ],
-    "bicycle": {
-      "color": "red",
-      "price": 19.95
+  "programs": [
+    {
+      "id": 1,
+      "name": "Visual Studio Code",
+      "type": "Editor",
+      "version": "1.80.0",
+      "platforms": ["Windows", "macOS", "Linux"],
+      "website": "https://code.visualstudio.com/"
+    },
+    {
+      "id": 2,
+      "name": "Google Chrome",
+      "type": "Browser",
+      "version": "115.0",
+      "platforms": ["Windows", "macOS", "Linux", "Android", "iOS"],
+      "website": "https://www.google.com/chrome/"
+    },
+    {
+      "id": 3,
+      "name": "Node.js",
+      "type": "Runtime",
+      "version": "20.5.0",
+      "platforms": ["Windows", "macOS", "Linux"],
+      "website": "https://nodejs.org/"
     }
-  }
+  ]
 }
 `;
 
@@ -64,6 +57,13 @@ export default function Page() {
   const [jsonPathError, setJsonPathError] = React.useState<string>('');
   const [jsonPathType, setJsonPathType] = React.useState<string>(options[0].value);
   const [jsonPathQuery, setJsonPathQuery] = React.useState<string>('');
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
   function validateJSON() {
     return true;

@@ -8,10 +8,18 @@ import Papa from 'papaparse';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Tooltip from "@/components/Tooltip";
 import PageTitle from "@/components/PageTitle";
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 export default function Layout() {
   const [csvContent, setCsvContent] = React.useState('');
   const [jsonContent, setJsonContent] = React.useState('');
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
   const onJSONToCsv = () => {
     if (!validateJSON(jsonContent)) {

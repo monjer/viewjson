@@ -8,10 +8,19 @@ import yaml from 'yaml';
 import Tooltip from "@/components/Tooltip";
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import PageTitle from "@/components/PageTitle";
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 export default function Layout() {
   const [jsonContent, setJsonContent] = React.useState('');
   const [yamlContent, setYamlContent] = React.useState('');
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
+
 
   const onJSONToYAML = () => {
     if (!validateJSON(jsonContent)) {

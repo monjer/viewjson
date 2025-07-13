@@ -249,7 +249,8 @@ function CodeEditorPanel(props: Props) {
           <Card className={`w-full overflow-auto h-full resize-y ${className}`} style={editorContainerStyle}>
             <CmEditor
               placeholder={placeholder}
-              code={value} onChange={onValueChange}
+              code={value}
+              onChange={onValueChange}
               extensions={[langExtension, ...extensions]}
               ref={actualEditorRef}
             />

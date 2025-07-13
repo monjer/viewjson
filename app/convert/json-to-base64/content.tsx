@@ -8,10 +8,18 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Tooltip from "@/components/Tooltip";
 import { Base64 } from "js-base64";
 import PageTitle from "@/components/PageTitle";
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 export default function Layout() {
   const [base64Content, setBase64Content] = React.useState('');
   const [jsonContent, setJsonContent] = React.useState('');
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
   const onJSONToBase64 = () => {
     if (!validateJSON(jsonContent)) {

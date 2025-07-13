@@ -8,10 +8,18 @@ import { ChevronRight } from 'lucide-react';
 import Tooltip from "@/components/Tooltip";
 import PageTitle from "@/components/PageTitle";
 import json2html from '@/utils/json2html';
+import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
 export default function Layout() {
-  const [xmlContent, setHTMLContent] = React.useState('');
+  const [htmlContent, setHTMLContent] = React.useState('');
   const [jsonContent, setJsonContent] = React.useState('');
+  const { data } = useJsonFromUrl();
+
+  React.useEffect(() => {
+    if (data) {
+      setJsonContent(JSON.stringify(data, null, 2));
+    }
+  }, [data]);
 
   const onJSONToHTML = () => {
     if (!validateJSON(jsonContent)) {
@@ -31,17 +39,8 @@ export default function Layout() {
     return true;
   }
 
-  function validateXML(str) {
-    try {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(str, "text/xml");
-      // 检查解析后的结果是否包含错误
-      const hasError = xmlDoc.getElementsByTagName("parsererror").length > 0;
-      return !hasError;
-    } catch (e) {
-      // 如果捕获到异常，说明字符串不是有效的XML
-      return false;
-    }
+  function validateHTML() {
+    return true;
   }
   return (
     <Flex className="h-full w-full" direction="col">
@@ -63,13 +62,13 @@ export default function Layout() {
           </Tooltip>
         </Flex>
         <CodeEditorPanel
-          value={xmlContent}
+          value={htmlContent}
           filename="data.html"
           mime="text/html"
           onChange={(v) => {
             setHTMLContent(v);
           }}
-          validateValue={validateXML}
+          validateValue={validateHTML}
           actionButtonVisible={false}
           editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           language="html" />

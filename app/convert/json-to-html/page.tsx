@@ -8,5 +8,5 @@ export default function Page() {
 export const metadata: Metadata = {
   title: 'viewjson - Convert JSON to HTML table',
   description: 'Convert JSON string to HTML table and vice versa.',
-  keywords: 'JSON, HTML Table, converter, online tool',
+  keywords: 'JSON To HTML Table, JSON Converter, json online tool',
 };
