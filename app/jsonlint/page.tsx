@@ -3,7 +3,6 @@ import React from "react";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import { linter, Diagnostic, lintGutter } from "@/utils/lint";
 import PageTitle from "@/components/PageTitle";
-import CmEditor from "@/components/CmEditor";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
 
