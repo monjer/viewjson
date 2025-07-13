@@ -35,6 +35,10 @@ interface Props {
   showExpandButton?: boolean;
   hideTopbar?: boolean,
   editorContainerStyle?: React.CSSProperties;
+  className?: string;
+  editorRef?: React.Ref<{
+    scrollIntoView: (line: number) => void;
+  }>;
 }
 
 
@@ -50,6 +54,8 @@ function CodeEditorPanel(props: Props) {
     showExpandButton = true,
     hideTopbar = false,
     editorContainerStyle = {},
+    className = '',
+    editorRef,
   } = props;
   const [value, setValue] = React.useState(props.defaulValue || props.value || '');
   const [toastVisible, setToastVisible] = React.useState(false);
@@ -60,6 +66,7 @@ function CodeEditorPanel(props: Props) {
   const [requestSuccess, setRequestSuccess] = React.useState(false);
   const langExtension = getLanguage(language);
   const [expand, setExpand] = React.useState(false);
+  const actualEditorRef = React.useRef(null);
 
   const getErrorMessage = (type: ErrrorType) => {
     return {
@@ -68,7 +75,7 @@ function CodeEditorPanel(props: Props) {
     }[type];
   };
 
-  const updateValeue = (val: string) => {
+  const updateValue = (val: string) => {
     if ('value' in props) {
       props.onChange(val);
     } else {
@@ -77,11 +84,11 @@ function CodeEditorPanel(props: Props) {
   };
 
   const onValueChange = (value) => {
-    updateValeue(value);
+    updateValue(value);
   };
 
   const onCleanBtnClick = () => {
-    updateValeue('');
+    updateValue('');
   };
 
   const onLoadBtnClick = async () => {
@@ -90,7 +97,7 @@ function CodeEditorPanel(props: Props) {
     try {
       const response = await fetch(jsonUrl);
       const data = await response.json();
-      updateValeue(JSON.stringify(data, null, 2));
+      updateValue(JSON.stringify(data, null, 2));
 
     } catch (error) {
       success = false;
@@ -116,7 +123,7 @@ function CodeEditorPanel(props: Props) {
     try {
       const text = await navigator.clipboard.readText();
       if (validateValue(text)) {
-        updateValeue(text);
+        updateValue(text);
       } else {
         Toast.error(getErrorMessage(ErrrorType.InputError));
       }
@@ -129,7 +136,7 @@ function CodeEditorPanel(props: Props) {
     try {
       const jsontext = await readFileAsText(file);
       if (validateValue(jsontext)) {
-        updateValeue(jsontext);
+        updateValue(jsontext);
       } else {
         Toast.error(getErrorMessage(ErrrorType.UploadError));
       }
@@ -167,11 +174,19 @@ function CodeEditorPanel(props: Props) {
     setExpand(!expand);
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if ('value' in props) {
       setValue(props.value);
     }
   }, [props.value]);
+
+  React.useImperativeHandle(editorRef, () => ({
+    scrollIntoView: (line) => {
+      if (actualEditorRef && actualEditorRef.current) {
+        actualEditorRef.current.scrollIntoView(line);
+      }
+    },
+  }), []);
 
   const editorClassname = expand ? 'fixed bottom-0 left-0 top-[59px] right-0 bg-white dark:bg-gray-950 p-6 z-50' : 'h-full w-full';
 
@@ -218,11 +233,11 @@ function CodeEditorPanel(props: Props) {
               <Button title={`copy ${language} string to clipboard`} onClick={onCopyBtnClick}><Copy size={14} className="mr-1" />Copy</Button>
               <Button title={`save and download ${language} string as file`} onClick={onDownloadBtnClick}><Download size={14} className="mr-1" />Save</Button>
               <Divider vertical />
-              <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clear</Button>
+              <Button title={`clean ${language} string`} onClick={onCleanBtnClick}><Eraser size={14} className="mr-1" />Clean</Button>
             </Flex>
             {
               showExpandButton && (
-                <Button type="text" onClick={onExpandBtnClick} className="!px-1">
+                <Button icon type="outline" onClick={onExpandBtnClick} className="!px-0">
                   {expand ? <Shrink size={16} /> : <Expand size={16} />}
                 </Button>
               )
@@ -231,8 +246,13 @@ function CodeEditorPanel(props: Props) {
         )}
 
         <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
-          <Card className="w-full overflow-auto h-full resize-y" style={editorContainerStyle}>
-            <CmEditor placeholder={placeholder} code={value} onChange={onValueChange} extensions={[langExtension, ...extensions]} />
+          <Card className={`w-full overflow-auto h-full resize-y ${className}`} style={editorContainerStyle}>
+            <CmEditor
+              placeholder={placeholder}
+              code={value} onChange={onValueChange}
+              extensions={[langExtension, ...extensions]}
+              ref={actualEditorRef}
+            />
           </Card>
         </Dropzone>
       </Flex>

@@ -44,21 +44,21 @@ interface CMEditorProps {
   onChange?: (code: string) => void
   extensions?: Extension[],
   placeholder?: string,
-  reiszeable?: boolean
+  reiszeable?: boolean,
+  ref?: React.Ref<{
+    scrollIntoView: (line: number) => void;
+  }>;
 }
 
 function CmEditor(props: CMEditorProps) {
-  const { code, onChange, extensions, placeholder } = props;
+  const { code, onChange, extensions = [], placeholder, ref } = props;
   const elRef = React.useRef<HTMLDivElement>(null);
   const viewRef = React.useRef<EditorView>(null);
   const [, setCursorPosition] = React.useState(null);
   const editorTheme = useEditorTheme();
 
   function onEditorChange(viewUpdate: ViewUpdate) {
-    if (viewUpdate.changes) {
-      const newValue = viewUpdate.state.doc.toString();
-      onChange(newValue);
-    }
+    onChange?.(viewUpdate.state.doc.toString());
   }
 
 
@@ -98,10 +98,20 @@ function CmEditor(props: CMEditorProps) {
     }
   };
 
+  React.useImperativeHandle(ref, () => {
+    return {
+      scrollIntoView(line) {
+        viewRef.current.dispatch({
+          selection: EditorSelection.cursor(line),
+          effects: EditorView.scrollIntoView(line, { y: 'center' }),
+        });
+      },
+    };
+  }, []);
+
+
   React.useEffect(() => {
-    const finalExtensions = extensions.filter((item) => {
-      return item;
-    }) || [];
+    const finalExtensions = extensions.filter((item) => { return item; }) || [];
     viewRef.current = new EditorView({
       doc: code,
       extensions: [
@@ -134,19 +144,20 @@ function CmEditor(props: CMEditorProps) {
     });
   }, [editorTheme]);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (viewRef.current) {
-      const darkMode = document.documentElement.classList.contains('dark');
+      // const darkMode = document.documentElement.classList.contains('dark');
       const currentValue = viewRef.current.state.doc.toString();
       if (currentValue !== code) { // 避免cursor失去焦点
         const viewUpdate = {
-          effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
+          // effects: themeConfig.reconfigure(darkMode ? coolGlow : clouds),
           changes: {
             from: 0,
-            to: currentValue.length,
-            insert: code,
+            to: viewRef.current.state.doc.length,
+            insert: "",
           },
         };
+        console.log('viewUpdate', code);
         viewRef.current.dispatch(viewUpdate);
       }
     }

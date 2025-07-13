@@ -35,10 +35,6 @@ const docRoutes: DocRoute[] = [
     href: '/docs/validate-json',
     file: 'docs/validate-json.mdx',
   }, {
-    title: 'JSON Advance',
-    href: '/docs/json-advance',
-    file: 'docs/json-advance.mdx',
-  }, {
     title: 'What Is JSON5',
     href: '/docs/what-is-json5',
     file: 'docs/what-is-json5.mdx',
@@ -50,6 +46,10 @@ const docRoutes: DocRoute[] = [
     title: 'Popular JSON Libraries',
     href: '/docs/json-sdk',
     file: 'docs/json-sdk.mdx',
+  }, {
+    title: 'JSON Advance',
+    href: '/docs/json-advance',
+    file: 'docs/json-advance.mdx',
   },
 ];
 

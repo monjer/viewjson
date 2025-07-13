@@ -6,6 +6,15 @@ import './global.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
+import { Fira_Code } from 'next/font/google';
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'], // 你需要哪些字重就写哪些
+  variable: '--font-source-code-pro',  // 可选，CSS 变量名
+  display: 'swap',               // 字体加载行为，推荐使用 swap
+});
+
 
 export const metadata: Metadata = {
   title: 'viewjson - json viewer, json formatter, json data converter, json diff, json lint, json schema validator',
@@ -26,8 +35,13 @@ export default function RootLayout({
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5347284824666460"
           crossOrigin="anonymous"></Script>
       </head>
-      <body className='relative overflow-auto  text-gray-700	 bg-white dark:bg-gray-950 dark:text-gray-400'>
-        <ThemeProvider attribute="class">
+      <body className={
+        `relative leading-6 text-sm overflow-auto antialiased text-gray-700 bg-[#fefefe]  dark:bg-gray-950 dark:text-gray-400 
+        ${firaCode.className}
+        antialiased
+        `
+      }>
+        <ThemeProvider attribute="class" enableSystem>
           <Layout>
             {children}
           </Layout>

@@ -1,19 +1,20 @@
 import React from "react";
 import Content from './Content';
+import Article from "@/components/Article";
 
 export default function Page() {
   return (
     <div className="mt-4">
       <Content />
-      <article>
+      <Article>
         <h2>About viewjson.online</h2>
-        <p>viewjson.online is an online json viewer, json beautifier, json formatter, json data converter, json diff, json path checker, json validator tools.</p>
+        <p>viewjson.online is a free online json viewer, json beautifier, json formatter, json data converter, json diff, json path checker, json validator tools.</p>
         <section className="features">
           <div className="container">
             <ul className="feature-list">
               <li>
                 <strong>JSON Basic Process: </strong>
-                <span>Provide some basic json data process methods daily used, such as json minify, json prettify, json highlight.</span>
+                <span>Provide some basic json data process methods daily used, such as json minify, json format, json stringify, json highlight.</span>
               </li>
               <li>
                 <strong>JSON Conversion: </strong>
@@ -27,11 +28,11 @@ export default function Page() {
               </li>
               <li>
                 <strong>JSON Lint: </strong>
-                <span>Provide a simple and efficient <a href="/jsonlint" className="link">json lint tool </a>to find any json data syntax errors.</span>
+                <span>Provide a simple and efficient <a href="/jsonlint" className="link">json lint tool </a>to find any json data syntax errors and fix them.</span>
               </li>
               <li>
                 <strong>JSON Diff: </strong>
-                <span>Use <a href="/diff" className="link">json diff tool</a> to Compare two JSON files and identify the differences between them.</span>
+                <span>Use <a href="/diff" className="link">json diff tool</a> to compare two JSON files and identify the differences between them.</span>
               </li>
               <li>
                 <strong>JSON Path: </strong>
@@ -41,7 +42,7 @@ export default function Page() {
             </ul>
           </div>
         </section>
-      </article>
+      </Article>
     </div>
   );
 }

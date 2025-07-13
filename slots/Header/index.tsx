@@ -112,14 +112,14 @@ export default function Header() {
 
 
   return (
-    <div className='app-header-container sticky top-0 z-10 border-b bg-white dark:bg-gray-950 dark:border-gray-800 '>
+    <div className='app-header-container sticky top-0 z-10 border-b bg-white dark:bg-gray-950/150 dark:border-gray-800 backdrop-blur-[22px]'>
       <ResponseContainer className='app-header flex-grow flex items-center position-relative  '>
         <Flex className="justify-between w-full" align='center'>
           <Flex align='center' className='grow'>
             <a href='/' className='mr-4'>
               <Flex align='center' className='cursor-pointer'>
                 <Logo key={theme} />
-                <h2 className="text-2xl  text-black m-0 dark:text-white">viewjson</h2>
+                <h2 className="text-2xl  text-black m-0 dark:text-white font-mono">viewjson</h2>
               </Flex>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
@@ -133,7 +133,6 @@ export default function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
               </svg>
             </span>
-            <Link href="/about" className='ml-4'>About</Link>
           </Flex>
           <Dialog title={"About"} open={open} onClose={() => setOpen(false)} onCancel={() => setOpen(false)}>
             viewjson is a tool to view json data.

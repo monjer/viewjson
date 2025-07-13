@@ -2,12 +2,9 @@ import React from "react";
 import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
 import docRoutes from "@/config/docSidebar";
-
+import Article from "@/components/Article";
 interface PageProps {
   params: { slug: string[] };
-}
-function CodeStyle(props) {
-  return <div className="prose-code:font-code prose-pre:border prose-pre:border-gray-500 prose=pre:whitespace-break-spaces	 dark:prose-pre:border-gray-700">{props.children}</div>;
 }
 
 export default async function DocPage({ params }) {
@@ -17,7 +14,7 @@ export default async function DocPage({ params }) {
   const tocs = await getDocTocs(docPath);
   return (
     <>
-      <article className="prose prose-zinc grow-1 px-2 py-4 text-sm max-w-[100%] dark:prose-invert overflow-auto"><CodeStyle>{docInfo?.content}</CodeStyle></article>
+      <Article className={'grow-1 px-2 py-4 '}>{docInfo?.content}</Article>
       <DocToc dataSource={tocs} className="grow-0	shrink-0 hidden" />
     </>
   );

@@ -38,7 +38,7 @@ const Navbar = (props: NavbarProps) => {
             items.map((item) => {
               let className = "cursor-pointer hover:text-gray-900 dark:hover:text-white";
               if (activeKeys.includes(item.key)) {
-                className += "text-black dark:text-white dark:hover:text-white";
+                className += "text-black dark:text-white dark:hover:text-white font-semibold";
               }
               if (item.items?.length > 0) {
                 return (

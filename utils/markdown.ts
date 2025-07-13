@@ -99,7 +99,6 @@ export async function getDocTocs(slug: string) {
       href: `#${slug.toLowerCase()}`,
     });
   }
-  console.log(extractedHeadings);
   return extractedHeadings;
 }
 

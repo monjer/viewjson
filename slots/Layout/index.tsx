@@ -1,8 +1,10 @@
 'use client';
 import React from "react";
 import Header from "../Header";
-
+import Link from "next/link";
+import Article from "@/components/Article";
 import './index.scss';
+
 
 function Layout({ children }: { children: React.ReactNode }) {
   const date = new Date().getFullYear();
@@ -13,11 +15,12 @@ function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer >
-        <article>
+        <Article>
           <p className="text-center my-8">©{date} viewjson.online. All rights reserved.
             <a href="/privacy" className="ml-2">Privacy Policy</a>
+            <Link href="/about" className='ml-4'>About</Link>
           </p>
-        </article>
+        </Article>
       </footer>
     </div>
   );
