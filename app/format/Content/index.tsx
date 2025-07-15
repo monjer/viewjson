@@ -239,7 +239,7 @@ function Main() {
             <Divider vertical />
             <Button onClick={onCleanBtnClick} title="clean json string"><Eraser size={14} className="mr-1" />Clear</Button>
           </Flex>
-          <Button type="text" onClick={onExpandBtnClick} className="!px-1">
+          <Button type="outline" icon onClick={onExpandBtnClick} className="!px-1">
             {expand ? <Shrink size={16} /> : <Expand size={16} />}
           </Button>
         </Flex>

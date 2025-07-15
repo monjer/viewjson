@@ -1,0 +1,259 @@
+[
+  {
+    "name": "Python",
+    "year_created": 1991,
+    "created_by": "Guido van Rossum",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Web",
+      "Data Science",
+      "Automation",
+      "Education"
+    ],
+    "tiobe_rank": 1
+  },
+  {
+    "name": "C",
+    "year_created": 1972,
+    "created_by": "Dennis Ritchie",
+    "typing_discipline": "Static",
+    "domains": [
+      "Systems",
+      "Embedded",
+      "Operating Systems"
+    ],
+    "tiobe_rank": 2
+  },
+  {
+    "name": "C++",
+    "year_created": 1985,
+    "created_by": "Bjarne Stroustrup",
+    "typing_discipline": "Static",
+    "domains": [
+      "Game Development",
+      "Systems",
+      "High Performance"
+    ],
+    "tiobe_rank": 3
+  },
+  {
+    "name": "Java",
+    "year_created": 1995,
+    "created_by": "James Gosling",
+    "typing_discipline": "Static",
+    "domains": [
+      "Web",
+      "Enterprise",
+      "Android"
+    ],
+    "tiobe_rank": 4
+  },
+  {
+    "name": "C#",
+    "year_created": 2000,
+    "created_by": "Anders Hejlsberg",
+    "typing_discipline": "Static",
+    "domains": [
+      "Enterprise",
+      "Desktop",
+      "Game Development"
+    ],
+    "tiobe_rank": 5
+  },
+  {
+    "name": "JavaScript",
+    "year_created": 1995,
+    "created_by": "Brendan Eich",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Web",
+      "Mobile",
+      "Desktop"
+    ],
+    "tiobe_rank": 6
+  },
+  {
+    "name": "SQL",
+    "year_created": 1974,
+    "created_by": "Donald D. Chamberlin, Raymond F. Boyce",
+    "typing_discipline": "Declarative",
+    "domains": [
+      "Databases",
+      "Business Intelligence"
+    ],
+    "tiobe_rank": 7
+  },
+  {
+    "name": "Go",
+    "year_created": 2009,
+    "created_by": "Robert Griesemer, Rob Pike, Ken Thompson",
+    "typing_discipline": "Static",
+    "domains": [
+      "Cloud",
+      "DevOps",
+      "Networking"
+    ],
+    "tiobe_rank": 8
+  },
+  {
+    "name": "Visual Basic",
+    "year_created": 1991,
+    "created_by": "Microsoft",
+    "typing_discipline": "Static",
+    "domains": [
+      "Desktop",
+      "Business"
+    ],
+    "tiobe_rank": 9
+  },
+  {
+    "name": "Assembly",
+    "year_created": 1949,
+    "created_by": "Kathleen Booth",
+    "typing_discipline": "Low-level",
+    "domains": [
+      "Embedded",
+      "Systems"
+    ],
+    "tiobe_rank": 10
+  },
+  {
+    "name": "Scratch",
+    "year_created": 2003,
+    "created_by": "MIT Media Lab",
+    "typing_discipline": "Visual",
+    "domains": [
+      "Education"
+    ],
+    "tiobe_rank": 11
+  },
+  {
+    "name": "Swift",
+    "year_created": 2014,
+    "created_by": "Apple Inc.",
+    "typing_discipline": "Static",
+    "domains": [
+      "iOS",
+      "macOS",
+      "Mobile"
+    ],
+    "tiobe_rank": 12
+  },
+  {
+    "name": "PHP",
+    "year_created": 1995,
+    "created_by": "Rasmus Lerdorf",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Web",
+      "CMS",
+      "APIs"
+    ],
+    "tiobe_rank": 13
+  },
+  {
+    "name": "Ruby",
+    "year_created": 1995,
+    "created_by": "Yukihiro Matsumoto",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Web",
+      "Scripting",
+      "Automation"
+    ],
+    "tiobe_rank": 14
+  },
+  {
+    "name": "MATLAB",
+    "year_created": 1984,
+    "created_by": "MathWorks",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Mathematics",
+      "Simulation",
+      "Research"
+    ],
+    "tiobe_rank": 15
+  },
+  {
+    "name": "Rust",
+    "year_created": 2010,
+    "created_by": "Graydon Hoare",
+    "typing_discipline": "Static",
+    "domains": [
+      "Systems",
+      "WebAssembly",
+      "Embedded"
+    ],
+    "tiobe_rank": 16
+  },
+  {
+    "name": "Kotlin",
+    "year_created": 2011,
+    "created_by": "JetBrains",
+    "typing_discipline": "Static",
+    "domains": [
+      "Android",
+      "Backend"
+    ],
+    "tiobe_rank": 17
+  },
+  {
+    "name": "Dart",
+    "year_created": 2011,
+    "created_by": "Google",
+    "typing_discipline": "Static",
+    "domains": [
+      "Mobile",
+      "Web",
+      "Flutter"
+    ],
+    "tiobe_rank": 18
+  },
+  {
+    "name": "TypeScript",
+    "year_created": 2012,
+    "created_by": "Microsoft",
+    "typing_discipline": "Static",
+    "domains": [
+      "Web",
+      "Frontend",
+      "Tooling"
+    ],
+    "tiobe_rank": 19
+  },
+  {
+    "name": "Perl",
+    "year_created": 1987,
+    "created_by": "Larry Wall",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Scripting",
+      "Text Processing"
+    ],
+    "tiobe_rank": 20
+  },
+  {
+    "name": "Haskell",
+    "year_created": 1990,
+    "created_by": "Simon Peyton Jones et al.",
+    "typing_discipline": "Static",
+    "domains": [
+      "Research",
+      "Academia",
+      "Functional Programming"
+    ],
+    "tiobe_rank": 21
+  },
+  {
+    "name": "Lua",
+    "year_created": 1993,
+    "created_by": "PUC-Rio",
+    "typing_discipline": "Dynamic",
+    "domains": [
+      "Game Development",
+      "Embedded"
+    ],
+    "tiobe_rank": 22
+  }
+]

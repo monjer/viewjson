@@ -1,0 +1,277 @@
+[
+  {
+    "id": "S001",
+    "name": "Alice Johnson",
+    "grade": "10",
+    "scores": {
+      "math": 88,
+      "english": 92,
+      "science": 85,
+      "history": 79
+    }
+  },
+  {
+    "id": "S002",
+    "name": "Bob Smith",
+    "grade": "10",
+    "scores": {
+      "math": 76,
+      "english": 81,
+      "science": 78,
+      "history": 85
+    }
+  },
+  {
+    "id": "S003",
+    "name": "Charlie Lee",
+    "grade": "11",
+    "scores": {
+      "math": 90,
+      "english": 87,
+      "science": 91,
+      "history": 88
+    }
+  },
+  {
+    "id": "S004",
+    "name": "Diana Ross",
+    "grade": "11",
+    "scores": {
+      "math": 65,
+      "english": 70,
+      "science": 68,
+      "history": 72
+    }
+  },
+  {
+    "id": "S005",
+    "name": "Ethan Wang",
+    "grade": "12",
+    "scores": {
+      "math": 93,
+      "english": 95,
+      "science": 89,
+      "history": 90
+    }
+  },
+  {
+    "id": "S006",
+    "name": "Fiona Green",
+    "grade": "12",
+    "scores": {
+      "math": 84,
+      "english": 86,
+      "science": 82,
+      "history": 88
+    }
+  },
+  {
+    "id": "S007",
+    "name": "George Brown",
+    "grade": "10",
+    "scores": {
+      "math": 77,
+      "english": 80,
+      "science": 79,
+      "history": 75
+    }
+  },
+  {
+    "id": "S008",
+    "name": "Hannah Kim",
+    "grade": "11",
+    "scores": {
+      "math": 89,
+      "english": 94,
+      "science": 92,
+      "history": 90
+    }
+  },
+  {
+    "id": "S009",
+    "name": "Ian Davis",
+    "grade": "12",
+    "scores": {
+      "math": 70,
+      "english": 73,
+      "science": 75,
+      "history": 78
+    }
+  },
+  {
+    "id": "S010",
+    "name": "Jenny Liu",
+    "grade": "10",
+    "scores": {
+      "math": 91,
+      "english": 89,
+      "science": 93,
+      "history": 87
+    }
+  },
+  {
+    "id": "S011",
+    "name": "Kevin Zhao",
+    "grade": "11",
+    "scores": {
+      "math": 85,
+      "english": 90,
+      "science": 88,
+      "history": 84
+    }
+  },
+  {
+    "id": "S012",
+    "name": "Linda Park",
+    "grade": "12",
+    "scores": {
+      "math": 79,
+      "english": 85,
+      "science": 82,
+      "history": 80
+    }
+  },
+  {
+    "id": "S013",
+    "name": "Michael Chen",
+    "grade": "10",
+    "scores": {
+      "math": 82,
+      "english": 87,
+      "science": 90,
+      "history": 88
+    }
+  },
+  {
+    "id": "S014",
+    "name": "Natalie Reed",
+    "grade": "11",
+    "scores": {
+      "math": 75,
+      "english": 78,
+      "science": 80,
+      "history": 74
+    }
+  },
+  {
+    "id": "S015",
+    "name": "Oscar Lin",
+    "grade": "12",
+    "scores": {
+      "math": 94,
+      "english": 96,
+      "science": 95,
+      "history": 91
+    }
+  },
+  {
+    "id": "S016",
+    "name": "Paula Scott",
+    "grade": "10",
+    "scores": {
+      "math": 66,
+      "english": 71,
+      "science": 73,
+      "history": 70
+    }
+  },
+  {
+    "id": "S017",
+    "name": "Quinn Bell",
+    "grade": "11",
+    "scores": {
+      "math": 80,
+      "english": 82,
+      "science": 85,
+      "history": 79
+    }
+  },
+  {
+    "id": "S018",
+    "name": "Rachel Adams",
+    "grade": "12",
+    "scores": {
+      "math": 87,
+      "english": 88,
+      "science": 84,
+      "history": 86
+    }
+  },
+  {
+    "id": "S019",
+    "name": "Sam Morgan",
+    "grade": "10",
+    "scores": {
+      "math": 78,
+      "english": 79,
+      "science": 77,
+      "history": 80
+    }
+  },
+  {
+    "id": "S020",
+    "name": "Tina Patel",
+    "grade": "11",
+    "scores": {
+      "math": 81,
+      "english": 84,
+      "science": 83,
+      "history": 82
+    }
+  },
+  {
+    "id": "S021",
+    "name": "Uma Shah",
+    "grade": "12",
+    "scores": {
+      "math": 92,
+      "english": 91,
+      "science": 90,
+      "history": 94
+    }
+  },
+  {
+    "id": "S022",
+    "name": "Victor Tran",
+    "grade": "10",
+    "scores": {
+      "math": 69,
+      "english": 75,
+      "science": 71,
+      "history": 73
+    }
+  },
+  {
+    "id": "S023",
+    "name": "Wendy Xu",
+    "grade": "11",
+    "scores": {
+      "math": 86,
+      "english": 89,
+      "science": 87,
+      "history": 85
+    }
+  },
+  {
+    "id": "S024",
+    "name": "Xavier Gomez",
+    "grade": "12",
+    "scores": {
+      "math": 74,
+      "english": 76,
+      "science": 78,
+      "history": 77
+    }
+  },
+  {
+    "id": "S025",
+    "name": "Yasmine Noor",
+    "grade": "10",
+    "scores": {
+      "math": 90,
+      "english": 93,
+      "science": 91,
+      "history": 89
+    }
+  }
+]

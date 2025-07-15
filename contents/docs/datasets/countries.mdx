@@ -1,0 +1,98 @@
+---
+title: Country Location Dataset (JSON Example)
+description: A sample JSON dataset containing geographic and location-related information for various countries, with usage guide and field descriptions.
+keywords: JSON, country dataset, location data, geography, longitude, latitude, sample data
+---
+
+# Country Location Dataset
+
+This dataset provides basic geographic and location information for various countries in JSON format. It includes country names, ISO codes, geographic coordinates, regions, and population estimates.
+
+This kind of dataset is useful for building maps, country selectors, demographic visualizations, location-based services, and learning how to handle structured geographic data.
+
+---
+
+##  Sample JSON
+
+```json
+[
+  {
+    "name": "Canada",
+    "iso2": "CA",
+    "iso3": "CAN",
+    "capital": "Ottawa",
+    "region": "Americas",
+    "subregion": "Northern America",
+    "latitude": 56.1304,
+    "longitude": -106.3468,
+    "population": 38008005
+  },
+  {
+    "name": "Germany",
+    "iso2": "DE",
+    "iso3": "DEU",
+    "capital": "Berlin",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "latitude": 51.1657,
+    "longitude": 10.4515,
+    "population": 83240525
+  },
+  {
+    "name": "Japan",
+    "iso2": "JP",
+    "iso3": "JPN",
+    "capital": "Tokyo",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "latitude": 36.2048,
+    "longitude": 138.2529,
+    "population": 125960000
+  }
+]
+````
+
+---
+
+##  Field Descriptions
+
+| Field        | Type   | Description                                          |
+| ------------ | ------ | ---------------------------------------------------- |
+| `name`       | string | Official country name                                |
+| `iso2`       | string | ISO 3166-1 alpha-2 country code (2 letters)          |
+| `iso3`       | string | ISO 3166-1 alpha-3 country code (3 letters)          |
+| `capital`    | string | Capital city of the country                          |
+| `region`     | string | Continent or major world region (e.g. Asia, Europe)  |
+| `subregion`  | string | Subdivision of the region (e.g. Eastern Asia)        |
+| `latitude`   | number | Approximate central latitude of the country          |
+| `longitude`  | number | Approximate central longitude of the country         |
+| `population` | number | Estimated population of the country (latest approx.) |
+
+---
+
+##  How to Use This Dataset
+
+This dataset can be used in a variety of applications:
+
+* **Frontend apps:** Populate dropdowns or autocomplete fields for country selection.
+* **Maps and GIS:** Use latitude and longitude for plotting countries on maps.
+* **Data visualization:** Combine with metrics like GDP or internet usage to build charts.
+* **APIs:** Serve as base data for REST or GraphQL location-based APIs.
+* **Localization or travel tools:** Show country-specific content, language, or weather.
+
+---
+
+##  Example: Filtering the asia contries (in JS)
+
+```js
+function filterAsianCountries(countries) {
+  return countries.filter(country => country.region === "Asia");
+}
+
+const allCountries = [/* JSON data above */];
+
+// Usage
+const asianCountries = filterAsianCountries(allCountries);
+console.log(asianCountries);
+```
+

@@ -1,0 +1,87 @@
+---
+title: Internet Company Dataset (JSON Example)
+description: A sample JSON dataset containing information about major internet companies, including their founding year, headquarters, services, and more.
+keywords: JSON, internet company, tech companies, sample data, dataset, software industry
+---
+
+# Internet Company Dataset
+
+This JSON dataset provides information about major internet and technology companies. Each entry includes company name, founding year, headquarters, primary services, employee count, and stock ticker (if applicable).
+
+This dataset is useful for analysis, visualization, building business directories, testing applications, or teaching data structures.
+
+---
+
+##  Sample JSON
+
+```json
+[
+  {
+    "name": "Google",
+    "founded": 1998,
+    "founders": ["Larry Page", "Sergey Brin"],
+    "headquarters": "Mountain View, California, USA",
+    "services": ["Search", "Advertising", "Cloud", "AI", "Android"],
+    "employees": 182502,
+    "stock_ticker": "GOOGL"
+  },
+  {
+    "name": "Amazon",
+    "founded": 1994,
+    "founders": ["Jeff Bezos"],
+    "headquarters": "Seattle, Washington, USA",
+    "services": ["E-commerce", "Cloud", "Streaming", "AI"],
+    "employees": 1608000,
+    "stock_ticker": "AMZN"
+  },
+  {
+    "name": "Tencent",
+    "founded": 1998,
+    "founders": ["Ma Huateng", "Zhang Zhidong"],
+    "headquarters": "Shenzhen, Guangdong, China",
+    "services": ["Gaming", "Social Media", "Payments", "Cloud"],
+    "employees": 112771,
+    "stock_ticker": "0700.HK"
+  }
+]
+````
+
+---
+
+##  Field Descriptions
+
+| Field          | Type      | Description                                           |
+| -------------- | --------- | ----------------------------------------------------- |
+| `name`         | string    | Name of the internet company                          |
+| `founded`      | number    | Year the company was founded                          |
+| `founders`     | string\[] | List of company founders                              |
+| `headquarters` | string    | Company headquarters location (city, state, country)  |
+| `services`     | string\[] | Primary services/products the company offers          |
+| `employees`    | number    | Approximate number of employees worldwide             |
+| `stock_ticker` | string    | Public stock symbol if the company is publicly traded |
+
+---
+
+## How to Use This Dataset
+
+You can use this dataset in a variety of applications:
+
+* **Data visualization:** Create charts about company size, founding dates, or service areas.
+* **Tech education:** Teach how to parse and transform structured JSON data.
+* **Search tools or UIs:** Build filters and selectors for internet companies by service or region.
+* **Testing APIs:** Use as mock data in REST/GraphQL responses.
+* **Business dashboards:** Display company stats or comparison tables.
+
+---
+
+##  Example: Get All Publicly Traded Companies (in JS)
+
+```js
+function getPublicCompanies(companies) {
+  return companies.filter(c => c.stock_ticker !== null && c.stock_ticker !== "");
+}
+
+const dataset = [/* JSON data above */];
+console.log(getPublicCompanies(dataset)); // ➝ Array of companies with stock tickers
+```
+

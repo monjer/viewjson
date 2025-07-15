@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Amazon",
+    "founded": 1994,
+    "founders": [
+      "Jeff Bezos"
+    ],
+    "headquarters": "Seattle, Washington, USA",
+    "services": [
+      "E-commerce",
+      "Cloud",
+      "Streaming",
+      "AI"
+    ],
+    "employees": 1608000,
+    "stock_ticker": "AMZN"
+  },
+  {
+    "name": "Google",
+    "founded": 1998,
+    "founders": [
+      "Larry Page",
+      "Sergey Brin"
+    ],
+    "headquarters": "Mountain View, California, USA",
+    "services": [
+      "Search",
+      "Ads",
+      "Cloud",
+      "Android"
+    ],
+    "employees": 190000,
+    "stock_ticker": "GOOGL"
+  },
+  {
+    "name": "Meta",
+    "founded": 2004,
+    "founders": [
+      "Mark Zuckerberg",
+      "Eduardo Saverin",
+      "Andrew McCollum",
+      "Dustin Moskovitz",
+      "Chris Hughes"
+    ],
+    "headquarters": "Menlo Park, California, USA",
+    "services": [
+      "Social Media",
+      "VR",
+      "Advertising"
+    ],
+    "employees": 86000,
+    "stock_ticker": "META"
+  },
+  {
+    "name": "Apple",
+    "founded": 1976,
+    "founders": [
+      "Steve Jobs",
+      "Steve Wozniak",
+      "Ronald Wayne"
+    ],
+    "headquarters": "Cupertino, California, USA",
+    "services": [
+      "Consumer Electronics",
+      "Software",
+      "Streaming"
+    ],
+    "employees": 161000,
+    "stock_ticker": "AAPL"
+  },
+  {
+    "name": "Microsoft",
+    "founded": 1975,
+    "founders": [
+      "Bill Gates",
+      "Paul Allen"
+    ],
+    "headquarters": "Redmond, Washington, USA",
+    "services": [
+      "Software",
+      "Cloud",
+      "Gaming"
+    ],
+    "employees": 230000,
+    "stock_ticker": "MSFT"
+  },
+  {
+    "name": "Netflix",
+    "founded": 1997,
+    "founders": [
+      "Reed Hastings",
+      "Marc Randolph"
+    ],
+    "headquarters": "Los Gatos, California, USA",
+    "services": [
+      "Streaming",
+      "Original Content"
+    ],
+    "employees": 12900,
+    "stock_ticker": "NFLX"
+  },
+  {
+    "name": "Spotify",
+    "founded": 2006,
+    "founders": [
+      "Daniel Ek",
+      "Martin Lorentzon"
+    ],
+    "headquarters": "Stockholm, Sweden",
+    "services": [
+      "Music Streaming",
+      "Podcasts"
+    ],
+    "employees": 8200,
+    "stock_ticker": "SPOT"
+  },
+  {
+    "name": "Alibaba",
+    "founded": 1999,
+    "founders": [
+      "Jack Ma"
+    ],
+    "headquarters": "Hangzhou, China",
+    "services": [
+      "E-commerce",
+      "Cloud",
+      "Fintech"
+    ],
+    "employees": 240000,
+    "stock_ticker": "BABA"
+  },
+  {
+    "name": "Tencent",
+    "founded": 1998,
+    "founders": [
+      "Pony Ma"
+    ],
+    "headquarters": "Shenzhen, China",
+    "services": [
+      "Gaming",
+      "Messaging",
+      "Cloud"
+    ],
+    "employees": 112000,
+    "stock_ticker": "0700.HK"
+  },
+  {
+    "name": "Airbnb",
+    "founded": 2008,
+    "founders": [
+      "Brian Chesky",
+      "Nathan Blecharczyk",
+      "Joe Gebbia"
+    ],
+    "headquarters": "San Francisco, California, USA",
+    "services": [
+      "Lodging",
+      "Travel"
+    ],
+    "employees": 6000,
+    "stock_ticker": "ABNB"
+  },
+  {
+    "name": "Uber",
+    "founded": 2009,
+    "founders": [
+      "Travis Kalanick",
+      "Garrett Camp"
+    ],
+    "headquarters": "San Francisco, California, USA",
+    "services": [
+      "Ride Hailing",
+      "Delivery",
+      "Freight"
+    ],
+    "employees": 22000,
+    "stock_ticker": "UBER"
+  },
+  {
+    "name": "ByteDance",
+    "founded": 2012,
+    "founders": [
+      "Zhang Yiming"
+    ],
+    "headquarters": "Beijing, China",
+    "services": [
+      "Short Video",
+      "News Aggregation"
+    ],
+    "employees": 150000,
+    "stock_ticker": "Private"
+  },
+  {
+    "name": "Zoom",
+    "founded": 2011,
+    "founders": [
+      "Eric Yuan"
+    ],
+    "headquarters": "San Jose, California, USA",
+    "services": [
+      "Video Conferencing"
+    ],
+    "employees": 7000,
+    "stock_ticker": "ZM"
+  },
+  {
+    "name": "Shopify",
+    "founded": 2006,
+    "founders": [
+      "Tobias Lütke",
+      "Daniel Weinand",
+      "Scott Lake"
+    ],
+    "headquarters": "Ottawa, Canada",
+    "services": [
+      "E-commerce Platform"
+    ],
+    "employees": 11000,
+    "stock_ticker": "SHOP"
+  },
+  {
+    "name": "Salesforce",
+    "founded": 1999,
+    "founders": [
+      "Marc Benioff",
+      "Parker Harris",
+      "Dave Moellenhoff",
+      "Frank Dominguez"
+    ],
+    "headquarters": "San Francisco, California, USA",
+    "services": [
+      "CRM Software",
+      "Cloud"
+    ],
+    "employees": 79000,
+    "stock_ticker": "CRM"
+  },
+  {
+    "name": "Pinterest",
+    "founded": 2010,
+    "founders": [
+      "Ben Silbermann",
+      "Paul Sciarra",
+      "Evan Sharp"
+    ],
+    "headquarters": "San Francisco, California, USA",
+    "services": [
+      "Image Sharing",
+      "Discovery"
+    ],
+    "employees": 4000,
+    "stock_ticker": "PINS"
+  }
+]

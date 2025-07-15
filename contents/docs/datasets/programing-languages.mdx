@@ -1,0 +1,81 @@
+---
+title: Programming Languages Dataset (JSON Example)
+description: A sample JSON dataset representing various programming languages, including their design details, popularity, and usage domains.
+keywords: JSON, programming languages, dataset, software development, tech stack, sample data
+---
+
+# Programming Languages Dataset
+
+This dataset contains structured information about several popular programming languages. Each entry includes details like the language name, year of creation, creator, typing discipline, primary usage domains, and TIOBE popularity index.
+
+This dataset is useful for developers, educators, and analysts to compare languages, visualize trends, or create language selectors or timelines.
+
+---
+
+##  Sample JSON
+
+```json
+[
+  {
+    "name": "Python",
+    "year_created": 1991,
+    "created_by": "Guido van Rossum",
+    "typing_discipline": "Dynamic",
+    "domains": ["Web", "Data Science", "Automation", "Education"],
+    "tiobe_rank": 1
+  },
+  {
+    "name": "JavaScript",
+    "year_created": 1995,
+    "created_by": "Brendan Eich",
+    "typing_discipline": "Dynamic",
+    "domains": ["Web", "Mobile", "Desktop", "Backend"],
+    "tiobe_rank": 6
+  },
+  {
+    "name": "Rust",
+    "year_created": 2010,
+    "created_by": "Graydon Hoare",
+    "typing_discipline": "Static",
+    "domains": ["Systems", "WebAssembly", "Embedded"],
+    "tiobe_rank": 19
+  }
+]
+````
+
+---
+
+##  Field Descriptions
+
+| Field               | Type      | Description                                                       |
+| ------------------- | --------- | ----------------------------------------------------------------- |
+| `name`              | string    | Name of the programming language                                  |
+| `year_created`      | number    | The year the language was first released or introduced            |
+| `created_by`        | string    | Name of the person or organization who created the language       |
+| `typing_discipline` | string    | Indicates whether the language is statically or dynamically typed |
+| `domains`           | string\[] | Primary domains or use cases where the language is applied        |
+| `tiobe_rank`        | number    | Rank from [TIOBE Index](https://www.tiobe.com/tiobe-index/) (lower is more popular)              |
+
+---
+
+##  How to Use This Dataset
+
+You can use this JSON dataset in various ways:
+
+* **UI development:** Create dropdowns, tag filters, or card views of language info.
+* **Data analysis:** Compare languages based on typing discipline or domain fit.
+* **Charts and timelines:** Visualize evolution or popularity trends using libraries like D3.js or Chart.js.
+* **Search/filter interfaces:** Build an interface to explore language characteristics.
+* **Educational content:** Teach programming concepts, history, and classification.
+
+---
+
+##  Example: Filtering Static-Typed Languages (in JS)
+
+```js
+function filterStaticTyped(languages) {
+  return languages.filter(lang => lang.typing_discipline === "Static");
+}
+const dataset = [/* JSON data above */];
+console.log(filterStaticTyped(dataset)); // ➝ [{ name: "Rust", ... }]
+```

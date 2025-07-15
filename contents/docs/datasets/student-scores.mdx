@@ -1,0 +1,93 @@
+---
+title: Student Scores Dataset (JSON Example)
+description: A sample JSON dataset representing student scores across different subjects, with explanation and usage guide.
+keywords: JSON, dataset, student scores, sample data, education, tutorial
+---
+
+# Student Scores Dataset
+
+This dataset is a simple example in JSON format that contains the scores of students in various subjects. It can be used for learning how to manipulate JSON data, practice data analysis, visualize education performance, or test data-processing code.
+
+## Sample JSON
+
+```json
+[
+  {
+    "id": "S001",
+    "name": "Alice Johnson",
+    "grade": "10",
+    "scores": {
+      "math": 88,
+      "english": 92,
+      "science": 85,
+      "history": 79
+    }
+  },
+  {
+    "id": "S002",
+    "name": "Bob Smith",
+    "grade": "10",
+    "scores": {
+      "math": 76,
+      "english": 81,
+      "science": 78,
+      "history": 85
+    }
+  },
+  {
+    "id": "S003",
+    "name": "Charlie Lee",
+    "grade": "11",
+    "scores": {
+      "math": 90,
+      "english": 87,
+      "science": 91,
+      "history": 88
+    }
+  }
+]
+````
+
+##  Field Descriptions
+
+| Field            | Type   | Description                                    |
+| ---------------- | ------ | ---------------------------------------------- |
+| `id`             | string | Unique identifier for each student             |
+| `name`           | string | Full name of the student                       |
+| `grade`          | string | Current grade/year level of the student        |
+| `scores`         | object | Object containing subject-wise score breakdown |
+| `scores.math`    | number | Student's score in Mathematics                 |
+| `scores.english` | number | Student's score in English                     |
+| `scores.science` | number | Student's score in Science                     |
+| `scores.history` | number | Student's score in History                     |
+
+##  How to Use the Dataset
+
+You can use this JSON dataset in multiple ways:
+
+* **Frontend development:** Load and display student performance tables.
+* **Data analysis:** Use in JavaScript, Python (e.g., Pandas), or Excel to analyze trends.
+* **Visualization:** Create charts to compare subject scores or class performance.
+* **Education software prototyping:** Simulate user dashboards for students or teachers.
+* **Testing and demos:** Serve as a mock API response for frontend/backend testing.
+
+## Example: Calculating Average Score (in JS)
+
+```js
+function computeAverageScore(students) {
+  let totalScore = 0;
+  let totalSubjects = 0;
+
+  for (const student of students) {
+    const scores = Object.values(student.scores);
+    totalScore += scores.reduce((sum, score) => sum + score, 0);
+    totalSubjects += scores.length;
+  }
+
+  return totalSubjects === 0 ? 0 : totalScore / totalSubjects;
+}
+
+const students = [/* JSON data above */];
+const average = computeAverageScore(students); 
+console.log("Average score:", average.toFixed(2)); // ➝ 84.67
+```
