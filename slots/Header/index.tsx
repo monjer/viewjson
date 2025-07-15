@@ -9,7 +9,6 @@ import Navbar from '@/components/Navbar';
 import { pathToRegexp } from 'path-to-regexp';
 import { usePathname } from 'next/navigation';
 import './index.scss';
-import Link from 'next/link';
 import Logo from './Logo';
 
 export default function Header() {
