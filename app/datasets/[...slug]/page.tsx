@@ -1,7 +1,7 @@
 import React from "react";
 import { getDocsForSlug, getDocTocs } from "@/utils/markdown";
 import DocToc from "@/slots/DocToc";
-import docRoutes from "@/config/docSidebar";
+import datasetRoutes from "@/config/dataset";
 import Article from "@/components/Article";
 import Flex from "@/components/Flex";
 interface PageProps {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  return docRoutes.map((item) => ({
+  return datasetRoutes.map((item) => ({
     slug: item.href.split("/").slice(2),
   }));
 }
