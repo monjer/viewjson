@@ -21,9 +21,9 @@ export default function Page() {
                 </li>
                 <li>
                   <strong>JSON Conversion: </strong>
-                  <span>Easily convert JSON data to and from various formats, including <a href="/convert/json-to-xml" className="link mr-1">JSON to XML</a>, &nbsp;
-                    <a href="/convert/json-to-csv" className="link mr-1">JSON to CSV</a>,&nbsp;<a className="link mr-1" href="/convert/json-to-yaml">JSON to YAML</a>,&nbsp;<a className="link mr-1" href="/convert/json-to-base64">JSON to Base64</a>,&nbsp;
-                    <a href="/convert/json-to-html" className="link">JSON to  HTML</a>.</span>
+                  <span>Easily convert JSON data to and from various formats, including <a target="_blank" href="/convert/json-to-xml" className="link mr-1">JSON to XML</a>, &nbsp;
+                    <a target="_blank" href="/convert/json-to-csv" className="link mr-1">JSON to CSV</a>,&nbsp;<a className="link mr-1" target="_blank" href="/convert/json-to-yaml">JSON to YAML</a>,&nbsp;<a className="link mr-1" target="_blank" href="/convert/json-to-base64">JSON to Base64</a>,&nbsp;
+                    <a target="_blank" href="/convert/json-to-html" className="link">JSON to  HTML</a>.</span>
                 </li>
                 <li>
                   <strong>JSON Formatting: </strong>
@@ -31,17 +31,17 @@ export default function Page() {
                 </li>
                 <li>
                   <strong>JSON Lint: </strong>
-                  <span>Provide a simple and efficient <a href="/jsonlint" className="link">json lint tool </a>to find any json data syntax errors and fix them.</span>
+                  <span>Provide a simple and efficient <a target="_blank" href="/jsonlint" className="link">json lint tool </a>to find any json data syntax errors and fix them.</span>
                 </li>
                 <li>
                   <strong>JSON Diff: </strong>
-                  <span>Use <a href="/diff" className="link">json diff tool</a> to compare two JSON files and identify the differences between them.</span>
+                  <span>Use <a target="_blank" href="/diff" className="link">json diff tool</a> to compare two JSON files and identify the differences between them.</span>
                 </li>
                 <li>
                   <strong>JSON Path: </strong>
-                  <span>Use <a href="/jsonpath" className="link">json path tool</a> to query and extract data from JSON documents using JSONPath expressions. </span>
+                  <span>Use <a target="_blank" href="/jsonpath" className="link">json path tool</a> to query and extract data from JSON documents using JSONPath expressions. </span>
                 </li>
-                <li><strong>JSON Tutorial: </strong>There are some simple <a href="/docs/what-is-json" className="link">json tutorials</a> to help learn some basic knowledge json.</li>
+                <li><strong>JSON Tutorial: </strong>There are some simple <a target="_blank" href="/docs/what-is-json" className="link">json tutorials</a> to help learn some basic knowledge json.</li>
               </ul>
             </div>
           </section>
