@@ -4,31 +4,31 @@ description: Learn what is json5 , and the difference between json and json5.
 keywords: JSON5, JSON Vs JSON5
 ---
 
-
 # What is JSON5?
 
 **[JSON5](https://json5.org/)** is a **superset of JSON**, proposed by **Douglas Crockford** (the creator of JSON), to address limitations in JSON's flexibility and readability. It retains JSON's core syntax but adds support for features like **comments, single quotes, trailing commas, hexadecimal numbers, and Unicode escape sequences**, making JSON configuration files more JavaScript-like.
 
 ---
 
-##  JSON vs JSON5
+## JSON vs JSON5
 
-| Feature              | JSON         | JSON5        |
-|----------------------|--------------|--------------|
-| **Comments**         | ❌ Not supported | ✅ Supported (`//` and `/* ... */`) |
-| **Single Quotes**    | ❌ Only double quotes | ✅ Supports single quotes `'` |
-| **Trailing Commas**  | ❌ Not allowed | ✅ Allowed in objects and arrays |
-| **Hexadecimal Numbers** | ❌ Not supported | ✅ Supported (e.g., `0xFF`) |
-| **Unicode Escape**   | ❌ Not supported | ✅ Supported (e.g., `\u{1F600}`) |
-| **Boolean Values**   | ✅ `true`/`false` | ✅ `true`/`false` |
-| **Null**             | ✅ `null`     | ✅ `null`     |
-| **Object Keys**      | ❌ Must be quoted | ✅ Optional quotes (like JS objects) |
+| Feature                 | JSON                  | JSON5                                |
+| ----------------------- | --------------------- | ------------------------------------ |
+| **Comments**            | ❌ Not supported      | ✅ Supported (`//` and `/* ... */`)  |
+| **Single Quotes**       | ❌ Only double quotes | ✅ Supports single quotes `'`        |
+| **Trailing Commas**     | ❌ Not allowed        | ✅ Allowed in objects and arrays     |
+| **Hexadecimal Numbers** | ❌ Not supported      | ✅ Supported (e.g., `0xFF`)          |
+| **Unicode Escape**      | ❌ Not supported      | ✅ Supported (e.g., `\u{1F600}`)     |
+| **Boolean Values**      | ✅ `true`/`false`     | ✅ `true`/`false`                    |
+| **Null**                | ✅ `null`             | ✅ `null`                            |
+| **Object Keys**         | ❌ Must be quoted     | ✅ Optional quotes (like JS objects) |
 
 ---
 
-##  Example: JSON vs JSON5
+## Example: JSON vs JSON5
 
-###  Standard JSON
+### Standard JSON
+
 ```json
 {
   "name": "Alice",
@@ -37,47 +37,47 @@ keywords: JSON5, JSON Vs JSON5
 }
 ```
 
-###  JSON5
+### JSON5
+
 ```json5
 {
-  name: 'Alice',       // Single quotes
-  age: 30,             // Trailing comma
-  hobbies: [
-    'reading', 
-    'coding',
-  ],
-  color: '#FF0000',    // Hex color
-  note: /* Multi-line comment */ 'This is a comment'
+  name: "Alice", // Single quotes
+  age: 30, // Trailing comma
+  hobbies: ["reading", "coding"],
+  color: "#FF0000", // Hex color
+  note: /* Multi-line comment */ "This is a comment",
 }
 ```
 
 ---
 
-##  Use Cases for JSON5
+## Use Cases for JSON5
 
-| Scenario               | Reason |
-|------------------------|--------|
-| **Configuration Files** | Easier to read/write with comments and single quotes |
-| **Development Environments** | Faster prototyping or local debugging |
-| **JavaScript Configurations** | Closer to JS syntax, reducing formatting overhead |
-| **Toolchain Support** | Supported by tools like Babel, Webpack, etc. |
+| Scenario                      | Reason                                               |
+| ----------------------------- | ---------------------------------------------------- |
+| **Configuration Files**       | Easier to read/write with comments and single quotes |
+| **Development Environments**  | Faster prototyping or local debugging                |
+| **JavaScript Configurations** | Closer to JS syntax, reducing formatting overhead    |
+| **Toolchain Support**         | Supported by tools like Babel, Webpack, etc.         |
 
 ---
 
-##  Pros and Cons of JSON5
+## Pros and Cons of JSON5
 
-### ✅ Advantages
+### Advantages
+
 - **More Flexible**: Supports comments, single quotes, trailing commas.
 - **JavaScript-Like**: Easier for developers familiar with JS.
 - **Improved Readability**: Better for human editing and maintenance.
 
-### ❗ Disadvantages
+### Disadvantages
+
 - **Non-Standard Format**: Some parsers do not support JSON5 (requires additional handling).
 - **Compatibility Issues**: In production, JSON5 must be converted to standard JSON.
 
 ---
 
-##  How to Use JSON5?
+## How to Use JSON5?
 
 ### 1. Parse JSON5 Files
 
@@ -88,7 +88,7 @@ npm install json5
 ```
 
 ```javascript
-const JSON5 = require('json5');
+const JSON5 = require("json5");
 
 const config = JSON5.parse(`
   {
@@ -103,6 +103,7 @@ console.log(config);
 ```
 
 ### 2. Convert to JSON
+
 In production, convert JSON5 to standard JSON:
 
 ```bash
@@ -111,28 +112,27 @@ json5 -c config.json5 > config.json
 
 ---
 
-##  Compatibility of JSON5
+## Compatibility of JSON5
 
-| Tool/Platform | Supports JSON5? |
-|---------------|------------------|
-| Node.js       | ❌ (Requires `json5` package) |
-| Browsers      | ❌ (Default unsupported) |
+| Tool/Platform | Supports JSON5?                      |
+| ------------- | ------------------------------------ |
+| Node.js       | ❌ (Requires `json5` package)        |
+| Browsers      | ❌ (Default unsupported)             |
 | VS Code       | ✅ (With syntax highlighting plugin) |
-| Webpack       | ✅ (With `json5` loader) |
-| Babel         | ✅ (With plugin) |
+| Webpack       | ✅ (With `json5` loader)             |
+| Babel         | ✅ (With plugin)                     |
 
 ---
 
-| Feature        | Description |
-|----------------|-------------|
-| **Core Idea**  | Superset of JSON with flexible syntax |
-| **Best For**   | Development environments, configuration files |
-| **Production Tip** | Convert to JSON for compatibility |
+| Feature              | Description                                            |
+| -------------------- | ------------------------------------------------------ |
+| **Core Idea**        | Superset of JSON with flexible syntax                  |
+| **Best For**         | Development environments, configuration files          |
+| **Production Tip**   | Convert to JSON for compatibility                      |
 | **Recommended Tool** | [`json5`](https://www.npmjs.com/package/json5) package |
 
 ---
 
-
-##  Conclusion
+## Conclusion
 
 In this guide, we introduces what is JSON5, the usage scenarios of JSON5, and the difference with JSON. In short, JSON5, as an extension to the JSON format, aims to make JSON more suitable for human writing and maintenance through a more flexible syntax and user-friendly features. It retains the core structure of JSON (key-value pairs, arrays, etc.), while introducing some of the syntactic features of JavaScript to address the limitations of traditional JSON in terms of readability and editability.

@@ -10,7 +10,7 @@ import { Fira_Code } from 'next/font/google';
 
 const firaCode = Fira_Code({
   subsets: ['latin'],
-  weight: ['400', '500', '700'], // 你需要哪些字重就写哪些
+  weight: ['400', '300', '700'], // 你需要哪些字重就写哪些
   variable: '--font-source-code-pro',  // 可选，CSS 变量名
   display: 'swap',               // 字体加载行为，推荐使用 swap
 });

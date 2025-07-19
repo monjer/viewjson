@@ -17,8 +17,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       <footer className="page-footer w-full my-8">
         <Article>
           <p className="text-center">©{date} viewjson.online. All rights reserved.
+            <Link href="/about" className='ml-2'>About</Link>
             <a href="/privacy" className="ml-2">Privacy Policy</a>
-            <Link href="/about" className='ml-4'>About</Link>
+            <Link href="/terms" className='ml-2'>Terms of Service</Link>
           </p>
         </Article>
       </footer>

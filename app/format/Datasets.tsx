@@ -35,7 +35,7 @@ export default function Datasets() {
   return (
     <section className="">
       <div className="mb-8 mt-20">
-        <h1 className="text-2xl font-bold  text-center">Available Datasets</h1>
+        <h1 className="font-bold  text-center">Available Datasets</h1>
         <p className="text-center">We provide some sample json datasets to help you get started. You can use all these data in your project to do some tests.</p>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
