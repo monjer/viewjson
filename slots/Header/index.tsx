@@ -118,7 +118,7 @@ export default function Header() {
             <a href='/' className='mr-4'>
               <Flex align='center' className='cursor-pointer'>
                 <Logo key={theme} />
-                <h2 className="text-2xl  text-black m-0 dark:text-white font-mono">viewjson</h2>
+                <h2 className="text-2xl  text-black m-0 dark:text-white font-bold">viewjson</h2>
               </Flex>
             </a>
             <Navbar items={navs} activeKeys={activeKeys} />
