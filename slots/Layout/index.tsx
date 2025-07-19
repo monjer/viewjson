@@ -21,6 +21,16 @@ function Layout({ children }: { children: React.ReactNode }) {
             <a href="/privacy" className="ml-2">Privacy Policy</a>
             <Link href="/terms" className='ml-2'>Terms of Service</Link>
           </p>
+          <div className="text-center mt-4 flex justify-center gap-4">
+            <a href="https://twelve.tools" target="_blank" className="inline-block dark:hidden">
+              <img src="https://twelve.tools/badge0-light.svg"
+                alt="Featured on Twelve Tools" style={{ width: "140px", height: "auto" }} /></a>
+            <a href="https://twelve.tools" target="_blank" className="hidden dark:inline-block">
+              <img src="https://twelve.tools/badge0-dark.svg"
+                alt="Featured on Twelve Tools" style={{ width: "140px", height: "auto" }} /></a>
+            <a title="ai tools code.market" href="https://code.market?code.market=verified" className="inline-block dark:hidden"><img alt="ai tools code.market" title="ai tools code.market" src="https://code.market/assets/manage-product/featured-logo-bright.svg" /></a>
+            <a title="ai tools code.market" href="https://code.market?code.market=verified" className="hidden dark:inline-block"><img alt="ai tools code.market" title="ai tools code.market" src="https://code.market/assets/manage-product/featured-logo-dark.svg" /></a>
+          </div>
         </Article>
       </footer>
     </div>
