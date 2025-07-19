@@ -47,6 +47,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/datasets/student-scores',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/datasets/programing-languages',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/datasets/internet-companies',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/datasets/countries',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/privacy',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    }, {
+      url: 'https://viewjson.online/terms',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.8,
     },
   ];
 }
