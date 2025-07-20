@@ -1,0 +1,153 @@
+---
+title: Introduction to JSONP
+description: Learn what JSONP is, how to use it, when and why it's used, with server and client demo code, a simple JSONP library, its relation to JSON, and a full conclusion.
+keywords: JSONP, JSONP tutorial, Cross-Origin, Same-Origin Policy, JavaScript JSONP, Cross-domain requests, JSON, CORS alternative
+---
+
+# Introduction to JSONP
+
+## What is JSONP?
+
+**JSONP (JSON with Padding)** is a technique used in frontend development to bypass the browser's **same-origin policy**. This policy normally restricts AJAX requests from a webpage to a different domain than the one serving it.
+
+JSONP works by injecting a `<script>` tag into the document that loads a remote script from another domain. The server responds by wrapping the JSON data inside a callback function (the "padding"), which the client defines. When the script loads, the callback executes with the data.
+
+###  How to Use JSONP?
+
+1. Define a global callback function on the client.
+2. Dynamically insert a `<script>` tag with a `src` pointing to the server URL, including a `callback` parameter naming your callback function.
+3. The server returns JavaScript that calls the callback function with the JSON data as an argument.
+4. The callback function processes the data.
+
+### When and Why to Use JSONP?
+
+- **When:** You need to perform cross-origin GET requests to servers **without CORS support**.
+- **Why:** Browsers allow cross-origin script loading via `<script>`, but block cross-origin AJAX requests without CORS.
+- **Limitations:**  
+  - Supports only **GET** requests.
+  - Poses security risks as it executes arbitrary JavaScript.
+- **Best Practice:** Prefer CORS where possible; use JSONP only if CORS is unavailable.
+
+## Example Code in Server and Client
+
+###  Server-side (Node.js + Express):
+
+```js
+const express = require('express');
+const app = express();
+
+app.get('/api/data', (req, res) => {
+  const callback = req.query.callback;
+  const data = { message: 'Hello from JSONP server!', timestamp: new Date().toISOString() };
+
+  if (callback) {
+    res.type('application/javascript');
+    res.send(`${callback}(${JSON.stringify(data)});`);
+  } else {
+    res.json(data);
+  }
+});
+
+app.listen(3000, () => console.log('Server listening on http://localhost:3000'));
+````
+
+
+### Client-side (HTML + JavaScript):
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSONP Client Demo</title>
+  <script>
+    function handleData(data) {
+      console.log('Data received:', data);
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+
+    function loadJSONP() {
+      const script = document.createElement('script');
+      script.src = 'http://localhost:3000/api/data?callback=handleData';
+      document.body.appendChild(script);
+    }
+
+    window.onload = loadJSONP;
+  </script>
+</head>
+<body>
+  <h1>JSONP Demo</h1>
+  <pre id="output">Loading data...</pre>
+</body>
+</html>
+```
+
+## How to Write a JSONP Library in JavaScript
+
+You can write your own simple JSONP library to handle the boilerplate code for making JSONP requests. Here’s a basic implementation:
+
+```js
+function jsonp(url, callbackParam = 'callback') {
+  return new Promise((resolve, reject) => {
+    const callbackName = 'jsonp_cb_' + Math.random().toString(36).substr(2, 8);
+
+    window[callbackName] = function(data) {
+      resolve(data);
+      delete window[callbackName];
+      script.remove();
+    };
+
+    const script = document.createElement('script');
+    script.src = url + (url.includes('?') ? '&' : '?') + `${callbackParam}=${callbackName}`;
+    script.onerror = () => {
+      reject(new Error('JSONP request failed'));
+      delete window[callbackName];
+      script.remove();
+    };
+
+    document.body.appendChild(script);
+  });
+}
+
+// Usage example:
+jsonp('http://localhost:3000/api/data')
+  .then(data => console.log('Received:', data))
+  .catch(err => console.error(err));
+```
+
+## Relation with JSON
+
+* **JSON** is a lightweight data format used for exchanging data — just plain data.
+* **JSONP** wraps JSON data inside a function call (padding) to turn it into executable JavaScript.
+* This wrapping enables cross-origin data fetching via `<script>` tags since browsers allow cross-domain script loading.
+* Essentially, JSONP = **JSON + a callback function wrapper**.
+
+
+## Summary
+
+| Aspect             | Details                         |
+| ------------------ | ------------------------------- |
+| Purpose            | Bypass same-origin policy       |
+| Technique          | Using `<script>` tag + callback |
+| Request Type       | GET only                        |
+| Use Case           | Server without CORS support     |
+| Security           | Risky; executes server JS       |
+| Modern Alternative | Prefer CORS if possible         |
+
+
+
+## Conclusion
+
+JSONP emerged as a clever workaround to bypass the browser's strict same-origin policy before CORS became widely supported. By wrapping JSON data in a callback function and loading it as a script, JSONP enables cross-origin GET requests in browsers.However, JSONP comes with notable downsides:
+
+1. It only supports GET requests.
+2. It poses security risks by executing arbitrary JavaScript code.
+3. It lacks the robustness and flexibility of modern CORS.
+
+Today, **CORS** is the preferred and safer method for cross-origin resource sharing. JSONP should only be used if you must interact with servers that do not support CORS and only for simple GET requests.
+
+When working with JSONP:
+
+1. Always sanitize and validate data carefully.
+2. Limit its usage and migrate to CORS-based solutions when possible.
+
+Understanding JSONP remains valuable for legacy support and insight into cross-origin communication challenges in web development.
