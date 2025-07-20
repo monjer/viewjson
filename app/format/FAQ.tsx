@@ -40,19 +40,22 @@ const faqs = [
 ];
 
 export default function FAQ() {
+
   return (
     <section className="">
       <h1 className="font-bold text-center mb-8 mt-20">Frequently Asked Questions</h1>
       <div className="space-y-4">
-        {faqs.map((faq, idx) => (
-          <details key={idx} className="bg-white dark:bg-gray-900 rounded shadow p-4 border dark:border-gray-800 " open>
-            <summary className="cursor-pointer font-semibold text-base text-gray-800 dark:text-gray-100 flex items-center justify-between">
-              {faq.question}
-              <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform"><ChevronDown /></span>
-            </summary>
-            <div className="mt-2 text-gray-700 dark:text-gray-300">{faq.answer}</div>
-          </details>
-        ))}
+        {faqs.map((faq, index) => {
+          return (
+            <details key={index} className="bg-white dark:bg-gray-900 rounded shadow p-4 border dark:border-gray-800" open>
+              <summary className="cursor-pointer font-semibold text-base text-gray-800 dark:text-gray-100 flex items-center justify-between" >
+                {faq.question}
+                <span className="ml-2 text-gray-400 arrow group-open:rotate-180 transition-transform"><ChevronDown className="w-5 h-5 text-gray-500" /></span>
+              </summary >
+              <div className="mt-2 text-gray-700 dark:text-gray-300">{faq.answer}</div>
+            </details>
+          );
+        })}
       </div>
     </section>
   );
