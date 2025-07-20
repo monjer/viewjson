@@ -1,0 +1,30 @@
+.sheetblock {
+
+  table{
+    width: 100%;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    margin:0;
+    thead{
+      display: none;    
+    }
+  }
+
+  p{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  pre{
+    margin-top: 1rem ;
+    margin-bottom:0;
+  }
+}
+
+.sheetblock-with-thead{
+  table{
+    thead{
+      display: table-header-group;    
+    }
+  }
+}

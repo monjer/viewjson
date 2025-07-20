@@ -12,7 +12,7 @@ export default function Article({ children, className = '' }) {
     <section className={`
         prose prose-slate	
         dark:prose-invert
-        prose-sm        
+        prose-base        
       prose-a:text-blue-500 prose-a:hover:text-blue-600 prose-a:no-underline prose-a:hover:underline
          max-w-[100%] 
        ${className || ''}`

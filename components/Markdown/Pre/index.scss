@@ -1,0 +1,10 @@
+.code-block{
+  .copy-btn{
+    display: none;
+  }
+  &:hover{
+    .copy-btn{
+      display: inline-block;
+    }
+  }
+}

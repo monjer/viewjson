@@ -1,5 +1,6 @@
 import { ComponentProps } from "react";
 import Copy from "../Copy";
+import "./index.scss";
 
 export default function Pre({
   children,
@@ -7,7 +8,7 @@ export default function Pre({
   ...rest
 }: ComponentProps<"pre"> & { raw?: string }) {
   return (
-    <div className="my-5 relative w-full">
+    <div className="my-0 relative w-full code-block">
       <div className="relative ">
         <pre {...rest}>{children}</pre>
       </div>

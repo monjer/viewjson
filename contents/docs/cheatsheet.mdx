@@ -1,0 +1,569 @@
+---
+title: JSON CheatSheet
+description: Learn some common syntax error when use json data.
+keywords: JSON Syntax, JSON Structure, JSON Syntax Error
+---
+
+
+## Get Start
+<SheetGrid>
+<SheetBlock title="Introduction">
+
+[JSON](https://www.json.org/json-en.html) (JavaScript Object Notation) is a lightweight, text-based data format used for storing and exchanging structured data, especially between a server and a web client. 
+1. JSON is easy for humans to read and write, and simple for machines to parse and generate.
+2. JSON is language-independent and supported by virtually all modern programming languages.
+3. JSON was created by [Douglas Crockford](https://en.wikipedia.org/wiki/Douglas_Crockford) in the early 2000s. 
+4. JSON filename extension is `.json`
+5. JSON mime-type is `application/json`
+
+</SheetBlock>
+
+<SheetBlock title="Syntax Rules">
+
+  The JSON syntax is largely a subset of the JavaScript syntax. Here are its core components: There are six kinds of values in JSON.
+
+  1. Data is in Key-Value Pairs.
+  2. Data is separated by commas.
+  3. Curly Braces `{}` Hold Objects.
+  4. Square Brackets `[]` Hold Arrays.
+  5. Strings Must Use Double Quotes `""`.
+  6. No Trailing Commas.
+  7. White Spaces is allowed and ignored.	
+
+
+</SheetBlock>
+
+<SheetBlock title="Example">
+
+```json
+{
+  "name": "Jason",
+  "age": 39,
+  "height": 1.92,
+  "gender": "M",
+  "salary": 70000,
+  "married": true,
+  "children": [
+    { "name": "Tom", "age": 9, "gender": "M" },
+    { "name": "Ava", "age": 7, "gender": "F" }
+  ]
+}
+```
+</SheetBlock>
+
+<SheetBlock title="Data Types">
+
+| Type | Description | Exmaple |
+| ---- | ---- | ----------- |
+| String | Textual data enclosed in double quotes | `"Hello, World!"` |
+| Number | Numeric data, can be integer or floating-point | `42`, `3.14` |
+| Boolean | Represents true or false values | `true`, `false` |
+| Null | Represents an empty value | `null` |
+| Object | A collection of key-value pairs enclosed in curly braces | `{"name": "John", "age": 30}` |
+| Array | An ordered list of values enclosed in square brackets | `["apple", "banana", "cherry"]` |
+
+</SheetBlock>
+
+<SheetBlock title="Number">
+
+|  |  | 
+| ---- | ---- | 
+| `Integer` | Digits 1-9, 0 and positive or negative | 
+| `Fraction` | Fractions like 0.3, 3.9 | 
+| `Exponent` | Exponent like e, e+, e-, E, E+, E | 
+| `Zero` | 0 | 
+
+```json
+{
+  "integer": 42,
+  "fraction": 3.14,
+  "exponent": 1.5e3,
+  "zero": 0
+}
+```
+</SheetBlock>
+
+<SheetBlock title="Boolean">
+
+|  |  | 
+| ---- | ---- | 
+| `true` | Represents a true value |
+| `false` | Represents a false value |
+```json
+{
+  "isActive": true,
+  "isCompleted": false
+}
+```
+
+</SheetBlock>
+
+
+<SheetBlock title="String" rowSpan={2}>
+Various special characters that you can use in strings of a JSON document:
+
+|  |  | 
+| ---- | ---- | 
+| `\"` | Double quote | 
+| `\/` | Forward slash |
+| `\b` | Backspace| 
+| `\\` | Backslash | 
+| `\u` | Unicode escape sequence | 
+| `\n` | Newline | 
+| `\f` | Form feed | 
+| `\r` | Carriage return | 
+| `\t` | Tab | 
+
+```
+{
+  "url": "https://cheatsheets.zip",
+  "msg": "Hi,\n\"CheatSheets.zip\"",
+  "intro": "Share quick reference and cheat sheet for developers."
+}
+```
+
+You can use only Decimal Literals, below is invalid example:
+
+```json
+{ "foo": 0xff }
+```
+
+</SheetBlock>
+
+
+
+<SheetBlock title="Object" rowSpan={2}>
+
+Multiple key/value pairs separated by a comma, can be nested and include array.
+
+```json
+{
+  "name": "John",
+  "age": 30,
+  "isStudent": false,
+}
+```
+Nested objects are also allowed:
+
+```json
+{
+  "person": {
+    "name": "Alice",
+    "age": 25,
+    "address": {
+      "street": "456 Elm St",
+      "city": "Los Angeles"
+    }
+  }
+}
+```
+Objects can also contain arrays:
+```json
+{
+  "company": {
+    "name": "TechCorp",
+    "employees": [
+      { "name": "Alice", "position": "Developer" },
+      { "name": "Bob", "position": "Designer" }
+    ]
+  }
+}
+```
+
+</SheetBlock>
+
+
+<SheetBlock title="Array" rowSpan={2}>
+
+Begins with `[` and ends with `]`: 
+
+```json
+{
+  "numbers": [1, 2, 3, 4, 5],
+}
+```
+
+Array can contain multiple values of any type:
+
+```json
+{
+  "fruits": ["apple", "banana", "cherry"],
+  "numbers": [1, 2, 3, 4, 5],
+  "mixed": [1, "two", true, null]
+}
+```
+Array can also contain objects:
+
+```json
+{
+  "people": [
+    { "name": "Alice", "age": 25 },
+    { "name": "Bob", "age": 30 }
+  ]
+}
+```
+Nested arrays are also allowed:
+
+```json
+{
+  "matrix": [[1, 2], [3, 4]],
+  "nested": [[1, 2], ["a", "b"]]
+}
+```
+
+</SheetBlock>
+
+<SheetBlock title="Syntax Errors" rowSpan={2}>
+JSON syntax errors can occur due to various reasons. Here are some common examples of JSON syntax errors:
+Missing or Extra Commas
+```json
+{
+  "name": "Alice"
+  "age": 25 // Missing comma after "Alice"
+}
+```
+Missing or Extra Commas
+```json
+{
+  "name": "Alice",
+  "age": 25,
+} // Extra comma after the last property
+```
+Including Functions or Undefined
+```json
+{
+  "name": "Alice",
+  "age": 25,
+  "greet": function() { // Functions are not allowed in JSON
+    return "Hello!";
+  }
+}
+```
+Unquoted Property Names
+```json
+{
+  name: "Alice", // Property names must be enclosed in double quotes
+  "age": 25
+}
+```
+Invalid Number Formats
+```json
+{
+  "age": 25.5.5 // Invalid number format
+}
+```
+Unclosed Structures
+```json
+{
+  "name": "Alice",
+  "age": 25 // Missing closing brace
+```
+
+</SheetBlock>
+
+</SheetGrid>
+
+
+## JSON In JavaScript
+<SheetGrid>
+
+<SheetBlock title="Access Object" rowSpan={2}>
+
+Example JSON Object:
+
+```json
+{
+  "person": {
+    "name": "Alice",
+    "age": 25,
+    "school": null,
+    "address": {
+      "street": "123 Main St",
+      "city": "New York"
+    }
+  }
+}
+```
+Accessing properties in a JSON object can be done using  dot notation :
+
+|     Operartion |  Result     |
+| -------------- | ----------- |
+| `person.name`  | `"Alice"`   |
+| `person.age`   | `25`        |
+| `person.school`| `null`      |
+| `person.address`| `{ "street": "123 Main St", "city": "New York" }` |
+| `person.address.street` | `"123 Main St"` |
+| `person.address.city` | `"New York"` |
+
+
+Accessing properties in a JSON object can also be done using bracket notation :
+
+|     Operartion |  Result     |
+| -------------- | ----------- |
+| `person["name"]` | `"Alice"`   |
+| `person["age"]`  | `25`        |
+| `person["school"]` | `null`      |
+| `person["address"]` | `{ "street": "123 Main St", "city": "New York" }` |
+| `person["address"]["street"]` | `"123 Main St"` |
+| `person["address"]["city"]` | `"New York"` |
+
+
+
+</SheetBlock>
+
+<SheetBlock title="Create JSON Object" rowSpan={2}>
+
+You can create a JSON object in JavaScript using either object literal notation or by parsing a JSON string.
+
+```javascript
+const jsonObject = {
+  "name": "Alice",
+  "age": 25,
+  "isStudent": false,
+  "courses": ["Math", "Science", "History"],
+  "address": {
+    "street": "123 Main St",
+    "city": "New York"
+  }
+};
+console.log(jsonObject.name); // Output: Alice
+console.log(jsonObject.age);  // Output: 25
+```
+
+You can also create a JSON object by parsing a JSON string.
+```javascript
+const jsonString = '{"name": "Alice", "age": 25, "isStudent": false}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject.name); // Output: Alice
+console.log(jsonObject.age);  // Output: 25
+```
+</SheetBlock>
+
+<SheetBlock title="JSON.parse()">
+The `JSON.parse()` method is used to convert a JSON string into a JavaScript object. 
+
+```javascript
+const jsonString = '{"name": "Alice", "age": 25}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject.name); // Output: Alice
+console.log(jsonObject.age);  // Output: 25
+```
+
+</SheetBlock>
+
+<SheetBlock title="JSON.stringify()">
+
+The `JSON.stringify()` method is used to convert a JavaScript object into a JSON string.
+```javascript
+const jsonObject = { name: "Alice", age: 25 };
+const jsonString = JSON.stringify(jsonObject);
+console.log(jsonString); // Output: {"name":"Alice","age":25}
+```
+</SheetBlock>
+
+<SheetBlock title="Validate JSON">
+You can validate JSON data in JavaScript using the `JSON.parse()` method. If the JSON is valid, it will return the parsed object; if not, it will throw an error.
+
+```javascript
+const jsonString = '{"name": "Alice", "age": 25}';
+try {
+  const jsonObject = JSON.parse(jsonString);
+  console.log("Valid JSON:", jsonObject);
+} catch (error) {
+  console.error("Invalid JSON:", error.message);
+}
+```
+</SheetBlock>
+
+<SheetBlock title="Post JSON Data Use fetch API">
+You can post JSON data to a server using the `fetch` API in JavaScript. Here's an example:
+
+```javascript
+const jsonData = {
+  name: "Alice",
+  age: 25,
+  isStudent: false
+};
+fetch('https://example.com/api/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(jsonData)
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+```
+
+</SheetBlock>
+
+<SheetBlock title="Post JSON Data Use XMLHttpRequest API">
+
+You can also post JSON data using the `XMLHttpRequest` API in JavaScript. Here's an example:
+
+```javascript
+const jsonData = {
+  name: "Alice",
+  age: 25,
+  isStudent: false
+};
+const xhr = new XMLHttpRequest();
+xhr.open("POST", "https://example.com/api/data", true);
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      console.log("Success:", xhr.responseText);
+    } else {
+      console.error("Error:", xhr.statusText);
+    }
+  }
+};
+xhr.send(JSON.stringify(jsonData));
+```
+</SheetBlock>
+
+
+
+</SheetGrid>
+
+## JSON vs JSON5
+<SheetGrid>
+
+<SheetBlock title="JSON5" rowSpan={1}>
+JSON5 is an extension of JSON that aims to make it easier to write and read JSON data by allowing for more flexible syntax and additional features. It is not part of the official JSON specification but is widely used in JavaScript projects.
+
+Here are common scenarios where using JSON5 is beneficial:
+
+1. **Config files for tools**
+   - e.g., `.babelrc`, `.eslintrc`, `tsconfig.json5`
+2. **Human-edited settings**
+   - Easier to read and document with comments
+3. **Prototyping structured data**
+   - Great for mocking APIs or creating test data quickly
+4. **Build scripts and environments**
+   - Developers can maintain structured data with clarity
+5. **Alternative to JS config files**
+   - A simpler, safer replacement when you don’t need full JS
+
+</SheetBlock>
+
+<SheetBlock title="JSON5 Example" rowSpan={1}>
+
+```json5
+{
+  // This is a comment
+  name: 'Alice', // Unquoted property name
+  age: 25, // Trailing comma allowed
+  isStudent: false,
+  courses: [
+    'Math',
+    'Science',
+    'History' // Trailing comma allowed
+  ],
+  address: {
+    street: '123 Main St',
+    city: 'New York'
+  },
+  // Multi-line string
+  description: `Alice is a student
+  who loves learning new things.`
+}
+```
+</SheetBlock>
+
+<SheetBlock title="JSON VS JSON5" className="sheetblock-with-thead" rowSpan={1}>
+
+| Feature / Syntax                  | JSON                         | JSON5                                                                 |
+| --------------------------------- | ---------------------------- | --------------------------------------------------------------------- |
+| Trailing Commas                   | ❌ Not allowed                | ✅ Allowed after last array element or object property                 |
+| Single Quotes                     | ❌ Only double quotes         | ✅ Strings may use single quotes                                       |
+| Unquoted Keys                     | ❌ Object keys must be quoted | ✅ Identifiers as keys may be unquoted                                 |
+| Multi-line Strings                | ❌ Must be escaped            | ✅ Multi-line via single-quoted, double-quoted, or back-tick templates |
+| Comments                          | ❌ Not supported              | ✅ Both `// line` and `/* block */` comments                           |
+| Hexadecimal Numbers               | ❌ Not supported              | ✅ e.g., `0xFF`                                                        |
+| Leading / Trailing Decimal Points | ❌ Not allowed                | ✅ e.g., `1.` or `.5`                                                  |
+| `+` / `-` Infinity & NaN          | ❌ Not supported              | ✅ `Infinity`, `-Infinity`, `NaN` literals                             |
+| Explicit Plus Sign                | ❌ Not allowed                | ✅ e.g., `+42`                                                         |
+| `undefined` Literal               | ❌ Not supported              | ✅ Value allowed                                                       |
+| Root Value Types                  | Must be object or array      | Any JSON5 value allowed at root                                       |
+
+
+
+</SheetBlock>
+
+</SheetGrid>
+
+## JSON Advanced
+
+<SheetGrid>
+<SheetBlock title="JSON Schema" rowSpan={1}>
+
+**JSON Schema** is a vocabulary that allows you to define the **structure**, **content**, and **rules** for JSON data. It is used to **validate** whether a JSON document matches the expected format and constraints.
+It provides a way to describe:
+- **Validation**: Ensure incoming JSON data is correct and safe.
+- **Documentation**: Describe the structure of your data clearly.
+- **Automation**: Enable code generation, form creation, and API validation.
+- **Tooling**: Works with validators like [AJV](https://ajv.js.org/), OpenAPI, Swagger, etc.
+
+Example:
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "integer", "minimum": 0 },
+    "email": { "type": "string", "format": "email" }
+  },
+  "required": ["name", "email"],
+  "additionalProperties": false
+}
+```
+</SheetBlock>
+<SheetBlock title="JSON Schema Validation" rowSpan={2}>
+To validate JSON data against a JSON Schema, you can use libraries like [`ajv`](https://ajv.js.org/) . Here's an example:
+
+```javascript
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
+// 1. Define a JSON Schema
+const userSchema = {
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    age: { type: "integer", minimum: 0 },
+    email: { type: "string", format: "email" }
+  },
+  required: ["name", "email"],
+  additionalProperties: false
+};
+// 2. Create AJV instance and enable formats (like "email")
+const ajv = new Ajv();
+addFormats(ajv);
+// 3. Compile the schema
+const validate = ajv.compile(userSchema);
+// 4. Sample JSON data to validate
+const data = {
+  name: "Alice",
+  age: 30,
+  email: "alice@example.com"
+};
+// 5. Perform validation
+const isValid = validate(data);
+// 6. Output result
+if (isValid) {
+  console.log("✅ JSON data is valid!");
+} else {
+  console.log("❌ JSON data is invalid:");
+  console.log(validate.errors);
+}
+```
+</SheetBlock>  
+</SheetGrid>
