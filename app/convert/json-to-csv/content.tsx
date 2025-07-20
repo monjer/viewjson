@@ -86,7 +86,6 @@ export default function Layout() {
           mime="text/csv"
           editorContainerStyle={{ height: 'calc(80vh - 160px)' }}
           onChange={(v) => {
-            console.log(v);
             setCsvContent(v);
           }}
           validateValue={validateCSV}

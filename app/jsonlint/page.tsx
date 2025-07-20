@@ -69,7 +69,6 @@ export default function Page() {
   }
 
   function onChange(value) {
-    console.log('onChange', value);
     setJsonContent(value);
     try {
       JSON.parse(value);

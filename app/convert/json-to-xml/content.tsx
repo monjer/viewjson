@@ -139,7 +139,6 @@ export default function Layout() {
           filename="data.xml"
           mime="text/xml"
           onChange={(v) => {
-            console.log(v);
             setXMLContent(v);
           }}
           validateValue={validateXML}
