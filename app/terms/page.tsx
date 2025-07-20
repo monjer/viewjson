@@ -7,10 +7,10 @@ export default function Page() {
         <h1 className="mt-4">Terms of Service</h1>
         <p><strong>Effective Date:</strong> July 19, 2025</p>
 
-        <p>Welcome to <strong>viewjson.online</strong>. By accessing or using this website (the "Service"), you agree to be bound by the following Terms of Service. If you do not agree to these terms, please do not use this website.</p>
+        <p>Welcome to <strong>viewjson.online</strong>. By accessing or using this website (the "Service"), you agree to be bound by the following Terms of Service.</p>
 
         <h3>1. Description of Service</h3>
-        <p>viewjson.online provides users with free online tools to format, validate, visualize, and debug JSON data. The service is offered "as-is" and "as-available" without any warranties.</p>
+        <p>viewjson.online provides users with free online tools to format, validate, minify, convert to other formats, and perform other operations on JSON data. The service is offered "as-is" and "as-available" without any warranties.</p>
 
         <h3>2. User Responsibilities</h3>
         <p>By using this site, you agree to:</p>

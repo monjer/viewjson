@@ -45,7 +45,7 @@ export default function FAQ() {
       <h1 className="font-bold text-center mb-8 mt-20">Frequently Asked Questions</h1>
       <div className="space-y-4">
         {faqs.map((faq, idx) => (
-          <details key={idx} className="bg-white dark:bg-gray-800 rounded shadow p-4 border dark:border-gray-800 " open>
+          <details key={idx} className="bg-white dark:bg-gray-900 rounded shadow p-4 border dark:border-gray-800 " open>
             <summary className="cursor-pointer font-semibold text-base text-gray-800 dark:text-gray-100 flex items-center justify-between">
               {faq.question}
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform"><ChevronDown /></span>

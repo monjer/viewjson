@@ -42,7 +42,7 @@ export default function Datasets() {
         {datasets.map((ds) => (
           <div
             key={ds.title}
-            className="border dark:border-gray-800 rounded shadow p-5 flex flex-col gap-2 dark:bg-gray-800"
+            className="border dark:border-gray-800 rounded shadow p-5 flex flex-col gap-2 bg-white dark:bg-gray-900"
           >
             <div className="flex items-center justify-between">
               <h3 className="!mt-0  !mb-0">{ds.title}</h3>

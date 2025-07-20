@@ -8,7 +8,9 @@ import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import GithubSlugger from 'github-slugger';
 import Pre from '@/components/Markdown/Pre';
+import SheetBlock from '@/components/Markdown/SheetBlock';
 import { visit } from "unist-util-visit";
+import SheetGrid from '@/components/Markdown/SheetGrid';
 
 const DOC_PATH = path.join(process.cwd(), "/contents/docs");
 
@@ -65,6 +67,8 @@ async function parseMdx<Frontmatter>(rawMdx: string) {
     },
     components: {
       pre: Pre,
+      SheetBlock: SheetBlock,
+      SheetGrid: SheetGrid,
     },
   });
 }

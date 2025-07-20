@@ -243,7 +243,7 @@ function Main() {
             {expand ? <Shrink size={16} /> : <Expand size={16} />}
           </Button>
         </Flex>
-        <div style={{ flex: 1, overflow: 'hidden' }} >
+        <div className="bg-white dark:bg-gray-950" style={{ flex: 1, overflow: 'hidden' }} >
           <Dropzone onChange={acceptedFiles => onLoadFile(acceptedFiles[0])}>
             <div className="resize-board">
               {renderView()}
