@@ -43,6 +43,10 @@ const docRoutes: DocRoute[] = [
     href: '/docs/json-vs-xml',
     file: 'docs/json-vs-xml.mdx',
   }, {
+    title: 'Introduction To JSONP',
+    href: '/docs/jsonp',
+    file: 'docs/jsonp.mdx',
+  }, {
     title: 'Popular JSON Libraries',
     href: '/docs/json-sdk',
     file: 'docs/json-sdk.mdx',
