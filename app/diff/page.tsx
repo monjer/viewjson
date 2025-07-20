@@ -7,7 +7,6 @@ import PageTitle from '@/components/PageTitle';
 function App() {
   const [originalCode, setOriginalCode] = useState('');
   const [modifiedCode, setModifiedCode] = useState('');
-  console.log(originalCode);
 
   return (
     <>
