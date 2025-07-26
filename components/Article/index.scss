@@ -1,0 +1,7 @@
+.no-code-decoration code {
+
+  &::before,
+  &::after {
+    content: none !important;
+  }
+}

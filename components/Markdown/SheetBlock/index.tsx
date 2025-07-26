@@ -26,7 +26,7 @@ export default function SheetBlock({
     bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded relative ${`${rowSpanClass}`} ${className}`}>
       <h3 className={
         `
-        text-sm font-normal mb-0 py-1 px-4 !mt-0 title absolute top-0 right-0 z-1 text-white bg-blue-500 dark:bg-gray-600  rounded 
+        !text-sm font-normal mb-0 py-1 px-2 !mt-0 title absolute top-0 right-0 z-1 text-white bg-blue-500 dark:bg-gray-600  rounded 
         text-center
         `
       }>

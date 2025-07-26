@@ -33,8 +33,8 @@ const datasets = [
 
 export default function Datasets() {
   return (
-    <section className="">
-      <div className="mb-8 mt-20">
+    <section className="mt-20">
+      <div className="mb-8 ">
         <h1 className="font-bold  text-center">Available Datasets</h1>
         <p className="text-center">We provide some sample json datasets to help you get started. You can use all these data in your project to do some tests.</p>
       </div>
@@ -49,12 +49,11 @@ export default function Datasets() {
             </div>
             <p className="text-gray-700 dark:text-gray-300">{ds.description}</p>
             <span className="flex  gap-3">
-
               <a
                 href={ds.editorlink}
                 target="_blank"
                 title={`Open ${ds.title} json data in editor`}
-                className="text-blue-600 hover:underline text-xs"
+                className="text-blue-600 hover:underline"
               >
                 Open in editor
               </a>
@@ -62,7 +61,7 @@ export default function Datasets() {
                 href={ds.link}
                 target="_blank"
                 title={`View ${ds.title} json data in detail`}
-                className="text-blue-600 hover:underline text-xs"
+                className="text-blue-600 hover:underline"
               >
                 Detail
               </a>
@@ -70,7 +69,7 @@ export default function Datasets() {
                 href={ds.datalink}
                 target="_blank"
                 download
-                className="text-blue-600 hover:underline text-xs"
+                className="text-blue-600 hover:underline"
                 title={`Download ${ds.title} dataset`}
               >
                 Download
