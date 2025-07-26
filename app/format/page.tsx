@@ -9,8 +9,8 @@ export default function Page() {
     <div className="mt-4">
       <Content />
       <div className="max-w-4xl mx-auto">
-        <Article>
-          <h1 className="text-center mb-8 mt-20">About viewjson.online</h1>
+        <Article className="mt-10">
+          <h1 className="text-center mb-8 ">About viewjson.online</h1>
           <p>viewjson.online is a free online json viewer, json beautifier, json formatter, json data converter, json diff, json path checker, json validator tools.</p>
           <section className="features">
             <div className="container">

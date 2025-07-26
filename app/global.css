@@ -8,6 +8,7 @@ body {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-feature-settings: normal;
   font-variation-settings: normal;
+  @apply text-sm;
 }
 
 @layer base {
@@ -57,8 +58,21 @@ body {
 }
 
 .open,
-[open]{
-  .arrow{
+[open] {
+  .arrow {
     @apply rotate-180
   }
+
 }
+/* 
+.no-code-decoration code {
+
+  &::before,
+  &::after {
+    content: none !important;
+  }
+}
+
+.prose code:not([class*="language-"]) {
+  @apply text-pink-600
+} */

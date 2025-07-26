@@ -11,7 +11,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="app-page">
       <Header />
-      <main className="page-main w-full m-auto md:w-[80vw] mb-20">
+      <main className="page-main w-full m-auto md:w-[90vw] mb-20">
         {children}
       </main>
       <footer className="page-footer w-full my-8">

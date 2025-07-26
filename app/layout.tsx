@@ -27,7 +27,7 @@ export default function RootLayout({
           crossOrigin="anonymous"></Script>
       </head>
       <body className={
-        `relative leading-6 text-sm overflow-auto  text-gray-700 bg-gray-50  dark:bg-stone-950 dark:text-gray-400 `
+        `relative leading-6 overflow-auto  text-gray-700 bg-gray-50  dark:bg-stone-950 dark:text-gray-400 `
       }>
         <ThemeProvider attribute="class" enableSystem>
           <Layout>
