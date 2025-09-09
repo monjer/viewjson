@@ -4,7 +4,7 @@ import React from "react";
 export default function About() {
 
   return (
-    <div className="gt-4 max-w-[1024px] m-auto">
+    <div className="gt-4 max-w-[1024px] m-auto mt-10">
       <Article >
         <h1 className="mt-4">Privacy Policy</h1>
         <p>
@@ -24,6 +24,7 @@ export default function About() {
         <ul>
           <ul>
             <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to our website or other websites.</li>
+            <li>Due to advertising on our website, third parties may place and read cookies in the your browser, and may also use web beacons or IP addresses to collect information.</li>
             <li>Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.</li>
             <li>You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Ads Settings</a>.</li>
             <li>For more information, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</li>

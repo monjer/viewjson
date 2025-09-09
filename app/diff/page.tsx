@@ -4,7 +4,7 @@ import DiffEditor from '@/components/DiffEditor';
 import Flex from '@/components/Flex';
 import PageTitle from '@/components/PageTitle';
 
-function App() {
+export default function Page() {
   const [originalCode, setOriginalCode] = useState('');
   const [modifiedCode, setModifiedCode] = useState('');
 
@@ -23,5 +23,3 @@ function App() {
     </>
   );
 }
-
-export default App;

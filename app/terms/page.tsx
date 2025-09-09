@@ -2,7 +2,7 @@ import Article from "@/components/Article";
 
 export default function Page() {
   return (
-    <div className="gt-4 max-w-[1024px] m-auto">
+    <div className="gt-4 max-w-[1024px] m-auto mt-10">
       <Article>
         <h1 className="mt-4">Terms of Service</h1>
         <p><strong>Effective Date:</strong> July 19, 2025</p>
