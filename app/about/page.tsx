@@ -4,7 +4,7 @@ import Article from "@/components/Article";
 export default function About() {
 
   return (
-    <div className="gt-4 max-w-[1024px] mx-auto mt-10">
+    <div className="gt-4 max-w-[1024px] mx-auto">
       <Article>
         <h1 className="mt-4">About viewjson</h1>
         <p>Welcome to viewjson, viewjson is an online tool for processing json data, which can be used to format, compress, verify, and convert json data to other data formats.</p>
