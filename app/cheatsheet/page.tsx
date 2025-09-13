@@ -28,10 +28,10 @@ export async function generateMetadata() {
 }
 
 export function generateStaticParams() {
-  return {
+  return [{
     title: "json cheatsheet",
     href: "/cheatsheet",
     file: "docs/cheatsheet.mdx",
     slug: ['cheatsheet'],
-  };
+  }];
 }
