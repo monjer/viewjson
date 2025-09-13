@@ -10,7 +10,7 @@ import Tooltip from "@/components/Tooltip";
 import PageTitle from "@/components/PageTitle";
 import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
-export default function Layout() {
+export default function Content() {
   const [csvContent, setCsvContent] = React.useState('');
   const [jsonContent, setJsonContent] = React.useState('');
   const { data } = useJsonFromUrl();

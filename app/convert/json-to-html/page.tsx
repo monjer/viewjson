@@ -1,8 +1,12 @@
+
+import React, { Suspense } from 'react';
 import Content from './content';
 import { Metadata } from 'next';
 
 export default function Page() {
-  return <Content />;
+  return <Suspense fallback={<div>Loading...</div>}>
+    <Content />
+  </Suspense>;
 }
 
 export const metadata: Metadata = {

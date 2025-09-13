@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Content from './Content';
 import Article from "@/components/Article";
 import FAQ from "./FAQ";
@@ -7,7 +7,9 @@ import Datasets from "./Datasets";
 export default function Page() {
   return (
     <div className="mt-4">
-      <Content />
+      <Suspense>
+        <Content />
+      </Suspense>
       <div className="max-w-4xl mx-auto">
         <Article className="mt-10">
           <h1 className="text-center mb-8 ">About viewjson.online</h1>

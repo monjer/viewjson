@@ -10,7 +10,7 @@ import { Base64 } from "js-base64";
 import PageTitle from "@/components/PageTitle";
 import { useJsonFromUrl } from "@/hooks/useJSONFromURL";
 
-export default function Layout() {
+export default function Content() {
   const [base64Content, setBase64Content] = React.useState('');
   const [jsonContent, setJsonContent] = React.useState('');
   const { data } = useJsonFromUrl();
