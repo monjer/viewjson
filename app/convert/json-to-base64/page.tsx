@@ -1,7 +1,10 @@
+import React from 'react';
 import Content from './content';
 import { Metadata } from 'next';
+import { connection } from 'next/server';
 
-export default function Page() {
+export default async function Page() {
+  await connection();
   return <Content />;
 }
 

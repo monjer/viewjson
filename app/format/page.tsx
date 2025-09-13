@@ -3,8 +3,10 @@ import Content from './Content';
 import Article from "@/components/Article";
 import FAQ from "./FAQ";
 import Datasets from "./Datasets";
+import { connection } from 'next/server';
 
-export default function Page() {
+export default async function Page() {
+  await connection();
   return (
     <div className="mt-4">
       <Content />
