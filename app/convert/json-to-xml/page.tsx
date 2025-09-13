@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import Content from './content';
 import { Metadata } from 'next';
+import { connection } from 'next/server';
 
-export default function Page() {
+export default async function Page() {
+  await connection();
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Content />
-    </Suspense>
+    <Content />
   );
 }
 
