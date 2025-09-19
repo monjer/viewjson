@@ -2,7 +2,6 @@
 import React from "react";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import { linter, Diagnostic, lintGutter } from "@/utils/lint";
-import PageTitle from "@/components/PageTitle";
 import Flex from "@/components/Flex";
 import Button from "@/components/Button";
 import { useJsonFromUrl } from "@/hooks/useJSONFromURL";

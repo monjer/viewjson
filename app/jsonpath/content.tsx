@@ -2,7 +2,6 @@
 import React from "react";
 import CodeEditorPanel from "@/components/CodeEditorPanel";
 import { lintGutter } from "@/utils/lint";
-import PageTitle from "@/components/PageTitle";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
 import Flex from "@/components/Flex";
