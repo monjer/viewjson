@@ -100,7 +100,6 @@ export default function JSONPathContent() {
 
   return (
     <div  >
-      <PageTitle title="JSONPath Evaluator" />
       <Flex className="mb-4">
         <Select
           options={options}

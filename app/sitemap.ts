@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.8,
     }, {
-      url: 'https://viewjson.online/convert/json-to-cvs',
+      url: 'https://viewjson.online/convert/json-to-csv',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,

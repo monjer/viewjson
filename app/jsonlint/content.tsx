@@ -88,8 +88,7 @@ export default function JSONLintContent() {
 
 
   return (
-    <div  >
-      <PageTitle title="JSON Lint" />
+    <div>
       <CodeEditorPanel
         value={jsonContent}
         filename="data.json"
