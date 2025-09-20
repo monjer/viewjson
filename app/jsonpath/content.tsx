@@ -114,9 +114,12 @@ export default function JSONPathContent() {
           </div>
         </div>
       </Flex>
+      <Flex justify="stretch">
+        <h2 className="mb-2 text-lg font-bold w-[50%]">JSON Document</h2>
+        <h2 className="mb-2 text-lg font-bold w-[50%]">Evaluation Results</h2>
+      </Flex>
       <Flex justify="stretch" style={{ height: '600px' }}>
-        <div className="grow-1 shrink-0 flex-none  h-full" style={{ width: '50%' }}>
-          <h2 className="mb-2 text-lg font-bold">JSON Document</h2>
+        <div className="h-full" style={{ width: '50%' }}>
           <CodeEditorPanel
             hideTopbar
             value={jsonContent}
@@ -130,7 +133,6 @@ export default function JSONPathContent() {
             language="json" />
         </div>
         <div className="grow-1 shrink-0 h-full" style={{ width: '50%' }} >
-          <h2 className="mb-2 text-lg font-bold">Evaluation Results</h2>
           <TextArea value={jsonPathResult} className="h-full"></TextArea>
         </div>
       </Flex>

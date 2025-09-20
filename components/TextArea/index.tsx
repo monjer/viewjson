@@ -29,6 +29,7 @@ const TextArea: React.FC<TextAreaProps> = ({
           w-full h-full  p-3
           rounded
           border border-gray-300 dark:border-gray-800
+          bg-white dark:bg-gray-900
           focus:border-blue-500 dark:focus:border-gray-700
           hover:border-blue-500 dark:hover:border-gray-700
           outline-hidden
