@@ -24,7 +24,7 @@ export default async function Page() {
       </Article>
       <Content />
       <Article>
-        <section className="mx-auto px-4">
+        <section className="mx-auto">
           <h2 className="text-2xl">What is JSON Lint</h2>
           <p className=" mb-4">
             JSON Lint is a validator and formatter for JSON data. It analyzes your JSON input and ensures it is properly structured according to JSON standards.
