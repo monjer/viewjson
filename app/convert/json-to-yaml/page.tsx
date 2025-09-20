@@ -2,6 +2,8 @@ import React from 'react';
 import Content from './content';
 import { connection } from 'next/server';
 import Article from '@/components/Article';
+import { Metadata } from 'next';
+
 
 export default async function Page() {
   await connection();
@@ -67,3 +69,26 @@ export default async function Page() {
 
   );
 }
+
+export const metadata: Metadata = {
+  title: "Online JSON ⇄ YAML Converter Tool - Convert JSON to YAML and Vice Versa",
+  description: "Free online tool to convert between JSON and YAML instantly. Perfect for developers and DevOps engineers working with APIs, configuration files, Kubernetes manifests, and CI/CD pipelines.",
+  alternates: {
+    canonical: "https://viewjson.online/convert/json-to-yaml",
+  },
+  keywords: [
+    "JSON to YAML",
+    "YAML to JSON",
+    "JSON converter",
+    "YAML converter",
+    "data format conversion",
+    "configuration file converter",
+    "DevOps tools",
+    "Kubernetes YAML",
+    "Docker Compose",
+    "CI/CD pipeline",
+    "API data transformation",
+    "structured data converter",
+    "developer tools",
+  ],
+};

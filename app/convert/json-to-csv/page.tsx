@@ -63,9 +63,24 @@ export default async function Page() {
     </>
   );
 }
-
 export const metadata: Metadata = {
-  title: 'viewjson - Convert JSON to CSV',
-  description: 'Convert JSON string to CSV and vice versa.',
-  keywords: 'JSON To CSV, CSV To JSON, JSON Converter, json online tool',
+  title: "Online JSON ⇄ CSV Converter Tool - Convert JSON to CSV and Vice Versa",
+  description: "Free online tool to convert between JSON and CSV instantly. Transform JSON data to CSV for Excel/Google Sheets or convert CSV files to JSON for web applications and APIs.",
+  alternates: {
+    canonical: "https://viewjson.online/convert/json-to-csv",
+  },
+  keywords: [
+    "JSON to CSV",
+    "CSV to JSON",
+    "JSON converter",
+    "CSV converter",
+    "JSON to Excel",
+    "CSV to JSON online",
+    "JSON data conversion",
+    "tabular data converter",
+    "API data converter",
+    "structured data conversion",
+    "data transformation tool",
+    "online conversion tool",
+  ],
 };

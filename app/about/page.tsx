@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "@/components/Article";
+import { Metadata } from 'next';
 
 export default function About() {
 
@@ -23,3 +24,26 @@ export default function About() {
     </div >
   );
 }
+
+
+export const metadata: Metadata = {
+  title: "About viewjson - Online JSON Processing Tool",
+  description: "Learn about viewjson, an online tool for processing JSON data. Discover how we format, compress, verify, and convert JSON data to other formats using open source technologies.",
+  alternates: {
+    canonical: "https://viewjson.online/about",
+  },
+  keywords: [
+    "viewjson",
+    "JSON processing tool",
+    "JSON formatter",
+    "JSON converter",
+    "JSON validator",
+    "open source JSON tools",
+    "JSON data processing",
+    "codemirror",
+    "prettier",
+    "jsonpath",
+    "yaml converter",
+    "xml converter",
+  ],
+};

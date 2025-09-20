@@ -53,7 +53,23 @@ export default async function Page() {
 }
 
 export const metadata: Metadata = {
-  title: 'viewjson - Convert JSON to Base64',
-  description: 'Convert JSON string to Base64 and vice versa.',
-  keywords: 'JSON To Base64, Base64 To JSON, JSON Converter, json online tool',
+  title: "Online JSON ⇄ Base64 Converter Tool - Encode & Decode JSON Data",
+  description: "Free online tool to convert between JSON and Base64 quickly and securely. Encode JSON into Base64 for transmission or decode Base64 back into JSON for analysis.",
+  alternates: {
+    canonical: "https://viewjson.online/convert/json-to-base64",
+  },
+  keywords: [
+    "JSON to Base64",
+    "Base64 to JSON",
+    "JSON converter",
+    "JSON encoder",
+    "JSON decoder",
+    "Base64 converter",
+    "online JSON tool",
+    "JSON encoding",
+    "JSON decoding",
+    "data conversion",
+    "JSON to text",
+    "Base64 encoding",
+  ],
 };

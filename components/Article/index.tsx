@@ -16,7 +16,7 @@ export default function Article({ children, className = '' }) {
         prose-sm
         2xl:prose-base
       prose-a:text-blue-500 prose-a:hover:text-blue-600 prose-a:no-underline prose-a:hover:underline
-        max-w-[100%]        
+        max-w-[100%]
         no-code-decoration
         ${className || ''}`
     }>

@@ -53,8 +53,25 @@ export default async function Page() {
     </>
   );
 }
+
 export const metadata: Metadata = {
-  title: 'viewjson - Convert JSON to HTML table',
-  description: 'Convert JSON string to HTML table and vice versa.',
-  keywords: 'JSON To HTML Table, JSON Converter, json online tool',
+  title: "Online JSON to HTML Table Converter Tool - Convert JSON Data to HTML Tables",
+  description: "Free online tool to convert JSON data into clean and structured HTML tables instantly. Perfect for visualizing API responses, creating web reports, and displaying JSON data in readable tabular format.",
+  alternates: {
+    canonical: "https://viewjson.online/convert/json-to-html",
+  },
+  keywords: [
+    "JSON to HTML table",
+    "JSON converter",
+    "HTML table generator",
+    "JSON data visualization",
+    "API response to HTML",
+    "JSON to web table",
+    "online JSON converter",
+    "data to HTML table",
+    "JSON formatting tool",
+    "web development tool",
+    "data visualization",
+    "tabular data converter",
+  ],
 };

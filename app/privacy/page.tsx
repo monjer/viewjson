@@ -1,5 +1,7 @@
 import Article from "@/components/Article";
 import React from "react";
+import { Metadata } from 'next';
+
 
 export default function About() {
 
@@ -80,3 +82,23 @@ export default function About() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - viewjson.online",
+  description: "Learn how viewjson.online collects, uses, and protects your information. We prioritize your privacy - no account required and your JSON data is processed locally in your browser.",
+  alternates: {
+    canonical: "https://viewjson.online/privacy",
+  },
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "JSON privacy",
+    "browser data processing",
+    "no account required",
+    "local processing",
+    "cookie policy",
+    "Google AdSense",
+    "third-party cookies",
+    "data security",
+  ],
+};

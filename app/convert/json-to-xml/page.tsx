@@ -77,7 +77,24 @@ export default async function Page() {
 }
 
 export const metadata: Metadata = {
-  title: 'viewjson - Convert JSON to XML',
-  description: 'Convert JSON string to XML and vice versa.',
-  keywords: 'JSON To XML, XML To JSON, JSON Converter, online tool',
+  title: "Online JSON ⇄ XML Converter Tool - Convert JSON to XML and Vice Versa",
+  description: "Free online tool to easily convert between JSON and XML. Transform API responses, configuration files, and structured data between formats. Perfect for integrating modern and legacy systems.",
+  alternates: {
+    canonical: "https://viewjson.online/convert/json-to-xml",
+  },
+  keywords: [
+    "JSON to XML",
+    "XML to JSON",
+    "JSON converter",
+    "XML converter",
+    "data format conversion",
+    "API data transformation",
+    "legacy system integration",
+    "configuration file converter",
+    "structured data converter",
+    "web development tool",
+    "data transformation tool",
+    "SOAP integration",
+    "microservices integration",
+  ],
 };

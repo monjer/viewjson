@@ -1,4 +1,5 @@
 import Article from "@/components/Article";
+import { Metadata } from 'next';
 
 export default function Page() {
   return (
@@ -44,3 +45,23 @@ export default function Page() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Terms of Service - viewjson.online",
+  description: "Read the Terms of Service for viewjson.online. Learn about your rights and responsibilities when using our free JSON formatting, validation, and conversion tools. Effective Date: July 19, 2025.",
+  alternates: {
+    canonical: "https://viewjson.online/terms",
+  },
+  keywords: [
+    "terms of service",
+    "terms and conditions",
+    "user agreement",
+    "JSON tools terms",
+    "online service terms",
+    "data processing terms",
+    "free JSON tools",
+    "service agreement",
+    "website terms",
+    "legal terms",
+  ],
+};
